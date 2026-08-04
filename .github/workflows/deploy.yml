@@ -53,7 +53,7 @@ jobs:
           set -euo pipefail
           ls dist/downloads/*.pdf >/dev/null
           diff <(ls public/downloads) <(ls dist/downloads)
-          test -s dist/CNAME
+          grep -q 'href="/strohs.club/' dist/index.html
 
       - uses: actions/upload-pages-artifact@v3
         with:
