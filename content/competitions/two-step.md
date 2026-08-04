@@ -20,7 +20,7 @@ keyFacts:
   - label: When
     value: A Friday–Saturday in January or February 2027 (exact dates TBD)
   - label: Where
-    value: "<!-- draft:D-01 -->Landa Park Golf Course<!-- /draft:D-01 -->"
+    value: TBD
   - label: The prize
     value: Winner's Belt + NIT spot + Roost Regional team seat
 social:
@@ -57,10 +57,7 @@ And since only your **better** net score counts, once a hole on **Day 2 can no l
 The Two-Step is run on a **Friday–Saturday in January or February 2027 (exact dates TBD)**. Playing on the weekend's front end keeps **Sunday free for family**, and a mid-winter slot is a draw for members escaping colder climates — with the understanding that **rough winter weather is part of the deal**.
 
 - **When:** A Friday–Saturday in January or February 2027 (exact dates TBD).
-
-<!-- draft:D-01 -->
-- **Where:** Landa Park Golf Course.
-<!-- /draft:D-01 -->
+- **Where:** TBD.
 
 ## Who Can Play
 
@@ -81,8 +78,9 @@ Ties are broken with the **USGA 9-6-3-1** method. Note that the ringer format pr
 
 ## How to Enter
 
-<!-- draft:D-01 -->
 - **Field cap:** 40 players.
-- **Entry fee:** $250.
 - **Sign-up:** via a Google Form. Sign-up link and entry deadline: details to follow.
+
+<!-- draft:D-01 -->
+- **Entry fee:** $250.
 <!-- /draft:D-01 -->

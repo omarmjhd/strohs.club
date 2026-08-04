@@ -20,7 +20,7 @@ keyFacts:
   - label: When
     value: Late October / early November 2026 (target — exact date TBD)
   - label: Entry
-    value: "<!-- draft:D-02 -->$125 (general) — includes Side Games<!-- /draft:D-02 -->"
+    value: Estimated $125 — $20 of it to Side Games
   - label: Prize
     value: Winner's Jacket + Roost Regional berth
   - label: Quota target
@@ -104,6 +104,4 @@ Side Games are **built into every entry** — no separate sign-up. Every entry i
 
 Registration is via **Google Form** — the link and entry deadline are **details to follow**.
 
-<!-- draft:D-02 -->
-Entry is **$125 (general)**, which **includes automatic entry into the Side Games** ($20 of your entry). There's no separate Side Games charge on top — it's built into the entry fee.
-<!-- /draft:D-02 -->
+Entry is **estimated at $125 (general)**, **$20 of which goes to the Side Games**. There's no separate Side Games charge on top — it's built into the entry fee. The final figure will be confirmed before sign-up opens.

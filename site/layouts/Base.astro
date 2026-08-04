@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import { withBase } from '../lib/base.mjs';
+import { DISCORD_INVITE, INSTAGRAM } from '../lib/links.mjs';
 const { title = "STROH's — South Texas Roost of Hospitality", description = "A friendly, easily-accessible way to get involved in the No Laying Up Refuge across South Texas." } = Astro.props;
 ---
 <!doctype html>
@@ -36,8 +37,8 @@ const { title = "STROH's — South Texas Roost of Hospitality", description = "A
     <footer class="site-footer">
       <div class="inner">
         <span>South Texas Roost of Hospitality</span>
-        <a href="https://discord.gg/frNSUn5ZmC">Discord</a>
-        <a href="https://instagram.com/strohs_roost">Instagram</a>
+        <a href={DISCORD_INVITE}>Discord</a>
+        <a href={INSTAGRAM}>Instagram</a>
         <span style="margin-left:auto; color:#8a97b0;">Count shots, hit cups.</span>
       </div>
     </footer>
