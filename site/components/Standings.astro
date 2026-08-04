@@ -33,13 +33,19 @@ const { csvBase, boards = [], sheetUrl, hideColumns = [] } = Astro.props;
   .board[open] > summary::before { content: '▾ '; }
   .board-body { padding: 0 14px 12px; overflow-x: auto; }
   .board-status { color: #8a8a99; font-size: 0.9rem; margin: 4px 0 10px; }
-  .standings table { border-collapse: collapse; width: 100%; margin: 6px 0 14px; font-size: 0.93rem; }
+  .standings table {
+    border-collapse: collapse; width: 100%; margin: 6px 0 14px; font-size: 0.93rem;
+    border: 1px solid #c9cfdd;
+  }
   .standings th {
     background: var(--navy, #002060); color: #fff; text-align: left;
     padding: 6px 9px; font-weight: 600; white-space: nowrap;
+    border-right: 1px solid rgba(255, 255, 255, 0.22);
   }
-  .standings td { padding: 5px 9px; border-bottom: 1px solid #ececf2; }
+  .standings th:last-child { border-right: 0; }
+  .standings td { padding: 5px 9px; border: 1px solid #dbe0ea; }
   .standings tbody tr:nth-child(odd) { background: #fafbfd; }
+  .standings th.num, .standings td.num { text-align: center; }
   .standings h4 {
     margin: 14px 0 2px; text-transform: uppercase; letter-spacing: .05em;
     font-size: .78rem; color: var(--accent, #C00840);
@@ -78,14 +84,30 @@ const { csvBase, boards = [], sheetUrl, hideColumns = [] } = Astro.props;
       .filter((i) => !hide.includes(headers[i].trim().toLowerCase()));
     headers = keep.map((i) => headers[i]);
     rows = rows.map((r) => keep.map((i) => r[i] ?? ''));
+    // Centre a column only when every value in it is a number, so scores and points line
+    // up while dates, names and free text stay left-aligned.
+    const NUMERIC = /^-?\d+(\.\d+)?$/;
+    const isNum = headers.map((_, i) => {
+      const vals = rows.map((r) => (r[i] ?? '').trim()).filter((v) => v !== '' && !PLACEHOLDER.test(v));
+      return vals.length > 0 && vals.every((v) => NUMERIC.test(v));
+    });
+
     const t = el('table');
     const thead = el('thead'), htr = el('tr');
-    headers.forEach((h) => htr.appendChild(el('th', h)));
+    headers.forEach((h, i) => {
+      const th = el('th', h);
+      if (isNum[i]) th.className = 'num';
+      htr.appendChild(th);
+    });
     thead.appendChild(htr); t.appendChild(thead);
     const tb = el('tbody');
     rows.forEach((r) => {
       const tr = el('tr');
-      headers.forEach((_, i) => tr.appendChild(el('td', r[i] ?? '')));
+      headers.forEach((_, i) => {
+        const td = el('td', r[i] ?? '');
+        if (isNum[i]) td.className = 'num';
+        tr.appendChild(td);
+      });
       tb.appendChild(tr);
     });
     t.appendChild(tb);

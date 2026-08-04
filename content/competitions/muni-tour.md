@@ -11,7 +11,7 @@ tagline: A season-long net points race across Texas's best municipal courses.
 standingsUrl: https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7fnVF3ufmwmYG8oq0GsKlneX95qKnco1ITNWYmfwGHvEQRq8fETd2XU7ASG6pIwkqDPF6m3RxE086/pubhtml
 standings:
   csvBase: https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7fnVF3ufmwmYG8oq0GsKlneX95qKnco1ITNWYmfwGHvEQRq8fETd2XU7ASG6pIwkqDPF6m3RxE086/pub
-  hideColumns: [numAtRank]
+  hideColumns: [numAtRank, Course]
   boards:
     - { title: "Playoff Qualifiers & City Standings", gid: "913497145" }
     - { title: "Austin — Jimmy Clay", gid: "1174232614", mode: table }
