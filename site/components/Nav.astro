@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { NAV, matchesGroup } from '../lib/nav.mjs';
+import { withBase } from '../lib/base.mjs';
 
 const byCollection = {
   pages: await getCollection('pages'),
@@ -12,7 +13,7 @@ const competitions = byCollection.competitions
   .sort((a, b) => a.data.order - b.data.order);
 
 const href = (group, entry) =>
-  group.collection === 'competitions' ? `/competitions/${entry.data.slug}` : `/${entry.id}`;
+  group.collection === 'competitions' ? withBase(`/competitions/${entry.data.slug}`) : withBase(`/${entry.id}`);
 
 const groups = NAV.map((group) => ({
   group,
@@ -22,7 +23,7 @@ const groups = NAV.map((group) => ({
 })).filter(({ entries }) => entries.length > 0);
 ---
 <nav>
-  <a href="/">Start Here</a>
+  <a href={withBase("/")}>Start Here</a>
   {groups.map(({ group, entries }) => (
     entries.length === 1 ? (
       <a href={href(group, entries[0])}>{group.group}</a>

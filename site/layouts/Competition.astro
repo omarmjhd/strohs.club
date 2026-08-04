@@ -1,5 +1,6 @@
 ---
 import Base from './Base.astro';
+import { withBase } from '../lib/base.mjs';
 const { frontmatter } = Astro.props;
 const {
   title,
@@ -11,14 +12,14 @@ const {
   keyFacts = [],
   outputs = ['page'],
 } = frontmatter;
-const downloads = `/downloads/${slug}`;
+const downloads = withBase(`/downloads/${slug}`);
 const hasPdf = outputs.includes('pdf');
 const hasPng = outputs.includes('png');
 ---
 <Base title={`${title} — STROH's`} description={tagline}>
   <article class="competition" style={`--accent:${accent}`}>
     <header class="comp-hero">
-      {hero && <img class="comp-hero-art" src={hero} alt={title} />}
+      {hero && <img class="comp-hero-art" src={withBase(hero)} alt={title} />}
       <h1>{title}</h1>
       {tagline && <p class="tagline">{tagline}</p>}
     </header>

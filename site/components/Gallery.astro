@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../lib/base.mjs';
+
 // Self-contained rotating image gallery.
 // TODO: swap these STROH's art placeholders for real Instagram photos.
 const defaultPhotos = [
@@ -16,7 +18,7 @@ const { photos = defaultPhotos } = Astro.props;
     {photos.map((photo, i) => (
       <img
         class={`slide${i === 0 ? ' is-active' : ''}`}
-        src={photo.src}
+        src={withBase(photo.src)}
         alt={photo.alt}
         loading={i === 0 ? 'eager' : 'lazy'}
       />

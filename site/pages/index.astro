@@ -2,6 +2,7 @@
 import { getCollection, getEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Gallery from '../components/Gallery.astro';
+import { withBase } from '../lib/base.mjs';
 
 const discordUrl = 'https://discord.gg/frNSUn5ZmC';
 
@@ -18,12 +19,12 @@ const homeExcerpt = gettingStarted.rendered.html.split('<!-- home-excerpt-end --
 <Base>
   <section class="home-hero">
     <div class="home-hero-copy">
-      <img class="badge" src="/brand/lion.png" alt="STROH's crest" />
+      <img class="badge" src={withBase("/brand/lion.png")} alt="STROH's crest" />
       <h1>Welcome to STROH's</h1>
       <p class="tagline">The South Texas Roost of Hospitality — a friendly, easily-accessible way for No Laying Up Refuge members (and their friends) to get out, meet people, and play golf across Austin, Houston, and San Antonio.</p>
       <div class="hero-actions">
         <a class="btn" href={discordUrl}>Join the Discord</a>
-        <a class="btn secondary" href="/competitions/muni-tour">Explore our Competitions</a>
+        <a class="btn secondary" href={withBase("/competitions/muni-tour")}>Explore our Competitions</a>
       </div>
     </div>
     <div class="home-hero-gallery">
@@ -37,8 +38,8 @@ const homeExcerpt = gettingStarted.rendered.html.split('<!-- home-excerpt-end --
   <p>Four qualifiers feed our Roost Regional team (and the NIT) — plus the Texas Cup for bragging rights. Here's the lineup:</p>
   <div class="cards">
     {competitions.map(({ data }) => (
-      <a class="card" href={`/competitions/${data.slug}`} style={`--accent:${data.accent};`}>
-        <img class="comp-logo" src={data.logo} alt={data.title} />
+      <a class="card" href={withBase(`/competitions/${data.slug}`)} style={`--accent:${data.accent};`}>
+        <img class="comp-logo" src={withBase(data.logo)} alt={data.title} />
         <h3>{data.title}</h3>
         <p>{data.blurb}</p>
         <span class="view">View →</span>

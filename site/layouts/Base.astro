@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
+import { withBase } from '../lib/base.mjs';
 const { title = "STROH's — South Texas Roost of Hospitality", description = "A friendly, easily-accessible way to get involved in the No Laying Up Refuge across South Texas." } = Astro.props;
 ---
 <!doctype html>
@@ -10,7 +11,7 @@ const { title = "STROH's — South Texas Roost of Hospitality", description = "A
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" href="/brand/lion.png" />
+    <link rel="icon" href={withBase("/brand/lion.png")} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;900&display=swap" rel="stylesheet" />
@@ -18,8 +19,8 @@ const { title = "STROH's — South Texas Roost of Hospitality", description = "A
   <body>
     <header class="site-header">
       <div class="bar">
-        <a class="brand" href="/">
-          <img src="/brand/strohs-script.png" alt="STROH's" />
+        <a class="brand" href={withBase("/")}>
+          <img src={withBase("/brand/strohs-script.png")} alt="STROH's" />
           <span>South Texas Roost of Hospitality</span>
         </a>
         <Nav />

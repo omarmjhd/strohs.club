@@ -1,11 +1,12 @@
 ---
 import Base from './Base.astro';
+import { withBase } from '../lib/base.mjs';
 const { frontmatter } = Astro.props;
 const { title, subtitle, quickFacts = [], heroImage } = frontmatter;
 ---
 <Base title={`${frontmatter.title} — STROH's`} description={frontmatter.subtitle}>
   <header class="page-hero">
-    {heroImage && <img src={heroImage} alt={title} style="max-height:160px; width:auto; display:block; margin:0 auto 20px;" />}
+    {heroImage && <img src={withBase(heroImage)} alt={title} style="max-height:160px; width:auto; display:block; margin:0 auto 20px;" />}
     <h1>{title}</h1>
     <p class="subtitle">{subtitle}</p>
   </header>
@@ -20,7 +21,7 @@ const { title, subtitle, quickFacts = [], heroImage } = frontmatter;
           {quickFacts.map((f) => (
             <div class="fact">
               <span class="fact-label">{f.label}</span>
-              <span class="fact-value">{f.link ? <a href={f.link}>{f.value}</a> : f.value}</span>
+              <span class="fact-value">{f.link ? <a href={withBase(f.link)}>{f.value}</a> : f.value}</span>
             </div>
           ))}
         </div>
