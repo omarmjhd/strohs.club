@@ -4,7 +4,10 @@ import Page from '../layouts/Page.astro';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages');
-  return pages.map((entry) => ({ params: { page: entry.id }, props: { entry } }));
+  // An empty id would emit `/` and collide with index.astro.
+  return pages
+    .filter((entry) => entry.id)
+    .map((entry) => ({ params: { page: entry.id }, props: { entry } }));
 }
 
 const { entry } = Astro.props;

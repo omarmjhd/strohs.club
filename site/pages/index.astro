@@ -1,20 +1,15 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Gallery from '../components/Gallery.astro';
 
 const discordUrl = 'https://discord.gg/frNSUn5ZmC';
 
-const competitions = (await getCollection('competitions')).sort(
-  (a, b) => a.data.order - b.data.order
-);
+const competitions = (await getCollection('competitions'))
+  .filter((entry) => entry.data.kind === 'competition')
+  .sort((a, b) => a.data.order - b.data.order);
 
-const principles = [
-  ['Keep the Main Thing the Main Thing', 'The hang, new friends, and charity matter as much as the golf.'],
-  ['All Are Welcome', 'Come out and play. Seriously. Bring your friends, too.'],
-  ["Don't Be a Jerk", 'Assume good intent in all interactions.'],
-  ['Competition Matters (This Is 4th on Purpose)', 'We know the rules. We win and lose with grace.'],
-];
+const { Content } = await render(await getEntry('pages', 'getting-started'));
 ---
 <Base>
   <section class="home-hero">
@@ -32,11 +27,8 @@ const principles = [
     </div>
   </section>
 
-  <h2>What We're About</h2>
-  <div class="principles">
-    {principles.map(([t, d]) => (
-      <div class="principle"><b>{t}</b>{d}</div>
-    ))}
+  <div class="prose">
+    <Content />
   </div>
 
   <h2>The Competitions</h2>
@@ -51,14 +43,6 @@ const principles = [
       </a>
     ))}
   </div>
-
-  <h2>New Here? Start in Three Steps</h2>
-  <p>New here? <a href="/downloads/strohs-overview-slides.html">▶ Watch the 5-minute intro slideshow.</a></p>
-  <ol>
-    <li><b>Join the Discord</b> — <a href={discordUrl}>hop in our Discord</a>. It can look busy at first, but head straight to <code>#find-a-game</code>.</li>
-    <li><b>Post that you're looking to play</b> — introduce yourself and grab an open spot.</li>
-    <li><b>Come play golf.</b> That's it. The competitions will make sense once you're out there.</li>
-  </ol>
 </Base>
 
 <style>

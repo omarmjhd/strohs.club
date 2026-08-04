@@ -1,5 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { pagePatterns } from './lib/nav.mjs';
 
 const keyFact = z.object({
   label: z.string(),
@@ -14,13 +15,14 @@ const competitions = defineCollection({
     slug: z.string(),
     navGroup: z.string(),
     order: z.number(),
-    tagline: z.string(),
-    blurb: z.string(),
-    summary: z.string(),
-    accent: z.string(),
+    kind: z.enum(['competition', 'notes']).default('competition'),
+    tagline: z.string().optional(),
+    blurb: z.string().optional(),
+    summary: z.string().optional(),
+    accent: z.string().optional(),
     accent2: z.string().optional(),
-    hero: z.string(),
-    logo: z.string(),
+    hero: z.string().optional(),
+    logo: z.string().optional(),
     standingsUrl: z.string().optional(),
     keyFacts: z.array(keyFact).default([]),
     // Free-form per-template blocks consumed by templates/social.mjs.
@@ -30,12 +32,18 @@ const competitions = defineCollection({
 });
 
 const pages = defineCollection({
-  loader: glob({ pattern: '*.md', base: './content' }),
+  // An explicit allowlist, not '**/*.md': the competition files also satisfy this
+  // schema, so a recursive glob would silently mount five phantom top-level pages.
+  loader: glob({ pattern: pagePatterns(), base: './content' }),
   schema: z.object({
     title: z.string(),
     subtitle: z.string().optional(),
+    navGroup: z.string().optional(),
+    order: z.number().default(999),
     heroImage: z.string().optional(),
     quickFacts: z.array(keyFact).default([]),
+    // No `slug` field on purpose: the glob loader returns `data.slug` as the entry
+    // id when present, so adding one here would silently move the page's URL.
   }),
 });
 

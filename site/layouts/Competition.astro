@@ -9,8 +9,11 @@ const {
   hero,
   accent = '#002060',
   keyFacts = [],
+  outputs = ['page'],
 } = frontmatter;
 const downloads = `/downloads/${slug}`;
+const hasPdf = outputs.includes('pdf');
+const hasPng = outputs.includes('png');
 ---
 <Base title={`${title} — STROH's`} description={tagline}>
   <article class="competition" style={`--accent:${accent}`}>
@@ -40,13 +43,15 @@ const downloads = `/downloads/${slug}`;
           </div>
         )}
 
-        <div class="panel">
-          <h4>Documents</h4>
-          <nav class="doc-links" aria-label="Downloads">
-            <a href={`${downloads}.pdf`}>One-pager (PDF)</a>
-            <a href={`${downloads}.png`}>Share image (PNG)</a>
-          </nav>
-        </div>
+        {(hasPdf || hasPng) && (
+          <div class="panel">
+            <h4>Documents</h4>
+            <nav class="doc-links" aria-label="Downloads">
+              {hasPdf && <a href={`${downloads}.pdf`}>One-pager (PDF)</a>}
+              {hasPng && <a href={`${downloads}.png`}>Share image (PNG)</a>}
+            </nav>
+          </div>
+        )}
       </aside>
     </div>
   </article>

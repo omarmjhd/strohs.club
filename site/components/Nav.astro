@@ -1,21 +1,42 @@
 ---
 import { getCollection } from 'astro:content';
+import { NAV, matchesGroup } from '../lib/nav.mjs';
 
-const competitions = (await getCollection('competitions')).sort(
-  (a, b) => a.data.order - b.data.order
-);
+const byCollection = {
+  pages: await getCollection('pages'),
+  competitions: await getCollection('competitions'),
+};
+
+const competitions = byCollection.competitions
+  .filter((entry) => entry.data.kind === 'competition')
+  .sort((a, b) => a.data.order - b.data.order);
+
+const href = (group, entry) =>
+  group.collection === 'competitions' ? `/competitions/${entry.data.slug}` : `/${entry.id}`;
+
+const groups = NAV.map((group) => ({
+  group,
+  entries: (byCollection[group.collection] ?? [])
+    .filter((entry) => matchesGroup(entry.id, group))
+    .sort((a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title)),
+})).filter(({ entries }) => entries.length > 0);
 ---
 <nav>
   <a href="/">Start Here</a>
-  <div class="nav-item">
-    <span class="nav-top">Competitions ▾</span>
-    <div class="dropdown">
-      {competitions.map((c) => (
-        <a href={`/competitions/${c.data.slug}`}>{c.data.title}</a>
-      ))}
-    </div>
-  </div>
-  <a href="/about">About</a>
+  {groups.map(({ group, entries }) => (
+    entries.length === 1 ? (
+      <a href={href(group, entries[0])}>{group.group}</a>
+    ) : (
+      <div class="nav-item">
+        <span class="nav-top">{group.group} ▾</span>
+        <div class="dropdown">
+          {entries.map((entry) => (
+            <a href={href(group, entry)}>{entry.data.title}</a>
+          ))}
+        </div>
+      </div>
+    )
+  ))}
   <div class="nav-item">
     <span class="nav-top">Standings ▾</span>
     <div class="dropdown">
