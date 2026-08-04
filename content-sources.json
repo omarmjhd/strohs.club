@@ -1,4 +1,10 @@
 {
   "readme": "Components authored in Google Drive. See docs/AUTHORING-GOOGLE-DRIVE.md. Each source needs a `file` (where it lands under content/) and a `from` (the Doc or Sheet link). Add one and `npm run sync` — or the hourly Sync content workflow — keeps that file up to date.",
-  "sources": []
+  "sources": [
+    {
+      "file": "content/competitions/muni-tour-google.md",
+      "from": "https://docs.google.com/document/d/13FO6eqyW7SFTEn5W9R5G1bBEtxGVar8qTT_7xzA2gkU/edit?usp=sharing",
+      "note": "Muni Tour — Google Doc trial"
+    }
+  ]
 }
