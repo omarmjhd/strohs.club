@@ -42,6 +42,32 @@ const LABELS = {
   'draft ids': 'draftIds',
 };
 
+// A Doc author writes "Documents", never "outputs". Errors have to name the row they typed,
+// so map the field back to the friendliest label that sets it.
+const PREFERRED_LABEL = {
+  title: 'Title',
+  slug: 'Slug',
+  order: 'Order',
+  tagline: 'One-liner',
+  subtitle: 'Subtitle',
+  blurb: 'Card text',
+  summary: 'Summary',
+  accent: 'Colour',
+  accent2: 'Second colour',
+  hero: 'Artwork',
+  logo: 'Logo',
+  standingsUrl: 'Standings sheet',
+  outputs: 'Documents',
+  status: 'Status',
+  draftIds: 'Draft ids',
+  kind: 'Kind',
+};
+
+export const labelFor = (field) =>
+  PREFERRED_LABEL[field] ??
+  Object.keys(LABELS).find((k) => LABELS[k] === field) ??
+  field;
+
 const FACT_LABEL = /^(?:key |quick )?fact:\s*(.+)$/i;
 const LIST_FIELDS = new Set(['outputs', 'draftIds']);
 const NUMBER_FIELDS = new Set(['order']);

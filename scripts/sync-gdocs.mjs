@@ -13,7 +13,16 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { schemaFor } from '../site/lib/schema.mjs';
 import { ROOT } from './lib/paths.mjs';
-import { exportUrl, fromDocMarkdown, fromSheet, kindOf, toComponent, toMarkdown } from './lib/gdoc.mjs';
+import { nearest } from './lib/suggest.mjs';
+import {
+  exportUrl,
+  fromDocMarkdown,
+  fromSheet,
+  kindOf,
+  labelFor,
+  toComponent,
+  toMarkdown,
+} from './lib/gdoc.mjs';
 
 const REGISTRY = path.join(ROOT, 'content-sources.json');
 const dryRun = process.argv.includes('--dry-run');
@@ -74,16 +83,41 @@ for (const source of sources) {
   if (collection === 'competitions' && !front.slug) front.slug = path.basename(source.file, '.md');
 
   const result = schemaFor(collection).safeParse(front);
-  const issues = [
-    ...found,
-    ...(result.success
-      ? []
-      : result.error.issues.map((i) =>
-          i.code === 'invalid_type' && i.received === 'undefined'
-            ? `The Doc has no row setting "${i.path.join(' ')}", and it is required.`
-            : `${i.path.join(' ') || 'the settings'}: ${i.message}`
-        )),
-  ];
+
+  // Report in the words the author used. A Doc has a "Documents" row, never an `outputs`
+  // field, so a message naming the field cannot be matched back to anything they typed.
+  const describe = (issue) => {
+    const field = issue.path[0];
+    const label = field ? labelFor(String(field)) : 'the settings table';
+    if (issue.code === 'invalid_type' && issue.received === 'undefined') {
+      return `There is no "${label}" row, and it is required.`;
+    }
+    if (issue.code === 'invalid_enum_value') {
+      const allowed = issue.options ?? [];
+      const near = nearest(String(issue.received), allowed);
+      return (
+        `"${label}" does not accept "${issue.received}". Use any of: ${allowed.join(', ')}.` +
+        (near ? ` Did you mean "${near}"?` : '')
+      );
+    }
+    if (issue.code === 'unrecognized_keys') {
+      return `Not a setting this page understands: ${issue.keys.map(labelFor).join(', ')}.`;
+    }
+    return `"${label}": ${issue.message}`;
+  };
+
+  const issues = [...found, ...(result.success ? [] : result.error.issues.map(describe))];
+
+  // The filename decides the address; a slug that disagrees silently renames the page and
+  // every file it generates. `npm run check` catches this later, but by then the sync has
+  // already written and committed the file.
+  const expected = path.basename(source.file, '.md');
+  if (collection === 'competitions' && front.slug && front.slug !== expected) {
+    issues.push(
+      `"Slug" is "${front.slug}" but this page is registered as ${expected}.md. ` +
+        `Set the Slug row to "${expected}", or change "file" in content-sources.json.`
+    );
+  }
 
   if (issues.length) {
     const shown = issues.slice(0, 6).map((i) => `    ${i}`);
