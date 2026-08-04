@@ -80,6 +80,14 @@ and it needs a Texas Cup section written for **D-05**.
   from a person, the site publishes a standing invite URL. Both paths are currently offered on
   `community.md` and `getting-started.md`.
 
+**Before DNS cutover — must not ship live**
+
+- **Both standings boards show filler data.** The Muni Tour and Opn Szn sheets still hold
+  placeholder rows from a previous season, so the site currently publishes a leader, a points
+  race and a projected playoff bracket that mean nothing. Harmless while only Omar and Josh can
+  reach the site; misleading the moment DNS moves. Either point both at the new season's sheets
+  or hide the boards before cutover.
+
 ### Closed by implementation
 
 | ID | Resolution |
