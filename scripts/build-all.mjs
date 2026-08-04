@@ -3,9 +3,21 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { DOWNLOADS_DIR, ROOT } from './lib/paths.mjs';
+import { contentWarnings, loadAll } from './lib/content.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const GENERATED = /\.(pdf|png|html)$/;
+
+// Parse everything first. An unbalanced or mistyped draft marker fails open — the prose it
+// should withhold ends up in the artifacts — and an orphaned file produces nothing at all.
+// Both used to be a console warning inside a subprocess, which no build could act on.
+loadAll();
+if (contentWarnings.length) {
+  console.error(`\nRefusing to build — ${contentWarnings.length} content problem(s):`);
+  for (const w of contentWarnings) console.error(`  - ${w}`);
+  console.error('\nFix the content, or the artifacts will be wrong in ways nothing else checks.');
+  process.exit(1);
+}
 
 fs.mkdirSync(DOWNLOADS_DIR, { recursive: true });
 

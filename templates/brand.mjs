@@ -49,8 +49,10 @@ export const PROSE_PRINT_CSS = `
   .fact-label{display:block;font-size:8.5pt;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);font-weight:700}
   .fact-value{font-weight:600;color:var(--navy)}`;
 
+// Competitions carry keyFacts, pages carry quickFacts. Reading only the former silently
+// dropped the facts panel for every page component in the Almanac.
 export const facts = (data) =>
-  (data.keyFacts || [])
+  (data.keyFacts || data.quickFacts || [])
     .map(
       (f) =>
         `<div class="fact"><span class="l">${f.label}</span><span class="v">${f.value}</span></div>`

@@ -13,9 +13,33 @@ section.title .kicker{color:var(--cream);font-size:34px;letter-spacing:.06em;tex
 section.title p{color:var(--cream);font-size:34px;}
 
 /* The single competitions slide: five cards instead of five slides. */
-.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px;}
-.cc{background:#F2F4F9;border-top:7px solid var(--cc);border-radius:12px;padding:16px 18px;}
-.ct{font-weight:800;color:var(--navy);font-size:26px;line-height:1.1;margin-bottom:6px;}
-.cd{font-size:19px;color:#333;line-height:1.3;margin-bottom:10px;}
-.cf{font-size:17px;color:#222;line-height:1.35;}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:14px;}
+/* White, not tinted: two competition logos ship with baked-in white backgrounds,
+   which show as boxes against any other colour. */
+.cc{background:#fff;border:1px solid #dfe3ec;border-top:6px solid var(--cc);border-radius:11px;padding:12px 14px;}
+.ct{font-weight:800;color:var(--navy);font-size:23px;line-height:1.1;margin-bottom:5px;}
+.cd{font-size:17px;color:#333;line-height:1.28;margin-bottom:8px;}
+.cf{font-size:15px;color:#222;line-height:1.3;}
 .cf span{display:block;text-transform:uppercase;letter-spacing:.05em;font-size:13px;font-weight:800;color:var(--cc);}
+
+/* --- imagery --- */
+section.title .hero-badge{display:block;margin:0 auto 10px;height:230px;width:auto;}
+section.title h1{font-size:96px;margin:4px 0;}
+
+/* The crest sits behind the principles rather than competing with them. */
+section.watermark{position:relative;overflow:hidden;}
+section.watermark .mark{
+  position:absolute;right:-70px;bottom:-90px;height:460px;opacity:.07;pointer-events:none;
+}
+section.watermark h2,section.watermark ul,section.watermark .motto{position:relative;z-index:1;}
+
+.cols{display:grid;grid-template-columns:1.45fr 1fr;gap:32px;align-items:center;}
+.cols .art{text-align:center;}
+.cols .barrel{height:300px;width:auto;}
+.cols .caption{display:block;margin-top:10px;font-size:19px;color:#6b7183;line-height:1.3;}
+
+/* Competition cards: logo above the name. */
+.cc .cl{display:block;height:42px;width:auto;max-width:100%;object-fit:contain;margin:0 0 10px;}
+
+section.closing{position:relative;}
+section.closing .script{position:absolute;right:64px;bottom:52px;height:120px;opacity:.9;}

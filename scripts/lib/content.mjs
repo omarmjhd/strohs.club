@@ -10,7 +10,15 @@ const md = new MarkdownIt({ html: true, linkify: true, typographer: true });
 // Global, so `exec`/`test` callers must reset `lastIndex` first.
 export const DRAFT_MARKER = /<!--\s*(\/?)draft:([\w.-]+)\s*-->/g;
 
-const warn = (where, message) => console.warn(`!! DRAFT MARKER  ${where}: ${message}`);
+// A malformed draft marker fails OPEN — the prose it was meant to withhold flows into every
+// artifact. Since that prose is unratified rules and entry fees, a warning nobody reads is not
+// enough: record it so the build can exit non-zero.
+export const contentWarnings = [];
+const warn = (where, message) => {
+  const line = `${where}: ${message}`;
+  contentWarnings.push(line);
+  console.warn(`!! DRAFT MARKER  ${line}`);
+};
 
 // `<!-- draft:D-01 -->…<!-- /draft:D-01 -->` hides unratified prose from generated
 // artifacts while leaving it on the site.
@@ -186,7 +194,11 @@ export function loadNavSections() {
   }
 
   for (const file of listMarkdown(CONTENT_DIR)) {
-    if (!seen.has(file)) console.warn(`!! ORPHAN  ${idOf(file)} is in no nav group — skipped`);
+    if (!seen.has(file)) {
+      const line = `${idOf(file)} is in no nav group — skipped`;
+      contentWarnings.push(line);
+      console.warn(`!! ORPHAN  ${line}`);
+    }
   }
   return sections;
 }

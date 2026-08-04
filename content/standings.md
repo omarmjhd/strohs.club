@@ -3,7 +3,7 @@ title: Standings
 subtitle: Live leaderboards for every competition, straight from the sheets we score them in.
 order: 1
 quickFacts:
-  - { label: "Live now", value: "Muni Tour" }
+  - { label: "Live now", value: "Muni Tour · Opn Szn Match Play" }
   - { label: "Updates", value: "As soon as a score is posted" }
   - { label: "Scoring questions", value: "Ask in the Discord", link: "https://discord.gg/frNSUn5ZmC" }
 ---
@@ -18,10 +18,16 @@ The full picture — playoff qualifiers, the three city standings, and a leaderb
 the nine munis — lives on the
 **[Muni Tour page](/competitions/muni-tour#standings)**.
 
+## Opn Szn Match Play
+
+The season points race, plus a projected playoff bracket showing who currently holds a
+Quarterfinal bye, lives on the
+**[Opn Szn page](/competitions/opnszn#standings)**.
+
 ## Everything else
 
-The Texas Two-Step, All-STROHs Open, Opn Szn and Texas Cup boards aren't published yet. They'll
-appear here, and in the Standings menu, as soon as each one has a sheet behind it.
+The Texas Two-Step, All-STROHs Open and Texas Cup boards aren't published yet. They'll appear
+here, and in the Standings menu, as soon as each one has a sheet behind it.
 
 If you spot something wrong in a board, say so in the Discord — the fix happens in the sheet and
 shows up here immediately.

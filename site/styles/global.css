@@ -54,6 +54,7 @@ code { background: #f2f2f5; padding: 1px 6px; border-radius: 5px; font-size: .9e
 .site-header .brand img { height: 40px; width: auto; }
 .site-header .brand span { font-family: var(--font-display); color: var(--cream); font-weight: 800; font-size: 1rem; letter-spacing: .2px; white-space: nowrap; }
 .site-header nav { margin-left: auto; display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
+.nav-burger { display: none; }
 .site-header nav a { color: var(--cream); font-weight: 600; font-size: .98rem; }
 .site-header nav a:hover { color: #fff; text-decoration: none; }
 
@@ -76,10 +77,34 @@ code { background: #f2f2f5; padding: 1px 6px; border-radius: 5px; font-size: .9e
 .site-header .dropdown a:hover { background: rgba(255,255,255,.08); color: #fff; text-decoration: none; }
 
 @media (max-width: 640px) {
-  .site-header .brand span { white-space: normal; }
-  .site-header nav { width: 100%; }
+  /* Without wrap the nav sits beside the brand and pushes the page 65px wider than the
+     viewport. With every dropdown expanded it was also a 778px sticky header on an 844px
+     screen — no page content above the fold — so the menu collapses behind a toggle. */
+  .site-header .bar { flex-wrap: wrap; padding: 10px 16px; gap: 10px; }
+  .site-header .brand span { white-space: normal; font-size: .92rem; }
+  .site-header .brand img { height: 32px; }
+
+  .nav-burger {
+    display: block; margin-left: auto; width: 42px; height: 34px; cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.28); border-radius: 7px; position: relative;
+  }
+  .nav-burger span,
+  .nav-burger span::before,
+  .nav-burger span::after {
+    position: absolute; left: 10px; width: 20px; height: 2px; background: var(--cream);
+    content: '';
+  }
+  .nav-burger span { top: 16px; }
+  .nav-burger span::before { top: -6px; left: 0; }
+  .nav-burger span::after { top: 6px; left: 0; }
+  .nav-toggle:checked ~ .nav-burger { background: rgba(255, 255, 255, 0.12); }
+
+  .site-header nav { display: none; width: 100%; max-height: 70vh; overflow-y: auto; gap: 2px; }
+  .nav-toggle:checked ~ nav { display: flex; }
   .site-header .nav-item { width: 100%; }
-  /* On mobile, show dropdown items expanded (no hover needed) */
+  .site-header nav > a,
+  .site-header .nav-top { display: block; padding: 9px 2px; }
+  /* Dropdowns expand inline once the menu is open — there is no hover on a phone. */
   .site-header .dropdown {
     position: static; display: flex; min-width: 0;
     box-shadow: none; border: none; border-radius: 0;

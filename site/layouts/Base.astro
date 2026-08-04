@@ -20,6 +20,10 @@ const { title = "STROH's — South Texas Roost of Hospitality", description = "A
           <img src={withBase("/brand/strohs-script.png")} alt="STROH's" />
           <span>South Texas Roost of Hospitality</span>
         </a>
+        {/* Checkbox toggle so the phone menu collapses without JavaScript. Hidden above 640px,
+            where the nav sits inline and the dropdowns open on hover. */}
+        <input class="nav-toggle" type="checkbox" id="nav-toggle" hidden />
+        <label class="nav-burger" for="nav-toggle" aria-label="Menu"><span></span></label>
         <Nav />
       </div>
     </header>

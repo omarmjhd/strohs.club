@@ -19,7 +19,7 @@ export function onePagerHTML({ data, bodyHtml, badge, hero }) {
       <div class="t"><div class="title">${data.title}</div><div class="tag">${data.tagline || ''}</div></div>
       ${hero ? `<img class="hero" src="${hero}" alt="">` : ''}
     </div>
-    ${data.keyFacts ? `<div class="facts">${facts(data)}</div>` : ''}
+    ${(data.keyFacts || data.quickFacts) ? `<div class="facts">${facts(data)}</div>` : ''}
     ${data.summary ? `<div class="summary">${data.summary}</div>` : ''}
     ${bodyHtml}
     <div class="foot">STROH's — South Texas Roost of Hospitality · strohs.club</div>

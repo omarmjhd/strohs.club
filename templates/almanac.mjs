@@ -17,7 +17,7 @@ const component = ({ slug, data, bodyHtml }, group) => `
     <div class="kicker">${group || "STROH's"}</div>
     <h1 id="${anchor(slug)}">${data.title}</h1>
     ${data.tagline || data.subtitle ? `<p class="tagline">${data.tagline || data.subtitle}</p>` : ''}
-    ${(data.keyFacts || []).length ? `<div class="facts">${facts(data)}</div>` : ''}
+    ${(data.keyFacts || data.quickFacts || []).length ? `<div class="facts">${facts(data)}</div>` : ''}
     ${data.summary ? `<div class="summary">${data.summary}</div>` : ''}
     ${bodyHtml}
   </section>`;
