@@ -48,3 +48,8 @@ Three tiers, each overruling the one before it:
 3. **Tournament-specific STROH's rules** overrule local course rules.
 
 In **match play**, one more rule sits on top of all three: **decisions made by agreement of all players in the match override any rule.** Even if you get a rule wrong, if all competitors agree, the score is valid.
+
+## Past champions
+
+Every STROH's champion since 2021, including the events we no longer run, is on the
+**[Roll of Honour](/roll-of-honour)**.

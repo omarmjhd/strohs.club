@@ -29,8 +29,5 @@ Quarterfinal bye, lives on the
 The Texas Two-Step, All-STROHs Open and Texas Cup boards aren't published yet. They'll appear
 here, and in the Standings menu, as soon as each one has a sheet behind it.
 
-Past champions, including events we no longer run, are on the
-**[Roll of Honour](/roll-of-honour)**.
-
 If you spot something wrong in a board, say so in the Discord — the fix happens in the sheet and
 shows up here immediately.

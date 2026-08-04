@@ -97,6 +97,14 @@ early as possible in the competition year.
 Each season the Roost runs a donation drive, and members get creative with how they give.
 **[Charity](/about/charity)** has the details, including who we've supported.
 
+## The Almanac
+
+Everything on this website, compiled into a single document — what a Roost is, the governing
+principles, how the season works, and the full rules for every competition.
+**[Download the STROH's Almanac](/downloads/strohs-almanac.pdf)** if you'd rather read it in one
+go, or keep a copy to hand. It is rebuilt from these pages, so it never falls out of step with
+them.
+
 ---
 
 If you're after the competitive side of things — the qualifiers, Regionals, and the road to

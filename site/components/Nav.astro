@@ -35,6 +35,9 @@ const groups = NAV.map((group) => ({
           {entries.map((entry) => (
             <a href={href(group, entry)}>{entry.data.title}</a>
           ))}
+          {group.group === 'Competitions' && (
+            <a href={withBase('/roll-of-honour')}>Roll of Honour</a>
+          )}
         </div>
       </div>
     )
@@ -43,11 +46,9 @@ const groups = NAV.map((group) => ({
     <span class="nav-top">Standings ▾</span>
     <div class="dropdown">
       <a href={withBase("/standings")}>All Standings</a>
-      <a href={withBase("/roll-of-honour")}>Roll of Honour</a>
       {withStandings.map((c) => (
         <a href={withBase(`/competitions/${c.data.slug}#standings`)}>{c.data.title}</a>
       ))}
     </div>
   </div>
-  <a href={withBase("/downloads/strohs-almanac.pdf")}>Almanac</a>
 </nav>
