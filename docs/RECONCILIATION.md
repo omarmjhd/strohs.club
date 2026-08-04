@@ -69,24 +69,20 @@ and it needs a Texas Cup section written for **D-05**.
 
 ### Still open
 
-**Awaiting confirmation, not a conflict**
+**Awaiting confirmation**
 
-- **D-01 remainder** — Landa Park as the venue, the $250 entry, the 40-player field cap and the
-  Google Form sign-up are still marked draft, so they render on the site but stay out of every
-  PDF, PNG, deck and the Almanac. The Two-Step rules themselves were ratified.
-- **D-02 remainder** — the $125 ASO entry fee, same treatment. Everything else on that page
-  (quota formula, Winner's Jacket, tie-breakers, Side Games) was ratified.
-- **C-02** — the Discord posture question is unruled: the Almanac describes invites as requested
-  from a person, the site publishes a standing invite URL. Both paths are currently offered on
-  `community.md` and `getting-started.md`.
+- **D-01 remainder** — the **$250 Two-Step entry fee** is the only content anywhere still held
+  back from the artifacts. It renders on the website and is stripped from every PDF, PNG, deck
+  and the Almanac. The venue is now TBD (Landa Park removed outright), and the 40-player cap and
+  Google Form sign-up were ratified.
 
 **Before DNS cutover — must not ship live**
 
 - **Both standings boards show filler data.** The Muni Tour and Opn Szn sheets still hold
-  placeholder rows from a previous season, so the site currently publishes a leader, a points
-  race and a projected playoff bracket that mean nothing. Harmless while only Omar and Josh can
-  reach the site; misleading the moment DNS moves. Either point both at the new season's sheets
-  or hide the boards before cutover.
+  placeholder rows from a previous season, so the site publishes a leader, a points race and a
+  projected playoff bracket that mean nothing. Harmless while only Omar and Josh can reach the
+  site; misleading the moment DNS moves. Point both at the new season's sheets, or hide the
+  boards, before cutover.
 
 ### Closed by implementation
 
@@ -94,6 +90,8 @@ and it needs a Texas Cup section written for **D-05**.
 |---|---|
 | **R-12** | Canonical hostname. Resolved by neither original option: `public/CNAME` is gone and the site is served from `omarmujahidpair.com/strohs.club/` until DNS moves, with `site` and `base` set to match. The www-vs-apex decision returns at cutover |
 | **R-15** | Draft facts in frontmatter. `keyFacts` in `two-step.md` and `all-strohs-open.md` carry inline markers, and `site/content.config.mjs` strips markers from frontmatter strings — the site shows the prose, the pipeline drops it. Without that transform the markers rendered as visible escaped text in the Key Facts panel |
+| **D-02** | ASO entry fee. Ratified as an estimate — "estimated at $125, $20 of which goes to the Side Games", with the final figure confirmed before sign-up opens. Nothing on that page is withheld any more |
+| **C-02** | Discord posture. The public invite stays, but it and the Instagram URL moved into `site/lib/links.mjs`, and `build-all` now fails on any `discord.gg` or `instagram.com` URL in `content/` or `slides/` that does not match. Rotating the invite was previously eight edits with no signal if you missed one |
 | **R-16** | Schema drift. `status`, `draftIds` and page-level `outputs` are now declared in both collections in `site/content.config.mjs`, so layouts can see draft state instead of having it silently stripped. `R-14`'s content-side workaround could now be done in the layout if wanted |
 | **K-04** | `competition-notes` had no art. It now carries the parent STROH's badge and navy accent, so its header matches every other competition page |
 | **Fonts** | Fraunces and Source Sans 3 are self-hosted in `public/fonts/` (latin subset, 244 KB). The document templates embed them as data URIs so rendering never touches the network; the site loads them from a path relative to the bundled stylesheet, which stays correct whatever `base` is |
