@@ -76,23 +76,60 @@ const { csvBase, boards = [], sheetUrl, hideColumns = [], sheetLabel = "source s
   .standings .cut-legend .sw.bye { background: #C9A227; }
   .standings .cut-legend .sw.play { background: #0078C0; }
 
-  .standings .bracket { margin-top: 18px; }
-  .standings .bracket-note { font-size: .84rem; color: #6b6b7b; margin: 0 0 10px; }
-  .standings .rounds { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .standings .bracket { margin-top: 20px; }
+  .standings .bracket-note { font-size: .84rem; color: #6b6b7b; margin: 0 0 12px; }
+
+  /* Columns distribute their matches evenly over the same height, so every round lines up
+     with the one feeding it: 4 matches centre at 1/8, 3/8, 5/8, 7/8; a pair of two centres
+     at 1/4 and 3/4; a single match at 1/2. */
+  .standings .rounds { display: flex; align-items: stretch; gap: 0; min-height: 300px; }
+  .standings .rounds .rd { flex: 1; display: flex; flex-direction: column; min-width: 0; }
   .standings .rounds .rd h5 {
-    margin: 0 0 8px; font-size: .74rem; text-transform: uppercase; letter-spacing: .06em;
+    margin: 0 0 10px; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em;
     color: #002060; border-bottom: 2px solid #C00840; padding-bottom: 4px;
   }
-  .standings .rounds .mt {
-    border: 1px solid #ccd3e0; border-radius: 7px; margin-bottom: 8px;
-    font-size: .82rem; background: #fff; overflow: hidden;
+  .standings .rounds .col {
+    flex: 1; display: flex; flex-direction: column; justify-content: space-around;
   }
-  .standings .rounds .mt > div { padding: 5px 8px; }
+  .standings .rounds .pair {
+    flex: 1; display: flex; flex-direction: column; justify-content: space-around;
+    position: relative;
+  }
+  /* The vertical run joining a pair: from the centre of the upper match to the lower. */
+  .standings .rounds .merge .pair::after {
+    content: ''; position: absolute; right: 10px; top: 25%; height: 50%;
+    width: 2px; background: #c4cbd9;
+  }
+
+  .standings .rounds .mt {
+    position: relative; border: 1px solid #ccd3e0; border-radius: 7px;
+    font-size: .8rem; background: #fff; margin-right: 20px;
+  }
+  .standings .rounds .mt > div { padding: 5px 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .standings .rounds .mt > div:first-child { border-bottom: 1px solid #e4e8f0; }
-  .standings .rounds .mt b { color: #002060; margin-right: 4px; }
-  .standings .rounds .mt i { color: #7b8194; font-style: normal; }
-  @media (max-width: 700px) {
-    .standings .rounds { grid-template-columns: 1fr 1fr; }
+  /* Stub out of every match, and into every match after the first round. */
+  .standings .rounds .rd:not(:last-child) .mt::after {
+    content: ''; position: absolute; right: -10px; top: 50%; width: 10px; height: 2px;
+    background: #c4cbd9;
+  }
+  .standings .rounds .rd:not(:first-child) .mt::before {
+    content: ''; position: absolute; left: -10px; top: 50%; width: 10px; height: 2px;
+    background: #c4cbd9;
+  }
+  .standings .rounds .rd:last-child .mt { margin-right: 0; }
+  .standings .rounds .mt .sd {
+    display: inline-block; min-width: 17px; font-weight: 700; color: #C00840;
+  }
+  .standings .rounds .mt i { color: #8b91a3; font-style: normal; }
+  .standings .rounds .rd:last-child .mt { border-color: #C9A227; box-shadow: 0 0 0 2px #fdf3d6; }
+
+  @media (max-width: 760px) {
+    .standings .rounds { display: block; min-height: 0; }
+    .standings .rounds .rd { margin-bottom: 14px; }
+    .standings .rounds .col, .standings .rounds .pair { display: block; }
+    .standings .rounds .mt { margin: 0 0 8px; }
+    .standings .rounds .mt::before, .standings .rounds .mt::after,
+    .standings .rounds .merge .pair::after { display: none; }
   }
 
   .standings h4 {
@@ -233,24 +270,43 @@ const { csvBase, boards = [], sheetUrl, hideColumns = [], sheetLabel = "source s
 
   function bracket(names, byes) {
     const n = names.length;
-    const seed = (s) => `<b>${s}</b> ${names[s - 1]}`;
+    const side = (s) => `<span class="sd">${s}</span>${names[s - 1]}`;
+    const pending = (txt) => `<i>${txt}</i>`;
+    const match = (a, b) => `<div class="mt"><div>${a}</div><div>${b}</div></div>`;
+
     const firstPairs = [];
     for (let i = 0; byes + 1 + i < n - i; i++) firstPairs.push([byes + 1 + i, n - i]);
 
-    const round = (title, matches) =>
-      `<div class="rd"><h5>${title}</h5>${matches
-        .map((m) => `<div class="mt">${m.map((side) => `<div>${side}</div>`).join('')}</div>`)
-        .join('')}</div>`;
+    // Order the first round by bracket position, not by seed, so each match sits directly
+    // beside the quarterfinal it feeds.
+    const order = seedOrder(byes);
+    const feeders = order.map((s) => firstPairs[byes - s]);
 
-    const first = firstPairs.map(([a, b]) => [seed(a), seed(b)]);
-    const qf = seedOrder(byes).map((s) => {
-      const [a, b] = firstPairs[byes - s];
-      return [seed(s), `<i>Winner ${a} v ${b}</i>`];
-    });
-    const sf = [];
-    for (let i = 0; i < qf.length / 2; i++) {
-      sf.push([`<i>Winner QF${i * 2 + 1}</i>`, `<i>Winner QF${i * 2 + 2}</i>`]);
+    const r1 = feeders.map(([a, b]) => match(side(a), side(b))).join('');
+    const qf = order
+      .map((s, i) => {
+        const [a, b] = feeders[i];
+        return match(side(s), pending(`Winner ${a} v ${b}`));
+      })
+      .join('');
+
+    // Rounds that merge two matches into one are grouped in pairs; the pair draws the
+    // vertical connector between its two children.
+    const pairUp = (html, count) => {
+      const items = html.match(/<div class="mt">[\s\S]*?<\/div><\/div>/g) || [];
+      let out = '';
+      for (let i = 0; i < items.length; i += 2) {
+        out += `<div class="pair">${items[i]}${items[i + 1] ?? ''}</div>`;
+      }
+      return out;
+    };
+
+    const sfCount = qf ? order.length / 2 : 0;
+    let sf = '';
+    for (let i = 0; i < sfCount; i++) {
+      sf += match(pending(`Winner QF${i * 2 + 1}`), pending(`Winner QF${i * 2 + 2}`));
     }
+    const final = match(pending('Winner SF1'), pending('Winner SF2'));
 
     const wrap = el('div');
     wrap.className = 'bracket';
@@ -258,10 +314,10 @@ const { csvBase, boards = [], sheetUrl, hideColumns = [], sheetLabel = "source s
       `<h4>Projected bracket</h4>` +
       `<p class="bracket-note">Seeding as the board stands right now — it moves with every result.</p>` +
       `<div class="rounds">` +
-      round('First Round', first) +
-      round('Quarterfinals', qf) +
-      round('Semifinals', sf) +
-      round('Final', [[`<i>Winner SF1</i>`, `<i>Winner SF2</i>`]]) +
+      `<div class="rd"><h5>First Round</h5><div class="col">${r1}</div></div>` +
+      `<div class="rd"><h5>Quarterfinals</h5><div class="col merge">${pairUp(qf)}</div></div>` +
+      `<div class="rd"><h5>Semifinals</h5><div class="col merge">${pairUp(sf)}</div></div>` +
+      `<div class="rd"><h5>Final</h5><div class="col">${final}</div></div>` +
       `</div>`;
     return wrap;
   }
