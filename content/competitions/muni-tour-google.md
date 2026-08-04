@@ -7,7 +7,7 @@ order: 6
 tagline: "The Muni Tour, but the edits come from the STROH's Google Drive"
 keyFacts:
   - label: "Format"
-    value: "Season-long net points face"
+    value: "Season-long net points race"
 outputs: [page, pdf, png]
 ---
 
