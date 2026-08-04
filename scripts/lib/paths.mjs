@@ -4,7 +4,6 @@ import { fileURLToPath } from 'node:url';
 export const ROOT = path.resolve(fileURLToPath(import.meta.url), '../../..');
 
 export const CONTENT_DIR = path.join(ROOT, 'content');
-export const COMPETITIONS_DIR = path.join(CONTENT_DIR, 'competitions');
 export const SLIDES_DIR = path.join(ROOT, 'slides');
 export const PUBLIC_DIR = path.join(ROOT, 'public');
 export const BRAND_DIR = path.join(PUBLIC_DIR, 'brand');

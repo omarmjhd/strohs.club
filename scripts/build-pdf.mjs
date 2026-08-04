@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
 import path from 'node:path';
-import { dataUri, heroFile, loadCompetitions } from './lib/content.mjs';
+import { dataUri, forOutput, heroFile } from './lib/content.mjs';
 import { BRAND_DIR, CHROME, DOWNLOADS_DIR, ROOT } from './lib/paths.mjs';
 import { onePagerHTML } from '../templates/one-pager.mjs';
 
@@ -14,13 +14,13 @@ const browser = await puppeteer.launch({
   args: ['--no-sandbox'],
 });
 
-for (const { data, bodyHtml } of loadCompetitions()) {
+for (const { data, bodyHtml, slug } of forOutput('pdf')) {
   const hf = heroFile(data);
   const hero = hf && fs.existsSync(hf) ? dataUri(hf) : null;
   const html = onePagerHTML({ data, bodyHtml, badge, hero });
   const page = await browser.newPage();
   await page.setContent(html, { waitUntil: 'networkidle0' });
-  const out = path.join(DOWNLOADS_DIR, `${data.slug}.pdf`);
+  const out = path.join(DOWNLOADS_DIR, `${slug}.pdf`);
   await page.pdf({
     path: out,
     format: 'Letter',

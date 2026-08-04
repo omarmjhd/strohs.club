@@ -7,6 +7,30 @@ export const FONTS =
   '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
   '<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">';
 
+export const rootVars = (accent = NAVY) =>
+  `:root{--navy:${NAVY};--crimson:${CRIMSON};--cream:${CREAM};--ink:${INK};--accent:${accent};}`;
+
+// Markdown bodies contain raw HTML that reuses the site's class names (.panel, .fact,
+// .facts-stack), so every print template has to define them itself.
+export const PROSE_PRINT_CSS = `
+  .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0}
+  .fact{background:#Eef1f8;border-radius:7px;padding:8px 11px}
+  .fact .l{display:block;font-size:8.5pt;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);font-weight:700}
+  .fact .v{font-weight:600;color:var(--navy)}
+  .summary{background:#F6F0FB;border-left:5px solid var(--accent);border-radius:6px;padding:10px 14px;margin:12px 0;color:#3a2a52}
+  h2{font-family:"Fraunces",Georgia,serif;color:var(--navy);font-size:14pt;margin:16px 0 6px;border-bottom:2px solid #E9EDF5;padding-bottom:3px}
+  h3{color:var(--crimson);font-size:12pt;margin:12px 0 4px}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:10.5pt}
+  th{background:var(--navy);color:#fff;text-align:left;padding:6px 9px}
+  td{padding:5px 9px;border-bottom:1px solid #ececf2}
+  ul,ol{margin:6px 0;padding-left:20px}li{margin:3px 0}
+  strong{color:var(--navy)}
+  .panel{border:1px solid #e6e6ee;border-radius:8px;padding:10px 12px;background:#fbfbfd}
+  .panel h4{text-transform:uppercase;letter-spacing:.05em;color:var(--accent);font-weight:800;font-size:9pt;margin:0 0 6px}
+  .facts-stack{display:flex;flex-direction:column;gap:6px}
+  .fact-label{display:block;font-size:8.5pt;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);font-weight:700}
+  .fact-value{font-weight:600;color:var(--navy)}`;
+
 export const facts = (data) =>
   (data.keyFacts || [])
     .map(
