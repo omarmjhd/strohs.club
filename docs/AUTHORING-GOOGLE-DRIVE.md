@@ -124,6 +124,80 @@ npm run check               # the usual check
 
 ---
 
+## A worked example: the page that exists today
+
+`content/competitions/muni-tour-google.md` was created this way. Start to finish:
+
+**1 — A new Google Doc**, beginning with a 2×1 table and the page written underneath:
+
+| Setting | Value |
+| --- | --- |
+| Title | Muni Tour Google |
+| Slug | muni-tour-google |
+| Order | 6 |
+| One-liner | The Muni Tour, but the edits come from the STROH's Google Drive |
+| Key fact: Format | Season-long net points race |
+| Documents | page, pdf, png |
+
+**2 — Share → Anyone with the link → Viewer.** Without this the site gets Google's sign-in
+page, and the sync says so rather than writing anything.
+
+**3 — One entry in `content-sources.json`:**
+
+```json
+{
+  "file": "content/competitions/muni-tour-google.md",
+  "from": "https://docs.google.com/document/d/13FO.../edit?usp=sharing",
+  "note": "Muni Tour — Google Doc trial"
+}
+```
+
+The `file` path is what decides everything else: under `content/competitions/` it becomes a
+competition, with a menu entry, a home page card, a PDF and a share image.
+
+**4 — `npm run sync -- --dry-run`.** The first real run refused, twice, and both were the
+author's mistakes rather than bugs:
+
+```
+"Documents" does not accept "social". Use any of: page, pdf, png, slides.
+"Slug" is "muni-tour-google-" but this page is registered as muni-tour-google.md.
+```
+
+Nothing half-converted is ever written. Fix the Doc, run again.
+
+**5 — `npm run sync`**, then `npm run check`. The generated file is ordinary markdown, and
+from here nothing else in the project knows or cares that it came from Google.
+
+---
+
+## Docs or markdown? Choosing per page
+
+You do not have to pick one for the whole site — this is a per-page decision, and the two can
+sit side by side in `content/` indefinitely.
+
+| | Google Doc | Markdown on GitHub |
+|---|---|---|
+| Who can edit | anyone you share the Doc with | anyone with repo access |
+| Learning curve | none | a pencil icon and a commit message |
+| Goes live | within the hour, automatically | within about five minutes of committing |
+| Review before publishing | none — the Doc is the site | possible, via a pull request |
+| Who changed what | in the Doc's revision history | in `git log`, by name |
+| Mistakes | caught by the sync; nothing partial is published | caught by `npm run check` and CI |
+| Rolling back | fix the Doc; reverting the repo is undone next sync | `git revert` |
+| Editing the markdown | overwritten on the next sync | it *is* the source |
+
+**Reach for a Doc when** the page changes often, the person maintaining it will not touch
+GitHub, or several people want to draft together.
+
+**Reach for markdown when** the page is stable, you want the change reviewed before it is
+public, or you care that `git log` records who wrote what — every synced change is committed
+by `strohs-bot`, whoever actually typed it.
+
+**The trade in one line:** a Doc removes every barrier to editing, including the ones that
+catch mistakes before they are public.
+
+---
+
 ## What this cannot do
 
 - **Only the settings in the table above.** Live standings boards, the `social` blocks behind

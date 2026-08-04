@@ -9,6 +9,7 @@
 //   node scripts/sync-gdocs.mjs            fetch, convert, write
 //   node scripts/sync-gdocs.mjs --dry-run  say what would change, write nothing
 
+import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { schemaFor } from '../site/lib/schema.mjs';
@@ -126,7 +127,8 @@ for (const source of sources) {
     continue;
   }
 
-  const markdown = toMarkdown(front, body, { collection, from: source.from });
+  const sourceHash = createHash('sha256').update(text).digest('hex').slice(0, 12);
+  const markdown = toMarkdown(front, body, { collection, from: source.from, sourceHash });
   const current = fs.existsSync(target) ? fs.readFileSync(target, 'utf8') : null;
   if (current === markdown) {
     console.log(`unchanged  ${source.file}`);
