@@ -1,5 +1,6 @@
 ---
 import Base from './Base.astro';
+import Standings from '../components/Standings.astro';
 import { withBase } from '../lib/base.mjs';
 const { frontmatter } = Astro.props;
 const {
@@ -11,6 +12,8 @@ const {
   accent = '#002060',
   keyFacts = [],
   outputs = ['page'],
+  standings,
+  standingsUrl,
 } = frontmatter;
 const downloads = withBase(`/downloads/${slug}`);
 const hasPdf = outputs.includes('pdf');
@@ -27,6 +30,12 @@ const hasPng = outputs.includes('png');
     <div class="two-col">
       <div class="prose">
         <slot />
+        {standings && (
+          <>
+            <h2 id="standings">Standings</h2>
+            <Standings csvBase={standings.csvBase} boards={standings.boards} sheetUrl={standingsUrl} />
+          </>
+        )}
       </div>
 
       <aside class="aside">

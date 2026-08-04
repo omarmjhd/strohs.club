@@ -31,6 +31,18 @@ const competitions = defineCollection({
     hero: z.string().optional(),
     logo: z.string().optional(),
     standingsUrl: z.string().optional(),
+    standings: z
+      .object({
+        csvBase: z.string(),
+        boards: z.array(
+          z.object({
+            title: z.string(),
+            gid: z.string(),
+            mode: z.enum(['sections', 'table']).default('sections'),
+          })
+        ),
+      })
+      .optional(),
     keyFacts: z.array(keyFact).default([]),
     // Free-form per-template blocks consumed by templates/social.mjs.
     social: z.record(z.any()).optional(),
@@ -49,6 +61,7 @@ const pages = defineCollection({
     order: z.number().default(999),
     heroImage: z.string().optional(),
     quickFacts: z.array(keyFact).default([]),
+    principles: z.array(z.object({ title: prose(), body: prose() })).default([]),
     // No `slug` field on purpose: the glob loader returns `data.slug` as the entry
     // id when present, so adding one here would silently move the page's URL.
   }),

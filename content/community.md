@@ -1,11 +1,11 @@
 ---
 title: Community
-subtitle: The Discord, the #find-a-game channel, and where to find us the rest of the week.
+subtitle: The Discord, where to introduce yourself, and where to find us the rest of the week.
 navGroup: Community
 order: 1
 quickFacts:
   - { label: "Discord", value: "discord.gg/frNSUn5ZmC", link: "https://discord.gg/frNSUn5ZmC" }
-  - { label: "Start in", value: "#find-a-game" }
+  - { label: "Start in", value: "#new-people-start-here" }
   - { label: "Ask for an invite", value: "@jdonelson or @omarmjhdpr" }
   - { label: "Instagram", value: "@strohs_roost", link: "https://instagram.com/strohs_roost" }
 ---
@@ -22,13 +22,14 @@ arguing about tee boxes, all of it. [Hop in our Discord](https://discord.gg/frNS
 
 The Discord can be overwhelming at first, but it gets easier — promise.
 
-## Start in #find-a-game
+## Start in #new-people-start-here
 
-Here's the cheat code. Go straight to the **#find-a-game** channel.
+Here's the cheat code. Go straight to the **#new-people-start-here** channel and say hello —
+that's where we get newcomers pointed in the right direction.
 
-It's a rare weekend where someone doesn't have an open spot or two somewhere nearby, and anyone
-is free to jump in. Post in that channel, ask if the spot is still available, introduce
-yourself, and come play golf. That's really all it takes.
+From there, **#find-a-game** is where rounds get posted. It's a rare weekend where someone
+doesn't have an open spot or two somewhere nearby, and anyone is free to jump in. Ask if the
+spot is still available, introduce yourself, and come play golf. That's really all it takes.
 
 ## This website
 

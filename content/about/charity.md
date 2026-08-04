@@ -7,7 +7,7 @@ order: 5
 
 Every season, the Roost sponsors **at least one charity** for a season-long donation drive. It
 sits alongside the golf rather than behind it — raising money for a good cause is written into
-[our first governing principle](/about/governing-principles), not bolted on at the end.
+[our first governing principle](/about#governing-principles), not bolted on at the end.
 
 ## How members give
 

@@ -11,3 +11,11 @@ section.title{background:var(--navy);color:#fff;justify-content:center;text-alig
 section.title h1{color:#fff;font-size:112px;margin:8px 0;}
 section.title .kicker{color:var(--cream);font-size:34px;letter-spacing:.06em;text-transform:uppercase;}
 section.title p{color:var(--cream);font-size:34px;}
+
+/* The single competitions slide: five cards instead of five slides. */
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px;}
+.cc{background:#F2F4F9;border-top:7px solid var(--cc);border-radius:12px;padding:16px 18px;}
+.ct{font-weight:800;color:var(--navy);font-size:26px;line-height:1.1;margin-bottom:6px;}
+.cd{font-size:19px;color:#333;line-height:1.3;margin-bottom:10px;}
+.cf{font-size:17px;color:#222;line-height:1.35;}
+.cf span{display:block;text-transform:uppercase;letter-spacing:.05em;font-size:13px;font-weight:800;color:var(--cc);}

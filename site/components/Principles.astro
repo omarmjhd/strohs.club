@@ -1,0 +1,13 @@
+---
+const { principles = [], heading = "What We're About" } = Astro.props;
+---
+{principles.length > 0 && (
+  <>
+    <h2>{heading}</h2>
+    <div class="principles">
+      {principles.map((p) => (
+        <div class="principle"><b>{p.title}</b>{p.body}</div>
+      ))}
+    </div>
+  </>
+)}

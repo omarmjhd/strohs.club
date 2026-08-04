@@ -1,8 +1,9 @@
 ---
 import Base from './Base.astro';
+import Principles from '../components/Principles.astro';
 import { withBase } from '../lib/base.mjs';
 const { frontmatter } = Astro.props;
-const { title, subtitle, quickFacts = [], heroImage } = frontmatter;
+const { title, subtitle, quickFacts = [], heroImage, principles = [] } = frontmatter;
 ---
 <Base title={`${frontmatter.title} — STROH's`} description={frontmatter.subtitle}>
   <header class="page-hero">
@@ -12,6 +13,7 @@ const { title, subtitle, quickFacts = [], heroImage } = frontmatter;
   </header>
   <div class="two-col">
     <div class="prose">
+      <Principles principles={principles} />
       <slot />
     </div>
     <aside class="aside">

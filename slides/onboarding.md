@@ -40,6 +40,6 @@ Golf, friends, and a little competition across Austin, Houston & San Antonio.
 ## Get Involved
 
 - Hop in our Discord: **discord.gg/frNSUn5ZmC**
-- Head straight to **#find-a-game**.
+- Head straight to **#new-people-start-here**.
 - Introduce yourself and grab an open spot.
 - Come play golf. That's it.

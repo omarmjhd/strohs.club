@@ -2,7 +2,7 @@
 title: All-STROHs Open
 slug: all-strohs-open
 navGroup: Competitions
-order: 3
+order: 2
 accent: "#7A1F2B"
 hero: /brand/comp-all-strohs-open.png
 logo: /brand/comp-all-strohs-open.png

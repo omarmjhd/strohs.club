@@ -26,12 +26,23 @@ function render(name, markdown, outFile) {
   console.log('SLIDES->', path.relative(ROOT, out));
 }
 
-function competitionSlide(data) {
-  const bullets = (data.keyFacts || [])
-    .slice(0, 4)
-    .map((f) => `- **${f.label}:** ${f.value}`)
+// One slide for all five, as a card grid — five near-identical slides read as filler in a
+// deck whose job is to get someone up to speed in five minutes.
+function competitionsSlide(entries) {
+  const cards = entries
+    .map(({ data }) => {
+      const facts = (data.keyFacts || []).slice(0, 2);
+      const rows = facts
+        .map((f) => `<div class="cf"><span>${f.label}</span>${f.value}</div>`)
+        .join('');
+      return `<div class="cc" style="--cc:${data.accent || '#2B3350'}">
+<div class="ct">${data.title}</div>
+<div class="cd">${data.blurb || data.tagline || ''}</div>
+${rows}
+</div>`;
+    })
     .join('\n');
-  return `## ${data.title}\n\n${data.tagline || ''}\n\n${bullets}`;
+  return `## The Competitions\n\n<div class="cgrid">\n${cards}\n</div>`;
 }
 
 const bullets = (items) => items.map((f) => `- **${f.label}:** ${f.value}`).join('\n');
@@ -46,7 +57,7 @@ function componentDeck({ data }) {
   const scoring = data.social?.scoring || [];
   if (scoring.length) slides.push(`## How It Works\n\n${scoring.map((s) => `- ${s}`).join('\n')}`);
   slides.push(
-    "## Get Involved\n\n- Hop in our Discord: **discord.gg/frNSUn5ZmC**\n- Head straight to **#find-a-game**.\n- Come play golf. That's it."
+    "## Get Involved\n\n- Hop in our Discord: **discord.gg/frNSUn5ZmC**\n- Head straight to **#new-people-start-here**.\n- Come play golf. That's it."
   );
   return `---\nmarp: true\npaginate: true\n---\n\n${slides.join('\n\n---\n\n')}\n`;
 }
@@ -57,10 +68,11 @@ if (!COMPETITIONS_TOKEN.test(source)) {
   throw new Error(`${DECK}.md is missing the <!-- @competitions --> placeholder slide`);
 }
 
-const compSlides = loadCompetitions()
-  .filter((entry) => !entry.isDraft && (entry.data.kind ?? 'competition') === 'competition')
-  .map(({ data }) => competitionSlide(data))
-  .join('\n\n---\n\n');
+const compSlides = competitionsSlide(
+  loadCompetitions().filter(
+    (entry) => !entry.isDraft && (entry.data.kind ?? 'competition') === 'competition'
+  )
+);
 
 render(
   DECK,

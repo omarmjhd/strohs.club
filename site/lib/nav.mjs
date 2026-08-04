@@ -11,7 +11,7 @@ export const NAV = [
 ];
 
 // Pages that belong to no nav group.
-export const ROOT_PAGES = ['getting-started'];
+export const ROOT_PAGES = ['getting-started', 'standings'];
 
 // A section is either a single `<dir>.md` file or a `<dir>/` directory of them.
 export function pagePatterns() {

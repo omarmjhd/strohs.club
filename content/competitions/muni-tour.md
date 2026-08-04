@@ -2,12 +2,26 @@
 title: Muni Tour
 slug: muni-tour
 navGroup: Competitions
-order: 1
+order: 3
 accent: "#4A1D8A"
 accent2: "#E97724"
-hero: /brand/muni-tour.png
+hero: /brand/comp-muni-tour.png
 logo: /brand/comp-muni-tour.png
 tagline: A season-long net points race across Texas's best municipal courses.
+standingsUrl: https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7fnVF3ufmwmYG8oq0GsKlneX95qKnco1ITNWYmfwGHvEQRq8fETd2XU7ASG6pIwkqDPF6m3RxE086/pubhtml
+standings:
+  csvBase: https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7fnVF3ufmwmYG8oq0GsKlneX95qKnco1ITNWYmfwGHvEQRq8fETd2XU7ASG6pIwkqDPF6m3RxE086/pub
+  boards:
+    - { title: "Playoff Qualifiers & City Standings", gid: "913497145" }
+    - { title: "Austin — Jimmy Clay", gid: "1174232614", mode: table }
+    - { title: "Austin — Morris Williams", gid: "538096719", mode: table }
+    - { title: "Austin — Riverside", gid: "2027704122", mode: table }
+    - { title: "Houston — Gus Wortham", gid: "1089285459", mode: table }
+    - { title: "Houston — Memorial Park", gid: "603933066", mode: table }
+    - { title: "Houston — Sharpstown", gid: "2116738909", mode: table }
+    - { title: "San Antonio — Brackenridge Park", gid: "590235844", mode: table }
+    - { title: "San Antonio — Cedar Creek", gid: "1324763064", mode: table }
+    - { title: "San Antonio — Riverside", gid: "1872269983", mode: table }
 blurb: A season-long net points race across 9 Texas munis. Top 4 per city make the playoff.
 summary: >-
   Play the 9 STROH's munis across Austin, Houston, and San Antonio whenever you want, with

@@ -1,0 +1,141 @@
+---
+// Renders published Google Sheets as native tables. The CSV endpoint sends
+// access-control-allow-origin: *, so the browser fetches it directly — the board stays as
+// live as the sheet without a rebuild, and it looks like the rest of the site rather than
+// an embedded iframe.
+const { csvBase, boards = [], sheetUrl } = Astro.props;
+---
+{boards.length > 0 && (
+  <div class="standings" data-standings data-csv-base={csvBase}>
+    {boards.map((b, i) => (
+      <details class="board" data-gid={b.gid} data-mode={b.mode ?? 'sections'} open={i === 0}>
+        <summary>{b.title}</summary>
+        <div class="board-body"><p class="board-status">Loading…</p></div>
+      </details>
+    ))}
+    {sheetUrl && (
+      <p class="board-source">
+        Live from the <a href={sheetUrl} rel="noopener">Muni Tour leaderboard sheet</a>.
+      </p>
+    )}
+  </div>
+)}
+
+<style>
+  .standings { margin: 18px 0; }
+  .board { border: 1px solid #e6e6ee; border-radius: 10px; margin-bottom: 10px; background: #fff; }
+  .board > summary {
+    cursor: pointer; padding: 11px 14px; font-weight: 700; color: var(--navy, #002060);
+    list-style: none;
+  }
+  .board > summary::-webkit-details-marker { display: none; }
+  .board > summary::before { content: '▸ '; color: var(--accent, #C00840); }
+  .board[open] > summary::before { content: '▾ '; }
+  .board-body { padding: 0 14px 12px; overflow-x: auto; }
+  .board-status { color: #8a8a99; font-size: 0.9rem; margin: 4px 0 10px; }
+  .standings table { border-collapse: collapse; width: 100%; margin: 6px 0 14px; font-size: 0.93rem; }
+  .standings th {
+    background: var(--navy, #002060); color: #fff; text-align: left;
+    padding: 6px 9px; font-weight: 600; white-space: nowrap;
+  }
+  .standings td { padding: 5px 9px; border-bottom: 1px solid #ececf2; }
+  .standings tbody tr:nth-child(odd) { background: #fafbfd; }
+  .standings h4 {
+    margin: 14px 0 2px; text-transform: uppercase; letter-spacing: .05em;
+    font-size: .78rem; color: var(--accent, #C00840);
+  }
+  .board-source { font-size: .85rem; color: #6b6b7b; }
+</style>
+
+<script>
+  const parseCsv = (text) => {
+    const rows = [];
+    let row = [], field = '', quoted = false;
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (quoted) {
+        if (c === '"' && text[i + 1] === '"') { field += '"'; i++; }
+        else if (c === '"') quoted = false;
+        else field += c;
+      } else if (c === '"') quoted = true;
+      else if (c === ',') { row.push(field); field = ''; }
+      else if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
+      else if (c !== '\r') field += c;
+    }
+    if (field || row.length) { row.push(field); rows.push(row); }
+    return rows;
+  };
+
+  const filled = (r) => r.some((c) => c.trim() !== '');
+  const el = (tag, text) => { const n = document.createElement(tag); if (text != null) n.textContent = text; return n; };
+
+  function table(headers, rows) {
+    const t = el('table');
+    const thead = el('thead'), htr = el('tr');
+    headers.forEach((h) => htr.appendChild(el('th', h)));
+    thead.appendChild(htr); t.appendChild(thead);
+    const tb = el('tbody');
+    rows.forEach((r) => {
+      const tr = el('tr');
+      headers.forEach((_, i) => tr.appendChild(el('td', r[i] ?? '')));
+      tb.appendChild(tr);
+    });
+    t.appendChild(tb);
+    return t;
+  }
+
+  // A section is a lone title in column A, then a header row, then rows until a blank line.
+  function renderSections(rows, into) {
+    let i = 0;
+    while (i < rows.length) {
+      if (!filled(rows[i])) { i++; continue; }
+      const isTitle = rows[i][0].trim() !== '' && rows[i].slice(1).every((c) => c.trim() === '');
+      let title = null;
+      if (isTitle) { title = rows[i][0].trim(); i++; }
+      if (i >= rows.length || !filled(rows[i])) continue;
+      const headers = rows[i].filter((h) => h.trim() !== ''); i++;
+      const body = [];
+      while (i < rows.length && filled(rows[i])) { body.push(rows[i]); i++; }
+      if (title) into.appendChild(el('h4', title));
+      into.appendChild(table(headers, body));
+    }
+  }
+
+  // Course boards put the counting leaderboard in the leftmost columns and a full score
+  // history to its right, separated by one empty column. Only the counting board is public.
+  function renderTable(rows, into) {
+    const headerRow = rows.findIndex((r) => r.filter((c) => c.trim() !== '').length > 2);
+    if (headerRow < 0) return;
+    const raw = rows[headerRow];
+    let width = raw.findIndex((h) => h.trim() === '');
+    if (width < 1) width = raw.length;
+    const headers = raw.slice(0, width);
+    const body = rows.slice(headerRow + 1).filter(filled).map((r) => r.slice(0, width));
+    into.appendChild(table(headers, body));
+  }
+
+  document.querySelectorAll('[data-standings]').forEach((root) => {
+    const base = root.dataset.csvBase;
+    root.querySelectorAll('.board').forEach((board) => {
+      let loaded = false;
+      const load = async () => {
+        if (loaded) return;
+        loaded = true;
+        const body = board.querySelector('.board-body');
+        try {
+          const res = await fetch(`${base}?gid=${board.dataset.gid}&single=true&output=csv`);
+          if (!res.ok) throw new Error(res.status);
+          const rows = parseCsv(await res.text());
+          body.textContent = '';
+          (board.dataset.mode === 'table' ? renderTable : renderSections)(rows, body);
+        } catch {
+          loaded = false;
+          body.innerHTML =
+            '<p class="board-status">Couldn\'t load this board just now — open the sheet directly.</p>';
+        }
+      };
+      if (board.open) load();
+      board.addEventListener('toggle', () => board.open && load());
+    });
+  });
+</script>

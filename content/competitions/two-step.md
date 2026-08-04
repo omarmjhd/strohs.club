@@ -2,7 +2,7 @@
 title: Texas Two-Step
 slug: two-step
 navGroup: Competitions
-order: 2
+order: 1
 accent: "#C9A227"
 accent2: "#C00840"
 hero: /brand/comp-two-step.png

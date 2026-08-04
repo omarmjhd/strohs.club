@@ -71,13 +71,13 @@ event is the Roost's NIT qualifier.
 Our Major is the **[Texas Two-Step](/competitions/two-step)**. Unlike the Regional team seats,
 the NIT spot is open to any Refuge member who plays the event — you don't have to be a STROH to
 take it. The naming rules and the seven-day deadline are on the
-**[Executive Committee](/about/executive-committee)** page.
+**[Executive Committee](/about#the-executive-committee)** page.
 
 ## When someone can't go
 
 If a qualifier's winner can't travel, the runner-up from that event is first alternate, and the
 Executive Committee hand-picks from there. See
-**[The Executive Committee](/about/executive-committee)** for how and why.
+**[The Executive Committee](/about#the-executive-committee)** for how and why.
 
 ## A note on how we compete
 

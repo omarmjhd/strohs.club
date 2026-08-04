@@ -2,6 +2,7 @@
 import { getCollection, getEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Gallery from '../components/Gallery.astro';
+import Principles from '../components/Principles.astro';
 import { withBase } from '../lib/base.mjs';
 
 const discordUrl = 'https://discord.gg/frNSUn5ZmC';
@@ -24,7 +25,7 @@ const homeExcerpt = gettingStarted.rendered.html.split('<!-- home-excerpt-end --
       <p class="tagline">The South Texas Roost of Hospitality — a friendly, easily-accessible way for No Laying Up Refuge members (and their friends) to get out, meet people, and play golf across Austin, Houston, and San Antonio.</p>
       <div class="hero-actions">
         <a class="btn" href={discordUrl}>Join the Discord</a>
-        <a class="btn secondary" href={withBase("/competitions/muni-tour")}>Explore our Competitions</a>
+        <a class="btn secondary" href="#competitions">Explore our Competitions</a>
       </div>
     </div>
     <div class="home-hero-gallery">
@@ -32,9 +33,9 @@ const homeExcerpt = gettingStarted.rendered.html.split('<!-- home-excerpt-end --
     </div>
   </section>
 
-  <div class="prose" set:html={homeExcerpt} />
+  <Principles principles={gettingStarted.data.principles} />
 
-  <h2>The Competitions</h2>
+  <h2 id="competitions">The Competitions</h2>
   <p>Four qualifiers feed our Roost Regional team (and the NIT) — plus the Texas Cup for bragging rights. Here's the lineup:</p>
   <div class="cards">
     {competitions.map(({ data }) => (
@@ -46,6 +47,8 @@ const homeExcerpt = gettingStarted.rendered.html.split('<!-- home-excerpt-end --
       </a>
     ))}
   </div>
+
+  <div class="prose" set:html={homeExcerpt} />
 </Base>
 
 <style>
