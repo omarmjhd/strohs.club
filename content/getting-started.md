@@ -17,6 +17,8 @@ principles:
 
 [Check out our Introduction to STROH's](/downloads/strohs-overview-slides.html)
 
+Want the whole thing in one document? [Download the STROH's Almanac](/downloads/strohs-almanac.pdf) — every page of this site compiled into a single PDF.
+
 1. **Join the Discord** — [hop in our Discord](https://discord.gg/frNSUn5ZmC). It can look busy at first, but head straight to `#new-people-start-here`.
 2. **Post that you're looking to play** — introduce yourself and grab an open spot.
 3. **Come play golf.** That's it. The competitions will make sense once you're out there.
