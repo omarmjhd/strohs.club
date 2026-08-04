@@ -1,7 +1,6 @@
 ---
 title: Texas Cup
 slug: texas-cup
-navGroup: Competitions
 order: 5
 accent: "#1E5C3A"
 hero: /brand/comp-texas-cup.png

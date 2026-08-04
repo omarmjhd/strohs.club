@@ -3,6 +3,8 @@ name: Deploy site
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -17,6 +19,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       # puppeteer-core downloads no browser, and marp shells out to the same one.
       CHROME_NO_SANDBOX: 'true'
@@ -48,12 +51,9 @@ jobs:
       - name: Build docs, then site
         run: npm run ci
 
-      - name: Check generated downloads reached dist/
-        run: |
-          set -euo pipefail
-          ls dist/downloads/*.pdf >/dev/null
-          diff <(ls public/downloads) <(ls dist/downloads)
-          grep -q 'href="/strohs.club/' dist/index.html
+      # `npm run ci` is docs -> build -> verify. The verifier asserts what the old three-line
+      # check could not: that every internal link resolves, every declared artifact exists and
+      # is not a stub, no draft marker reached the HTML, and nothing skipped the base prefix.
 
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -61,6 +61,8 @@ jobs:
 
   deploy:
     needs: build
+    # A pull request builds and verifies but must not publish.
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

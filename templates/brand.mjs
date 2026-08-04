@@ -11,18 +11,14 @@ import { fileURLToPath } from 'node:url';
 // slow or blocked fonts.googleapis.com would not fail the build — it would silently emit
 // artifacts in a fallback face.
 const FONT_DIR = path.resolve(fileURLToPath(import.meta.url), '../../public/fonts');
-const face = (family, weight, file) =>
-  `@font-face{font-family:'${family}';font-style:normal;font-weight:${weight};font-display:block;` +
+const face = (family, file) =>
+  `@font-face{font-family:'${family}';font-style:normal;font-weight:100 900;font-display:block;` +
   `src:url(data:font/woff2;base64,${fs.readFileSync(path.join(FONT_DIR, file)).toString('base64')}) format('woff2');}`;
 
 export const FONTS =
   '<style>' +
-  face('Fraunces', 500, 'fraunces-500.woff2') +
-  face('Fraunces', 600, 'fraunces-600.woff2') +
-  face('Source Sans 3', 400, 'source-sans-3-400.woff2') +
-  face('Source Sans 3', 600, 'source-sans-3-600.woff2') +
-  face('Source Sans 3', 700, 'source-sans-3-700.woff2') +
-  face('Source Sans 3', 900, 'source-sans-3-900.woff2') +
+  face('Fraunces', 'fraunces.woff2') +
+  face('Source Sans 3', 'source-sans-3.woff2') +
   '</style>';
 
 export const rootVars = (accent = NAVY) =>

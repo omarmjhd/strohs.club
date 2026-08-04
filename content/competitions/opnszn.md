@@ -1,7 +1,6 @@
 ---
 title: Opn Szn Match Play
 slug: opnszn
-navGroup: Competitions
 order: 4
 accent: "#0078C0"
 accent2: "#F0A800"

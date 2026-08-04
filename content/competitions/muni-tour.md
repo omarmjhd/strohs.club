@@ -1,7 +1,6 @@
 ---
 title: Muni Tour
 slug: muni-tour
-navGroup: Competitions
 order: 3
 accent: "#4A1D8A"
 accent2: "#E97724"

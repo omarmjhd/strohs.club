@@ -1,7 +1,6 @@
 ---
 title: Texas Two-Step
 slug: two-step
-navGroup: Competitions
 order: 1
 accent: "#C9A227"
 accent2: "#C00840"
@@ -80,7 +79,4 @@ Ties are broken with the **USGA 9-6-3-1** method. Note that the ringer format pr
 
 - **Field cap:** 40 players.
 - **Sign-up:** via a Google Form. Sign-up link and entry deadline: details to follow.
-
-<!-- draft:D-01 -->
-- **Entry fee:** $250.
-<!-- /draft:D-01 -->
+- **Entry fee:** TBD.

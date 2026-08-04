@@ -3,7 +3,9 @@ import Base from './Base.astro';
 import Principles from '../components/Principles.astro';
 import { withBase } from '../lib/base.mjs';
 const { frontmatter } = Astro.props;
-const { title, subtitle, quickFacts = [], heroImage, principles = [] } = frontmatter;
+const { title, subtitle, quickFacts = [], heroImage, principles = [], outputs = ['page'], slug } = frontmatter;
+const downloads = slug ? withBase(`/downloads/${slug}`) : null;
+const docs = downloads ? outputs.filter((o) => o !== 'page') : [];
 ---
 <Base title={`${frontmatter.title} — STROH's`} description={frontmatter.subtitle}>
   <header class="page-hero">
@@ -17,6 +19,16 @@ const { title, subtitle, quickFacts = [], heroImage, principles = [] } = frontma
       <slot />
     </div>
     <aside class="aside">
+      {docs.length > 0 && (
+        <div class="panel">
+          <h4>Documents</h4>
+          <nav class="doc-links" aria-label="Downloads">
+            {docs.includes('pdf') && <a href={`${downloads}.pdf`}>One-pager (PDF)</a>}
+            {docs.includes('png') && <a href={`${downloads}.png`}>Share image (PNG)</a>}
+            {docs.includes('slides') && <a href={`${downloads}-slides.html`}>Slides</a>}
+          </nav>
+        </div>
+      )}
       <div class="panel">
         <h4>Quick Facts</h4>
         <div class="facts-stack">

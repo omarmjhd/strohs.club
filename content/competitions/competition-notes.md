@@ -1,7 +1,6 @@
 ---
 title: General Competition Notes
 slug: competition-notes
-navGroup: Competitions
 accent: "#002060"
 hero: /brand/strohs-badge.png
 logo: /brand/strohs-badge.png

@@ -18,8 +18,10 @@ const {
 const downloads = withBase(`/downloads/${slug}`);
 const hasPdf = outputs.includes('pdf');
 const hasPng = outputs.includes('png');
+const hasSlides = outputs.includes('slides');
 ---
-<Base title={`${title} — STROH's`} description={tagline}>
+<Base title={`${title} — STROH's`} description={tagline}
+      shareImage={hasPng ? `/downloads/${slug}.png` : undefined}>
   <article class="competition" style={`--accent:${accent}`}>
     <header class="comp-hero">
       {hero && <img class="comp-hero-art" src={withBase(hero)} alt={title} />}
@@ -55,12 +57,13 @@ const hasPng = outputs.includes('png');
           </div>
         )}
 
-        {(hasPdf || hasPng) && (
+        {(hasPdf || hasPng || hasSlides) && (
           <div class="panel">
             <h4>Documents</h4>
             <nav class="doc-links" aria-label="Downloads">
               {hasPdf && <a href={`${downloads}.pdf`}>One-pager (PDF)</a>}
               {hasPng && <a href={`${downloads}.png`}>Share image (PNG)</a>}
+              {hasSlides && <a href={`${downloads}-slides.html`}>Slides</a>}
             </nav>
           </div>
         )}

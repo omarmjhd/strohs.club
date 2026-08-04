@@ -24,7 +24,7 @@ const slimFacts = (data) => {
     .join('');
 };
 
-export function socialHTML({ data, badge, hero }) {
+export function socialHTML({ data, badge }) {
   const accent = data.accent || NAVY;
   const accent2 = data.accent2 || accent;
   const social = data.social;

@@ -1,7 +1,12 @@
 # Reconciliation Register
 
-Places where the 2026 Almanac (`docs/2026-strohs-almanac.pdf`) and the site content in
-`content/` disagree, plus content on the site that has no Almanac source at all.
+Places where the 2026 Almanac and the site content in `content/` disagreed, plus content on the
+site that had no Almanac source at all.
+
+> **The 2026 Almanac has been retired.** The Almanac is now generated from `content/`
+> (`public/downloads/strohs-almanac.pdf`) and is the only one. Page citations below refer to the
+> old Google Doc export, kept because they are the audit trail for why the site says what it
+> says; the file itself is recoverable from git history if a citation ever needs checking.
 
 Agents working on this repo flag into this register rather than resolving conflicts on their own
 — a wrong guess about a scoring rule or the season's charity is worse than an open question.

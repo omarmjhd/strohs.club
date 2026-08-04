@@ -20,7 +20,6 @@ const competitions = defineCollection({
   schema: z.object({
     title: z.string(),
     slug: z.string(),
-    navGroup: z.string(),
     order: z.number(),
     kind: z.enum(['competition', 'notes']).default('competition'),
     tagline: prose().optional(),
@@ -69,7 +68,6 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     subtitle: prose().optional(),
-    navGroup: z.string().optional(),
     order: z.number().default(999),
     heroImage: z.string().optional(),
     quickFacts: z.array(keyFact).default([]),
@@ -77,9 +75,10 @@ const pages = defineCollection({
     outputs: z.array(z.enum(['page', 'pdf', 'png', 'slides'])).default(['page']),
     status: z.enum(['confirmed', 'draft']).default('confirmed'),
     draftIds: z.array(z.string()).default([]),
-    // No `slug` field on purpose: the glob loader returns `data.slug` as the entry
-    // id when present, so adding one here would silently move the page's URL.
-  }),
+    slug: z.string().optional(),
+    // No path-derived `slug` behaviour: the glob loader returns `data.slug` as the entry
+    // id when present, so a page that sets it moves its own URL — only do that deliberately.
+  }).strict(),
 });
 
 export const collections = { competitions, pages };

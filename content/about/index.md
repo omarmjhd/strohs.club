@@ -1,7 +1,6 @@
 ---
 title: About STROH's
 subtitle: What a Roost is, why we exist, and how it all fits together.
-navGroup: About
 order: 1
 heroImage: /brand/strohs-script.png
 quickFacts:

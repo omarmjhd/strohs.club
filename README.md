@@ -32,7 +32,6 @@ public/brand/                # logos + hero art (exported, web-ready)
 public/downloads/            # generated docs (PDF / PNG / slides / Almanac)
 Logos-Art/                   # source art — the originals public/brand/ is exported from
 docs/                        # source material, not shipped
-  2026-strohs-almanac.pdf    # the Almanac content/ is being decomposed from
   BRAND.md                   # palette, typography, logo inventory
   RECONCILIATION.md          # open questions where the Almanac and the site disagree
   strohs-web-overhaul-plan.md

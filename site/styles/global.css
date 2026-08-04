@@ -1,12 +1,9 @@
 /* Self-hosted so neither the site nor the document pipeline depends on Google Fonts.
-   Paths are relative to the bundled stylesheet in _astro/, which keeps them correct
-   whatever `base` is set to. */
-@font-face{font-family:'Fraunces';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/fraunces-500.woff2') format('woff2');}
-@font-face{font-family:'Fraunces';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/fraunces-600.woff2') format('woff2');}
-@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/source-sans-3-400.woff2') format('woff2');}
-@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/source-sans-3-600.woff2') format('woff2');}
-@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/source-sans-3-700.woff2') format('woff2');}
-@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:900;font-display:swap;src:url('../fonts/source-sans-3-900.woff2') format('woff2');}
+   Both are variable fonts, so one file per family covers every weight — the earlier
+   per-weight files were byte-identical duplicates. Paths are relative to the bundled
+   stylesheet in _astro/, which keeps them correct whatever `base` is set to. */
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url('../fonts/fraunces.woff2') format('woff2');}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:100 900;font-display:swap;src:url('../fonts/source-sans-3.woff2') format('woff2');}
 
 :root {
   --navy: #2B3350;

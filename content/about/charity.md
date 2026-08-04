@@ -1,7 +1,6 @@
 ---
 title: Charity
 subtitle: A season-long donation drive, and the creative ways members chip in.
-navGroup: About
 order: 5
 ---
 

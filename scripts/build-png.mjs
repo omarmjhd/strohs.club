@@ -15,9 +15,7 @@ const browser = await puppeteer.launch({
 });
 
 for (const { data, slug } of forOutput('png')) {
-  const hf = heroFile(data);
-  const hero = hf && fs.existsSync(hf) ? dataUri(hf) : null;
-  const html = socialHTML({ data, badge, hero });
+  const html = socialHTML({ data, badge });
   const page = await browser.newPage();
   await page.setViewport({ width: 1080, height: 1350, deviceScaleFactor: 2 });
   await page.setContent(html, { waitUntil: 'networkidle0' });

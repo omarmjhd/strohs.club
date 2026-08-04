@@ -1,7 +1,6 @@
 ---
 title: The Path to Nationals
 subtitle: Four qualifiers, one Regional, and a four-golfer team headed for Sweetens Cove.
-navGroup: The Season
 order: 1
 quickFacts:
   - { label: "Our region", value: "Texahoma — STROH's, Big Plex (DFW), Supercell (OK)" }

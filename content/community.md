@@ -1,7 +1,6 @@
 ---
 title: Community
 subtitle: The Discord, where to introduce yourself, and where to find us the rest of the week.
-navGroup: Community
 order: 1
 quickFacts:
   - { label: "Discord", value: "discord.gg/frNSUn5ZmC", link: "https://discord.gg/frNSUn5ZmC" }

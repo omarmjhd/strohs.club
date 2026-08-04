@@ -12,7 +12,8 @@
     "docs:png": "node scripts/build-png.mjs",
     "docs:slides": "node scripts/build-slides.mjs",
     "docs:almanac": "node scripts/build-almanac.mjs",
-    "ci": "npm run docs && npm run build"
+    "ci": "npm run docs && npm run build && npm run verify",
+    "verify": "node scripts/verify-build.mjs"
   },
   "dependencies": {
     "astro": "^5.0.0"
@@ -23,5 +24,8 @@
     "markdown-it": "^14.1.0",
     "puppeteer-core": "^23.0.0",
     "sharp": "^0.34.0"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

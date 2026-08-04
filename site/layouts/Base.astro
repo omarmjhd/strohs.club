@@ -3,7 +3,12 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import { withBase } from '../lib/base.mjs';
 import { DISCORD_INVITE, INSTAGRAM } from '../lib/links.mjs';
-const { title = "STROH's — South Texas Roost of Hospitality", description = "A friendly, easily-accessible way to get involved in the No Laying Up Refuge across South Texas." } = Astro.props;
+const {
+  title = "STROH's — South Texas Roost of Hospitality",
+  description = "A friendly, easily-accessible way to get involved in the No Laying Up Refuge across South Texas.",
+  // Competition pages pass their own generated social PNG; everything else uses the crest.
+  shareImage = '/brand/strohs-badge.png',
+} = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -12,6 +17,17 @@ const { title = "STROH's — South Texas Roost of Hospitality", description = "A
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {/* The pipeline generates a share image per competition; without these, nothing uses them. */}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="STROH's" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(withBase(shareImage), Astro.site ?? 'https://omarmujahidpair.com').href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(withBase(shareImage), Astro.site ?? 'https://omarmujahidpair.com').href} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site ?? 'https://omarmujahidpair.com').href} />
     {/* Generated from brand/lion.png with its transparent margin trimmed — the full-size
         crest is 1000x1000 with ~20% padding, which leaves almost nothing legible at 16px. */}
     <link rel="icon" type="image/png" sizes="32x32" href={withBase("/favicon-32.png")} />

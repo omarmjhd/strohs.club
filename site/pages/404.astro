@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/base.mjs';
+---
+<Base title="Page not found — STROH's" description="That page doesn't exist.">
+  <section class="page-hero">
+    <img src={withBase('/brand/lion.png')} alt="" style="max-height:140px; width:auto; display:block; margin:0 auto 20px;" />
+    <h1>That hole isn't on the card</h1>
+    <p class="subtitle">
+      The page you were after doesn't exist — it may have moved, or the link may be out of date.
+    </p>
+  </section>
+  <div class="prose" style="text-align:center;">
+    <p>
+      <a href={withBase('/')}>Start Here</a> ·
+      <a href={withBase('/competitions/muni-tour')}>Competitions</a> ·
+      <a href={withBase('/roll-of-honour')}>Roll of Honour</a> ·
+      <a href={withBase('/community')}>Community</a>
+    </p>
+  </div>
+</Base>
