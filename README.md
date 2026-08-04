@@ -39,12 +39,16 @@ frontmatter) — so a single edit updates the page and every generated artifact.
 ## Commands
 ```
 npm run dev        # local dev server (site)
-npm run build      # build the static site → dist/
+npm run ci         # the full build: docs first, then site (see ordering note below)
+npm run build      # just the static site → dist/
 npm run docs       # generate PDF + PNG + slides for every competition → public/downloads/
 npm run docs:pdf   # just the PDFs
 npm run docs:png   # just the social images
 npm run docs:slides
 ```
+
+**Ordering matters:** `astro build` copies `public/` into `dist/`, so `docs` must run *before*
+`build` or the deployed site serves the previous run's downloads. Use `npm run ci`.
 
 ## How the docs are generated
 `scripts/` read each `content/competitions/*.md` (frontmatter + body), then:
@@ -54,7 +58,10 @@ npm run docs:slides
   with a slide per competition, then export HTML with [Marp](https://marp.app).
 
 No browser is downloaded — it reuses the installed Chrome. Later, GitHub Actions will run
-`npm run build && npm run docs` and deploy to GitHub Pages.
+`npm run ci` and deploy to GitHub Pages.
+
+The PNGs and the Marp deck are committed; the PDFs are gitignored because PDF output embeds a
+creation timestamp and would churn on every run.
 
 ## Adding a competition
 Drop a new `content/competitions/<slug>.md` with the frontmatter fields required by

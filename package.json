@@ -10,7 +10,9 @@
     "docs": "node scripts/build-all.mjs",
     "docs:pdf": "node scripts/build-pdf.mjs",
     "docs:png": "node scripts/build-png.mjs",
-    "docs:slides": "node scripts/build-slides.mjs"
+    "docs:slides": "node scripts/build-slides.mjs",
+    "docs:almanac": "node scripts/build-almanac.mjs",
+    "ci": "npm run docs && npm run build"
   },
   "dependencies": {
     "astro": "^5.0.0"

@@ -2,5 +2,11 @@ node_modules/
 dist/
 .astro/
 build/
+.agent/
 .DS_Store
 *.log
+
+# Generated one-pagers. PDFs embed a creation timestamp, so they are byte-different
+# on every run even when the content is identical. PNGs and the Marp deck are
+# deterministic and stay committed.
+public/downloads/*.pdf
