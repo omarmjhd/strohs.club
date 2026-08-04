@@ -8,11 +8,6 @@ const byCollection = {
   competitions: await getCollection('competitions'),
 };
 
-// Only competitions with a board behind them, so the menu never offers a dead link.
-const withStandings = byCollection.competitions
-  .filter((entry) => entry.data.kind === 'competition' && entry.data.standings)
-  .sort((a, b) => a.data.order - b.data.order);
-
 const href = (group, entry) =>
   group.collection === 'competitions' ? withBase(`/competitions/${entry.data.slug}`) : withBase(`/${entry.id}`);
 
@@ -42,13 +37,4 @@ const groups = NAV.map((group) => ({
       </div>
     )
   ))}
-  <div class="nav-item">
-    <span class="nav-top">Standings ▾</span>
-    <div class="dropdown">
-      <a href={withBase("/standings")}>All Standings</a>
-      {withStandings.map((c) => (
-        <a href={withBase(`/competitions/${c.data.slug}#standings`)}>{c.data.title}</a>
-      ))}
-    </div>
-  </div>
 </nav>

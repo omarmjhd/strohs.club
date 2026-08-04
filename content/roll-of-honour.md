@@ -8,8 +8,10 @@ quickFacts:
   - { label: "Something missing?", value: "Tell us in the Discord", link: "https://discord.gg/frNSUn5ZmC" }
 ---
 
-Full leaderboards live in the sheets each competition is scored in — see
-**[Standings](/standings)** for the boards that are live now. This page is the record of who won.
+Live boards sit on each competition's own page — the
+**[Muni Tour](/competitions/muni-tour#standings)** and
+**[Opn Szn](/competitions/opnszn#standings)** ones are running now. This page is the record of
+who won.
 
 ## 2025–26
 
