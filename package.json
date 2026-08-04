@@ -12,10 +12,11 @@
     "docs:png": "node scripts/build-png.mjs",
     "docs:slides": "node scripts/build-slides.mjs",
     "docs:almanac": "node scripts/build-almanac.mjs",
-    "ci": "npm run check && npm run docs && npm run build && npm run verify",
+    "ci": "npm run check && npm run docs && npm run build && npm run verify && npm run verify:visual",
     "check": "node scripts/check-content.mjs",
     "sync": "node scripts/sync-gdocs.mjs",
-    "verify": "node scripts/verify-build.mjs"
+    "verify": "node scripts/verify-build.mjs",
+    "verify:visual": "node scripts/verify-visual.mjs"
   },
   "dependencies": {
     "astro": "^5.0.0"
