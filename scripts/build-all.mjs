@@ -4,7 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { DOWNLOADS_DIR, ROOT } from './lib/paths.mjs';
 import { contentWarnings, loadAll } from './lib/content.mjs';
-import { CANONICAL_LINKS } from '../site/lib/links.mjs';
+import { findLinkDrift } from './lib/link-drift.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const GENERATED = /\.(pdf|png|html)$/;
@@ -17,20 +17,10 @@ loadAll();
 // Markdown cannot import site/lib/links.mjs, so catch a stale invite here instead of
 // publishing a dead one. Rotating the invite means editing links.mjs and the content files
 // that quote it; this makes forgetting one a build failure, not a support request.
-const linkDrift = [];
-for (const dir of ['content', 'slides']) {
-  for (const file of fs.readdirSync(path.join(ROOT, dir), { recursive: true })) {
-    if (!String(file).endsWith('.md')) continue;
-    const full = path.join(ROOT, dir, String(file));
-    const body = fs.readFileSync(full, 'utf8');
-    for (const m of body.matchAll(/https?:\/\/(?:discord\.gg|instagram\.com)\/[\w.-]+/g)) {
-      if (!CANONICAL_LINKS.includes(m[0])) linkDrift.push(`${dir}/${file}: ${m[0]}`);
-    }
-  }
-}
+const linkDrift = findLinkDrift();
 if (linkDrift.length) {
   console.error('\nRefusing to build — links that do not match site/lib/links.mjs:');
-  for (const l of linkDrift) console.error(`  - ${l}`);
+  for (const l of linkDrift) console.error(`  - ${l.file}:${l.line}: ${l.url}`);
   process.exit(1);
 }
 

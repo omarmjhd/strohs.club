@@ -12,7 +12,8 @@
     "docs:png": "node scripts/build-png.mjs",
     "docs:slides": "node scripts/build-slides.mjs",
     "docs:almanac": "node scripts/build-almanac.mjs",
-    "ci": "npm run docs && npm run build && npm run verify",
+    "ci": "npm run check && npm run docs && npm run build && npm run verify",
+    "check": "node scripts/check-content.mjs",
     "verify": "node scripts/verify-build.mjs"
   },
   "dependencies": {

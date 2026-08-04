@@ -102,7 +102,8 @@ function stripFrontmatter(value, where, drafts, record = false) {
   return value;
 }
 
-const idOf = (file) => path.relative(CONTENT_DIR, file).replace(/\\/g, '/').replace(/\.md$/, '');
+export const idOf = (file) =>
+  path.relative(CONTENT_DIR, file).replace(/\\/g, '/').replace(/\.md$/, '');
 
 // Reconciliation register IDs for a whole-file draft; the marker form carries its own.
 const fileDraftIds = (data) => {
@@ -132,7 +133,7 @@ export function loadComponent(file) {
   };
 }
 
-function listMarkdown(dir) {
+export function listMarkdown(dir) {
   if (!fs.existsSync(dir)) return [];
   return fs
     .readdirSync(dir, { withFileTypes: true })
