@@ -21,36 +21,45 @@ const { csvBase, boards = [], sheetUrl, hideColumns = [] } = Astro.props;
   </div>
 )}
 
-<style>
+<!-- Tables are built by the client script, so they never receive Astro's scoping
+     attribute. These styles must be global; every selector is prefixed with .standings
+     to keep them contained, and table-qualified to outrank `.prose td` in global.css. -->
+<style is:global>
   .standings { margin: 18px 0; }
-  .board { border: 1px solid #e6e6ee; border-radius: 10px; margin-bottom: 10px; background: #fff; }
-  .board > summary {
-    cursor: pointer; padding: 11px 14px; font-weight: 700; color: var(--navy, #002060);
-    list-style: none;
+  .standings .board {
+    border: 1px solid #c9cfdd; border-radius: 10px; margin-bottom: 10px; background: #fff;
   }
-  .board > summary::-webkit-details-marker { display: none; }
-  .board > summary::before { content: '▸ '; color: var(--accent, #C00840); }
-  .board[open] > summary::before { content: '▾ '; }
-  .board-body { padding: 0 14px 12px; overflow-x: auto; }
-  .board-status { color: #8a8a99; font-size: 0.9rem; margin: 4px 0 10px; }
+  .standings .board > summary {
+    cursor: pointer; padding: 11px 14px; font-weight: 700; color: #002060; list-style: none;
+  }
+  .standings .board > summary::-webkit-details-marker { display: none; }
+  .standings .board > summary::before { content: '\25B8  '; color: #C00840; }
+  .standings .board[open] > summary::before { content: '\25BE  '; }
+  .standings .board[open] > summary { border-bottom: 1px solid #e4e8f0; }
+  .standings .board-body { padding: 0 14px 12px; overflow-x: auto; }
+  .standings .board-status { color: #8a8a99; font-size: 0.9rem; margin: 10px 0; }
+
   .standings table {
-    border-collapse: collapse; width: 100%; margin: 6px 0 14px; font-size: 0.93rem;
-    border: 1px solid #c9cfdd;
+    border-collapse: collapse; width: 100%; margin: 8px 0 16px;
+    font-size: 0.92rem; border: 1px solid #b9c1d4;
   }
-  .standings th {
-    background: var(--navy, #002060); color: #fff; text-align: left;
-    padding: 6px 9px; font-weight: 600; white-space: nowrap;
-    border-right: 1px solid rgba(255, 255, 255, 0.22);
+  .standings table th {
+    background: #002060; color: #fff; text-align: center;
+    padding: 8px 10px; font-weight: 600; white-space: nowrap;
+    border: 1px solid #4a5f8f;
   }
-  .standings th:last-child { border-right: 0; }
-  .standings td { padding: 5px 9px; border: 1px solid #dbe0ea; }
-  .standings tbody tr:nth-child(odd) { background: #fafbfd; }
-  .standings th.num, .standings td.num { text-align: center; }
+  .standings table td {
+    padding: 7px 10px; border: 1px solid #ccd3e0; color: #1A1A2E;
+  }
+  .standings table tbody tr:nth-child(even) { background: #f4f6fb; }
+  .standings table tbody tr:hover { background: #e9eefa; }
+  .standings table td.num { text-align: center; white-space: nowrap; }
+
   .standings h4 {
-    margin: 14px 0 2px; text-transform: uppercase; letter-spacing: .05em;
-    font-size: .78rem; color: var(--accent, #C00840);
+    margin: 16px 0 4px; text-transform: uppercase; letter-spacing: .05em;
+    font-size: .8rem; color: #C00840;
   }
-  .board-source { font-size: .85rem; color: #6b6b7b; }
+  .standings .board-source { font-size: .85rem; color: #6b6b7b; }
 </style>
 
 <script>
