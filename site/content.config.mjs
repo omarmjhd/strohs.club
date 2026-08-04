@@ -40,7 +40,11 @@ const competitions = defineCollection({
             title: z.string(),
             gid: z.string(),
             mode: z.enum(['sections', 'table']).default('sections'),
-            requireColumns: z.array(z.string()).default([]),
+            // A header name, or a 0-based column index when the sheet's header text
+            // is unreliable.
+            requireColumns: z
+              .array(z.union([z.string(), z.number()]).transform(String))
+              .default([]),
           })
         ),
       })

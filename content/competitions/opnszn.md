@@ -11,8 +11,18 @@ tagline: A season-long match-play points race — play anyone, anywhere, and cli
 standingsUrl: https://docs.google.com/spreadsheets/d/e/2PACX-1vRrmKc1mma7xj9BE-Mg1XG_wQgzbG45BI-E2szSwSBDXUdzrT3Fp5dopDaNzNPe9suLaHq9WnI-8SMl/pubhtml?gid=124507112&single=true
 standings:
   csvBase: https://docs.google.com/spreadsheets/d/e/2PACX-1vRrmKc1mma7xj9BE-Mg1XG_wQgzbG45BI-E2szSwSBDXUdzrT3Fp5dopDaNzNPe9suLaHq9WnI-8SMl/pub
+  # Match-by-match W/T/L detail stays in the sheet; the board shows the points that
+  # decide the race, so Total Points is visible without scrolling.
+  hideColumns:
+    - Singles Matches Won
+    - Singles Matches Tied
+    - Fourball Matches Won
+    - Fourball Matches Tied
+    - Foursomes Matches Won
+    - Foursomes Matches Tied
+    - Foursomes Matches Lost
   boards:
-    - { title: "Season Points", gid: "124507112", mode: table, requireColumns: [Rank, Player] }
+    - { title: "Season Points", gid: "124507112", mode: table, requireColumns: [0, 1] }
 blurb: A season-long match-play points race — play whoever, whenever.
 summary: >-
   Opn Szn ("Open Season") is net-scoring match play run as a season-long points race. Any registered

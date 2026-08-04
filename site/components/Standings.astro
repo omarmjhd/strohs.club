@@ -157,8 +157,10 @@ const { csvBase, boards = [], sheetUrl, hideColumns = [], sheetLabel = "source s
     // Sheets often trail off into part-filled rows; a row only counts if the columns that
     // identify it are present.
     const required = require
-      .map((name) => headers.findIndex((h) => h.trim().toLowerCase() === name))
-      .filter((i) => i >= 0);
+      .map((name) =>
+        /^\d+$/.test(name) ? Number(name) : headers.findIndex((h) => h.trim().toLowerCase() === name)
+      )
+      .filter((i) => i >= 0 && i < headers.length);
     const body = rows
       .slice(headerRow + 1)
       .map((r) => r.slice(0, width))
