@@ -3,19 +3,20 @@
 // access-control-allow-origin: *, so the browser fetches it directly — the board stays as
 // live as the sheet without a rebuild, and it looks like the rest of the site rather than
 // an embedded iframe.
-const { csvBase, boards = [], sheetUrl, hideColumns = [] } = Astro.props;
+const { csvBase, boards = [], sheetUrl, hideColumns = [], sheetLabel = "source sheet" } = Astro.props;
 ---
 {boards.length > 0 && (
   <div class="standings" data-standings data-csv-base={csvBase} data-hide={hideColumns.join("|")}>
     {boards.map((b, i) => (
-      <details class="board" data-gid={b.gid} data-mode={b.mode ?? 'sections'} open={i === 0}>
+      <details class="board" data-gid={b.gid} data-mode={b.mode ?? 'sections'}
+        data-require={(b.requireColumns ?? []).join("|")} open={i === 0}>
         <summary>{b.title}</summary>
         <div class="board-body"><p class="board-status">Loading…</p></div>
       </details>
     ))}
     {sheetUrl && (
       <p class="board-source">
-        Live from the <a href={sheetUrl} rel="noopener">Muni Tour leaderboard sheet</a>.
+        Live from the <a href={sheetUrl} rel="noopener">{sheetLabel}</a>.
       </p>
     )}
   </div>
@@ -45,9 +46,12 @@ const { csvBase, boards = [], sheetUrl, hideColumns = [] } = Astro.props;
   }
   .standings table th {
     background: #002060; color: #fff; text-align: center;
-    padding: 8px 10px; font-weight: 600; white-space: nowrap;
+    padding: 8px 9px; font-weight: 600; line-height: 1.25;
     border: 1px solid #4a5f8f;
   }
+  /* Wide boards: let long headers stack rather than force a long horizontal scroll. */
+  .standings table.wide th { font-size: .82rem; padding: 7px 6px; }
+  .standings table.wide td { padding: 6px 6px; font-size: .89rem; }
   .standings table td {
     padding: 7px 10px; border: 1px solid #ccd3e0; color: #1A1A2E;
   }
@@ -102,6 +106,7 @@ const { csvBase, boards = [], sheetUrl, hideColumns = [] } = Astro.props;
     });
 
     const t = el('table');
+    if (headers.length > 8) t.className = 'wide';
     const thead = el('thead'), htr = el('tr');
     headers.forEach((h, i) => {
       const th = el('th', h);
@@ -142,23 +147,30 @@ const { csvBase, boards = [], sheetUrl, hideColumns = [] } = Astro.props;
 
   // Course boards put the counting leaderboard in the leftmost columns and a full score
   // history to its right, separated by one empty column. Only the counting board is public.
-  function renderTable(rows, into, hide) {
+  function renderTable(rows, into, hide, require) {
     const headerRow = rows.findIndex((r) => r.filter((c) => c.trim() !== '').length > 2);
     if (headerRow < 0) return;
     const raw = rows[headerRow];
     let width = raw.findIndex((h) => h.trim() === '');
     if (width < 1) width = raw.length;
     const headers = raw.slice(0, width);
+    // Sheets often trail off into part-filled rows; a row only counts if the columns that
+    // identify it are present.
+    const required = require
+      .map((name) => headers.findIndex((h) => h.trim().toLowerCase() === name))
+      .filter((i) => i >= 0);
     const body = rows
       .slice(headerRow + 1)
       .map((r) => r.slice(0, width))
-      .filter(filled);
+      .filter(filled)
+      .filter((r) => required.every((i) => (r[i] ?? '').trim() !== ''));
     into.appendChild(table(headers, body, hide));
   }
 
   document.querySelectorAll('[data-standings]').forEach((root) => {
     const base = root.dataset.csvBase;
     const hide = (root.dataset.hide || '').split('|').filter(Boolean).map((s) => s.toLowerCase());
+    const lower = (s) => (s || '').split('|').filter(Boolean).map((v) => v.toLowerCase());
     root.querySelectorAll('.board').forEach((board) => {
       let loaded = false;
       const load = async () => {
@@ -170,7 +182,9 @@ const { csvBase, boards = [], sheetUrl, hideColumns = [] } = Astro.props;
           if (!res.ok) throw new Error(res.status);
           const rows = parseCsv(await res.text());
           body.textContent = '';
-          (board.dataset.mode === 'table' ? renderTable : renderSections)(rows, body, hide);
+          board.dataset.mode === 'table'
+            ? renderTable(rows, body, hide, lower(board.dataset.require))
+            : renderSections(rows, body, hide);
         } catch {
           loaded = false;
           body.innerHTML =

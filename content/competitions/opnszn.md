@@ -8,6 +8,11 @@ accent2: "#F0A800"
 hero: /brand/comp-match-play.jpg
 logo: /brand/comp-match-play.jpg
 tagline: A season-long match-play points race — play anyone, anywhere, and climb the board.
+standingsUrl: https://docs.google.com/spreadsheets/d/e/2PACX-1vRrmKc1mma7xj9BE-Mg1XG_wQgzbG45BI-E2szSwSBDXUdzrT3Fp5dopDaNzNPe9suLaHq9WnI-8SMl/pubhtml?gid=124507112&single=true
+standings:
+  csvBase: https://docs.google.com/spreadsheets/d/e/2PACX-1vRrmKc1mma7xj9BE-Mg1XG_wQgzbG45BI-E2szSwSBDXUdzrT3Fp5dopDaNzNPe9suLaHq9WnI-8SMl/pub
+  boards:
+    - { title: "Season Points", gid: "124507112", mode: table, requireColumns: [Rank, Player] }
 blurb: A season-long match-play points race — play whoever, whenever.
 summary: >-
   Opn Szn ("Open Season") is net-scoring match play run as a season-long points race. Any registered

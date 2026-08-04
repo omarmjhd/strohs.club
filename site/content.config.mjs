@@ -40,6 +40,7 @@ const competitions = defineCollection({
             title: z.string(),
             gid: z.string(),
             mode: z.enum(['sections', 'table']).default('sections'),
+            requireColumns: z.array(z.string()).default([]),
           })
         ),
       })
