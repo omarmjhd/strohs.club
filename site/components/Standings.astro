@@ -9,7 +9,8 @@ const { csvBase, boards = [], sheetUrl, hideColumns = [], sheetLabel = "source s
   <div class="standings" data-standings data-csv-base={csvBase} data-hide={hideColumns.join("|")}>
     {boards.map((b, i) => (
       <details class="board" data-gid={b.gid} data-mode={b.mode ?? 'sections'}
-        data-require={(b.requireColumns ?? []).join("|")} open={i === 0}>
+        data-require={(b.requireColumns ?? []).join("|")}
+        data-cut={b.cut ? `${b.cut.bye}|${b.cut.playoff}` : ''} open={i === 0}>
         <summary>{b.title}</summary>
         <div class="board-body"><p class="board-status">Loading…</p></div>
       </details>
@@ -58,6 +59,41 @@ const { csvBase, boards = [], sheetUrl, hideColumns = [], sheetLabel = "source s
   .standings table tbody tr:nth-child(even) { background: #f4f6fb; }
   .standings table tbody tr:hover { background: #e9eefa; }
   .standings table td.num { text-align: center; white-space: nowrap; }
+
+  /* Cut lines: who gets a bye, who makes the bracket. */
+  .standings table tbody tr.is-bye { background: #fdf3d6; box-shadow: inset 4px 0 0 #C9A227; }
+  .standings table tbody tr.is-playoff { background: #eaf2ff; box-shadow: inset 4px 0 0 #0078C0; }
+  .standings table tbody tr.is-bye:hover { background: #fbecc2; }
+  .standings table tbody tr.is-playoff:hover { background: #dde9fb; }
+  .standings .cut-legend {
+    display: flex; flex-wrap: wrap; gap: 16px; margin: 10px 0 2px;
+    font-size: .84rem; color: #4a4a5a;
+  }
+  .standings .cut-legend .sw {
+    display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 6px;
+    vertical-align: -1px;
+  }
+  .standings .cut-legend .sw.bye { background: #C9A227; }
+  .standings .cut-legend .sw.play { background: #0078C0; }
+
+  .standings .bracket { margin-top: 18px; }
+  .standings .bracket-note { font-size: .84rem; color: #6b6b7b; margin: 0 0 10px; }
+  .standings .rounds { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .standings .rounds .rd h5 {
+    margin: 0 0 8px; font-size: .74rem; text-transform: uppercase; letter-spacing: .06em;
+    color: #002060; border-bottom: 2px solid #C00840; padding-bottom: 4px;
+  }
+  .standings .rounds .mt {
+    border: 1px solid #ccd3e0; border-radius: 7px; margin-bottom: 8px;
+    font-size: .82rem; background: #fff; overflow: hidden;
+  }
+  .standings .rounds .mt > div { padding: 5px 8px; }
+  .standings .rounds .mt > div:first-child { border-bottom: 1px solid #e4e8f0; }
+  .standings .rounds .mt b { color: #002060; margin-right: 4px; }
+  .standings .rounds .mt i { color: #7b8194; font-style: normal; }
+  @media (max-width: 700px) {
+    .standings .rounds { grid-template-columns: 1fr 1fr; }
+  }
 
   .standings h4 {
     margin: 16px 0 4px; text-transform: uppercase; letter-spacing: .05em;
@@ -169,6 +205,67 @@ const { csvBase, boards = [], sheetUrl, hideColumns = [], sheetLabel = "source s
     into.appendChild(table(headers, body, hide));
   }
 
+  // Standard bracket slot order, so the top two seeds can only meet in the final.
+  const seedOrder = (n) => {
+    let a = [1];
+    while (a.length < n) { const m = a.length * 2 + 1; a = a.flatMap((s) => [s, m - s]); }
+    return a;
+  };
+
+  function markCut(body, bye, playoff) {
+    const rows = [...body.querySelectorAll('tbody tr')];
+    if (!rows.length) return;
+    rows.forEach((tr, i) => {
+      if (i < bye) tr.classList.add('is-bye');
+      else if (i < playoff) tr.classList.add('is-playoff');
+    });
+
+    const legend = el('div');
+    legend.className = 'cut-legend';
+    legend.innerHTML =
+      `<span><i class="sw bye"></i>Top ${bye} — Quarterfinal bye</span>` +
+      `<span><i class="sw play"></i>Seeds ${bye + 1}\u2013${playoff} — into the bracket</span>`;
+    body.insertBefore(legend, body.firstChild);
+
+    const names = rows.slice(0, playoff).map((tr) => tr.children[1]?.textContent.trim() || '?');
+    if (names.length === playoff) body.appendChild(bracket(names, bye));
+  }
+
+  function bracket(names, byes) {
+    const n = names.length;
+    const seed = (s) => `<b>${s}</b> ${names[s - 1]}`;
+    const firstPairs = [];
+    for (let i = 0; byes + 1 + i < n - i; i++) firstPairs.push([byes + 1 + i, n - i]);
+
+    const round = (title, matches) =>
+      `<div class="rd"><h5>${title}</h5>${matches
+        .map((m) => `<div class="mt">${m.map((side) => `<div>${side}</div>`).join('')}</div>`)
+        .join('')}</div>`;
+
+    const first = firstPairs.map(([a, b]) => [seed(a), seed(b)]);
+    const qf = seedOrder(byes).map((s) => {
+      const [a, b] = firstPairs[byes - s];
+      return [seed(s), `<i>Winner ${a} v ${b}</i>`];
+    });
+    const sf = [];
+    for (let i = 0; i < qf.length / 2; i++) {
+      sf.push([`<i>Winner QF${i * 2 + 1}</i>`, `<i>Winner QF${i * 2 + 2}</i>`]);
+    }
+
+    const wrap = el('div');
+    wrap.className = 'bracket';
+    wrap.innerHTML =
+      `<h4>Projected bracket</h4>` +
+      `<p class="bracket-note">Seeding as the board stands right now — it moves with every result.</p>` +
+      `<div class="rounds">` +
+      round('First Round', first) +
+      round('Quarterfinals', qf) +
+      round('Semifinals', sf) +
+      round('Final', [[`<i>Winner SF1</i>`, `<i>Winner SF2</i>`]]) +
+      `</div>`;
+    return wrap;
+  }
+
   document.querySelectorAll('[data-standings]').forEach((root) => {
     const base = root.dataset.csvBase;
     const hide = (root.dataset.hide || '').split('|').filter(Boolean).map((s) => s.toLowerCase());
@@ -187,6 +284,8 @@ const { csvBase, boards = [], sheetUrl, hideColumns = [], sheetLabel = "source s
           board.dataset.mode === 'table'
             ? renderTable(rows, body, hide, lower(board.dataset.require))
             : renderSections(rows, body, hide);
+          const cut = (board.dataset.cut || '').split('|').map(Number).filter((n) => n > 0);
+          if (cut.length === 2) markCut(body, cut[0], cut[1]);
         } catch {
           loaded = false;
           body.innerHTML =

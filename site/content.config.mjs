@@ -45,6 +45,8 @@ const competitions = defineCollection({
             requireColumns: z
               .array(z.union([z.string(), z.number()]).transform(String))
               .default([]),
+            // Highlights the cut lines and draws the projected bracket.
+            cut: z.object({ bye: z.number(), playoff: z.number() }).optional(),
           })
         ),
       })

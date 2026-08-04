@@ -22,7 +22,7 @@ standings:
     - Foursomes Matches Tied
     - Foursomes Matches Lost
   boards:
-    - { title: "Season Points", gid: "124507112", mode: table, requireColumns: [0, 1] }
+    - { title: "Season Points", gid: "124507112", mode: table, requireColumns: [0, 1], cut: { bye: 4, playoff: 12 } }
 blurb: A season-long match-play points race — play whoever, whenever.
 summary: >-
   Opn Szn ("Open Season") is net-scoring match play run as a season-long points race. Any registered
