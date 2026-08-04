@@ -4,7 +4,7 @@ subtitle: Every STROH's champion since 2021 — current competitions and the one
 order: 2
 quickFacts:
   - { label: "Seasons recorded", value: "2021 – present" }
-  - { label: "Muni Tour", value: "Three straight to Stefan Icenogle" }
+  - { label: "Texas Cup", value: "5 of 6 to Team AUS/SA" }
   - { label: "Something missing?", value: "Tell us in the Discord", link: "https://discord.gg/frNSUn5ZmC" }
 ---
 
@@ -36,7 +36,7 @@ Full leaderboards live in the sheets each competition is scored in — see
 | Competition | Champion |
 |---|---|
 | [Muni Tour](/competitions/muni-tour) — season | **Stefan Icenogle** |
-| Muni Tour Championship *(the All-STROHs Open under its old name)* | **Omar Mujahid-Pair** |
+| [Muni Tour Championship](/competitions/all-strohs-open) *(the All-STROHs Open under its old name)* | **Omar Mujahid-Pair** |
 | Open Season Match Play | **Omar Mujahid-Pair** |
 | Sixers on Ice | **Austin Baccus** |
 | [Texas Cup](/competitions/texas-cup) | **Team AUS/SA** |
@@ -46,7 +46,7 @@ Full leaderboards live in the sheets each competition is scored in — see
 | Competition | Champion |
 |---|---|
 | [Muni Tour](/competitions/muni-tour) — season | **Stefan Icenogle** |
-| Muni Tour Championship *(the All-STROHs Open under its old name)* | **Austin Alaniz** — 41 quota points |
+| [Muni Tour Championship](/competitions/all-strohs-open) *(the All-STROHs Open under its old name)* | **Austin Alaniz** — 41 quota points |
 | Sixers on Ice | **Tim Brooks** |
 | Texas Match Play Massacre | **Josh Donelson** |
 | [Texas Cup](/competitions/texas-cup) | **Team AUS/SA** |
@@ -56,7 +56,7 @@ Full leaderboards live in the sheets each competition is scored in — see
 | Competition | Champion |
 |---|---|
 | [Muni Tour](/competitions/muni-tour) | **Omar Mujahid-Pair** |
-| All-STROHs Open | **Heath Gardenhire** |
+| [All-STROHs Open](/competitions/all-strohs-open) | **Heath Gardenhire** |
 | Texas Match Play Massacre | **Stefan Icenogle** |
 | [Texas Cup](/competitions/texas-cup) | **Team AUS/SA** |
 
@@ -79,5 +79,6 @@ The line-up hasn't always looked like it does now.
 - **The Texas Cup ran with three teams** — AUS/SA, HOU and DAL — for its first six years. After
   the 2026 event it moved to two teams: STROH's against
   **[Big Plex](/competitions/texas-cup)** (DFW).
-- **Sixers on Ice**, a winter short-course competition, ran in 2022–23 and 2023–24.
+- **Sixers on Ice** ran in 2022–23 and 2023–24: six 6-hole matches for points, played on a
+  full-length course.
 - Seasons ran on a single calendar year until 2022, and September-to-May from 2022–23 onward.
