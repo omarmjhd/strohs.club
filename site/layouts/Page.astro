@@ -9,7 +9,7 @@ const docs = downloads ? outputs.filter((o) => o !== 'page') : [];
 ---
 <Base title={`${frontmatter.title} — STROH's`} description={frontmatter.subtitle}>
   <header class="page-hero">
-    {heroImage && <img src={withBase(heroImage)} alt={title} style="max-height:160px; width:auto; display:block; margin:0 auto 20px;" />}
+    {heroImage && <img src={withBase(heroImage)} alt={title} style="max-height:160px; max-width:100%; width:auto; display:block; margin:0 auto 20px;" />}
     <h1>{title}</h1>
     <p class="subtitle">{subtitle}</p>
   </header>
