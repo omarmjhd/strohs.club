@@ -46,7 +46,7 @@ Rack up points over the season and you're playing your way into the playoffs —
 
 - The player pool is **wide open**. Line up a match with any other STROH, at any course, whenever it suits you both.
 - Every completed match earns **points** based on the format you played and the result (see the scoring below).
-- Points accumulate across the whole **regular season**, with **monthly recaps and the odd surprise prize** along the way.
+- Points accumulate across the whole **regular season**.
 - When the regular season closes, the **top 12 points scorers advance to the Playoff Bracket**.
 - The **top 4 scorers earn a bye straight into the Quarterfinals** — a reward for a strong season.
 
@@ -88,7 +88,11 @@ Play it **Ryder-Cup style** — before the match, decide who tees off on the **o
 
 ## Season & Playoffs
 
-**Regular Season:** September 1, 2026 → Sunday, April 11, 2027. Expect monthly recaps and a few surprise prizes as the race unfolds.
+**Regular Season:** September 1, 2026 → Sunday, April 11, 2027.
+
+<!-- draft:D-04 -->
+Expect **monthly recaps and the odd surprise prize** as the race unfolds.
+<!-- /draft:D-04 -->
 
 Once the regular season ends, the top 12 head to the Playoff Bracket. The bracket runs on the guideline deadlines below, with exact dates and pairings announced in Discord:
 
@@ -102,7 +106,7 @@ Remember: the **top 4 seeds skip the first round** and start in the Quarterfinal
 ## How to Enter & Post a Score
 
 1. **Schedule your match** directly with your opponent(s) — pick the course, date, and format.
-2. **Play it out** under the **Rules of Golf for match play** (no mulligans).
+2. **Play it out** under the [General Competition Notes](/competitions/competition-notes) — match play is the one place gimmes are allowed, and where all players agreeing settles a rules question.
 3. **Fill out the scoring form** in the Discord to log your result and points.
 
 That's it — no sign-up gate. If you're a registered STROH, you're in.

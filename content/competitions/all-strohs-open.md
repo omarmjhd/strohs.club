@@ -65,22 +65,23 @@ Add up your points across all 18 holes, then compare that total to your quota. T
 
 ## Your Quota Target
 
-Every player plays against a personal **quota target**:
+Every player plays against a personal **quota target**.
 
+<!-- draft:D-02 -->
 > **Quota = 36 − your course handicap.**
 
-The ASO applies a **minimum quota of 9 points as a floor** — if `36 − course handicap` comes out below 9, your quota is simply set to **9**. That floor keeps the event welcoming to higher handicaps and avoids requiring negative points for doubles, which would slow down pace of play.
+If `36 − course handicap` comes out below 9, your quota is simply set to **9**.
+<!-- /draft:D-02 -->
+
+The ASO applies a **minimum quota of 9 points as a floor**. That floor keeps the event welcoming to higher handicaps and avoids requiring negative points for doubles, which would slow down pace of play.
 
 Beat your quota to go positive for the day; the player **furthest above their quota** wins.
 
 ## Rules & Handicaps
 
-General STROH's rules apply:
+Play is **net** and handicap-friendly, so every level has a fair shot. Everything else — teeboxes, when stroke-play handicaps are set, the 9-shot maximum, and the USGA-first rule hierarchy — is covered in the [General Competition Notes](/competitions/competition-notes).
 
-- Play is **net / handicap-friendly**, so every level has a fair shot.
-- A **9-shot maximum** per hole keeps the pace up and the scorecards clean.
-- **USGA Rules of Golf** govern play.
-
+<!-- draft:D-02 -->
 ## Tie-Breaker
 
 If the top of the board is tied and a playoff is necessary, the format used depends on what the course allows, in this order:
@@ -88,10 +89,14 @@ If the top of the board is tied and a playoff is necessary, the format used depe
 1. **Extra Holes** — net stroke play, sudden death.
 2. **Chipping Contest** — the Organizing Committee selects the pins, and players each chip to the selected pin **blind to the other competitors' results**. If more than two players are tied, all tied players start together and the **furthest from the hole is eliminated each round**; once two players remain, it becomes **best of three**.
 3. **Scorecard Playoff** — used only if extra holes aren't possible and a chip-off isn't possible. A net scorecard playoff based on **playing handicap**, **wheeling off the low handicap** in the playoff, starting at the **#1 handicap hole** and continuing down, **removing the highest-scoring player each hole** until a champion is declared.
+<!-- /draft:D-02 -->
 
 ## Prizes & Qualifying
 
-The **winner of the ASO takes home the Winner's Jacket** and **earns a spot at the Roost Regional**.
+The **winner of the ASO earns a spot at the Roost Regional**.
+
+<!-- draft:D-02 -->
+The winner also takes home the **Winner's Jacket**.
 
 ## Side Games
 
@@ -99,9 +104,12 @@ Side Games are **built into every entry** — no separate sign-up. Every entry i
 
 - **$1.50/player to each of the 4 proxy games** — 2 Long Drives and 2 Closest-to-the-Pins.
 - **$14/player to Canadian Skins**, where **gross scores can beat net scores**.
+<!-- /draft:D-02 -->
 
 ## How to Enter
 
 Registration is via **Google Form** — the link and entry deadline are **details to follow**.
 
+<!-- draft:D-02 -->
 Entry is **$125 (general)**, which **includes automatic entry into the Side Games** ($20 of your entry). There's no separate Side Games charge on top — it's built into the entry fee.
+<!-- /draft:D-02 -->

@@ -37,9 +37,12 @@ outputs: [page, pdf, png]
 
 The **Texas Two-Step** is STROH's **Major** — the biggest title on the calendar. It's a two-day net stroke-play event played on the same course back-to-back, and the champion earns more than a trophy:
 
-- The **Winner's Belt**.
 - The **NIT spot** — an invitation to the **NLU Invitational**.
 - A **Roost Regional team** qualification for STROH.
+
+<!-- draft:D-01 -->
+- The **Winner's Belt**.
+<!-- /draft:D-01 -->
 
 ## The Ringer Format
 
@@ -47,14 +50,21 @@ Over two days you play the same 18 holes twice. Instead of adding up two full ro
 
 For example, if you make a net **5** on the 1st hole Friday and a net **4** on Saturday, your ringer score for hole 1 is a **4**. Do that across all 18 holes and the total is your Two-Step score. Lowest ringer total wins.
 
-Because every hole gives you two cracks at it, a blow-up on day one isn't fatal — a clean second look can erase it. And since only your **better** net score counts, once a hole on **Day 2 can no longer beat your Day 1 score, you may pick up your ball** and move on.
+Because every hole gives you two cracks at it, a blow-up on day one isn't fatal — a clean second look can erase it.
+
+<!-- draft:D-01 -->
+And since only your **better** net score counts, once a hole on **Day 2 can no longer beat your Day 1 score, you may pick up your ball** and move on.
+<!-- /draft:D-01 -->
 
 ## When & Where
 
-The Two-Step is run on a **Friday–Saturday in January 2027 (exact dates TBD)** at **Landa Park Golf Course**. Playing on the weekend's front end keeps **Sunday free for family**, and a mid-winter slot is a draw for members escaping colder climates — with the understanding that **rough winter weather is part of the deal**.
+The Two-Step is run on a **Friday–Saturday in January 2027 (exact dates TBD)**. Playing on the weekend's front end keeps **Sunday free for family**, and a mid-winter slot is a draw for members escaping colder climates — with the understanding that **rough winter weather is part of the deal**.
 
 - **When:** A Friday–Saturday in January 2027 (exact dates TBD).
+
+<!-- draft:D-01 -->
 - **Where:** Landa Park Golf Course.
+<!-- /draft:D-01 -->
 
 ## Who Can Play
 
@@ -65,13 +75,13 @@ Refuges from **other Roosts** are welcome to enter — this isn't a STROH-only f
 
 ## The Rules
 
-Standard STROH's rules apply:
+The Two-Step is a **net** event played under the [General Competition Notes](/competitions/competition-notes) — teeboxes, committee-set handicaps, the 9-shot maximum, and the USGA-first rule hierarchy all apply as written there.
 
-- **Net event.** Stroke-play handicaps are set by the committee roughly **24 hours before** play.
-- **9-shot maximum** on any hole.
-- Played under the **USGA Rules of Golf**.
-- **Day 2 pick-up:** because it's a ringer, once a hole can no longer improve on your Day 1 score, you may **pick up your ball** on that hole.
+<!-- draft:D-01 -->
+One Two-Step-specific wrinkle — the **Day 2 pick-up**: because it's a ringer, once a hole can no longer improve on your Day 1 score, you may **pick up your ball** on that hole.
+<!-- /draft:D-01 -->
 
+<!-- draft:D-01 -->
 ## Tie-Breaker
 
 Ties are broken with the **USGA 9-6-3-1** method. Note that the ringer format produces a **single composite scorecard**, so the tie-breaker runs off your **composite last 9, then 6, then 3, then the final hole**.
@@ -81,3 +91,4 @@ Ties are broken with the **USGA 9-6-3-1** method. Note that the ringer format pr
 - **Field cap:** 40 players.
 - **Entry fee:** $250.
 - **Sign-up:** via a Google Form. Sign-up link and entry deadline: details to follow.
+<!-- /draft:D-01 -->

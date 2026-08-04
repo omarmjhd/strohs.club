@@ -72,14 +72,20 @@ Your **City Score** is the sum of your points at that city's three courses. Play
 
 ## Posting an Official Round
 
-1. **Declare in the Discord thread before your first tee shot** — name who you're playing with and everyone's course handicap.
-2. **Play with at least one other STROH** to attest. Full Rules of Golf.
-3. **Submit your gross score + course handicap within 24 hours** via the scoring form.
+1. **Declare your intent to post before your first tee shot.**
+2. **Play with at least one other STROH** to attest, under the [General Competition Notes](/competitions/competition-notes) — and note that the Muni Tour is stroke play, so there are **no gimmes**.
+3. **Submit your gross score + course handicap within 24 hours**, and note who you played with.
+
+<!-- draft:D-03 -->
+Declare in the **Discord thread**, naming who you're playing with and everyone's course handicap, and submit through the **scoring form**.
+<!-- /draft:D-03 -->
 
 ## Mulligan Rounds
 
 You can replay any course as many times as you like — but it's a commitment: the moment you declare a round, it **replaces** your previous score there, better or worse. Walk off under your own power and it posts as a **150**. Weather or a genuine emergency voids the round and your prior score stands.
 
+<!-- draft:D-03 -->
 ## Tie-Breakers
 
 For a cut line (e.g. two players tied for a city's 4th seat): **head-to-head** on shared courses → **countback** (best single net round, then next) → **most recent** counting round.
+<!-- /draft:D-03 -->
