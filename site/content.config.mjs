@@ -34,6 +34,7 @@ const competitions = defineCollection({
     standings: z
       .object({
         csvBase: z.string(),
+        hideColumns: z.array(z.string()).default([]),
         boards: z.array(
           z.object({
             title: z.string(),

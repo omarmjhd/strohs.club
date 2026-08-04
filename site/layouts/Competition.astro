@@ -33,7 +33,8 @@ const hasPng = outputs.includes('png');
         {standings && (
           <>
             <h2 id="standings">Standings</h2>
-            <Standings csvBase={standings.csvBase} boards={standings.boards} sheetUrl={standingsUrl} />
+            <Standings csvBase={standings.csvBase} boards={standings.boards}
+              hideColumns={standings.hideColumns} sheetUrl={standingsUrl} />
           </>
         )}
       </div>

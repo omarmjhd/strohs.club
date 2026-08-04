@@ -3,10 +3,10 @@
 // access-control-allow-origin: *, so the browser fetches it directly — the board stays as
 // live as the sheet without a rebuild, and it looks like the rest of the site rather than
 // an embedded iframe.
-const { csvBase, boards = [], sheetUrl } = Astro.props;
+const { csvBase, boards = [], sheetUrl, hideColumns = [] } = Astro.props;
 ---
 {boards.length > 0 && (
-  <div class="standings" data-standings data-csv-base={csvBase}>
+  <div class="standings" data-standings data-csv-base={csvBase} data-hide={hideColumns.join("|")}>
     {boards.map((b, i) => (
       <details class="board" data-gid={b.gid} data-mode={b.mode ?? 'sections'} open={i === 0}>
         <summary>{b.title}</summary>
@@ -66,10 +66,18 @@ const { csvBase, boards = [], sheetUrl } = Astro.props;
     return rows;
   };
 
-  const filled = (r) => r.some((c) => c.trim() !== '');
+  // Sheet formulas pad unused rows with '-' in the computed columns, so a row is only
+  // data if something in it is neither blank nor a placeholder.
+  const PLACEHOLDER = /^[-–—]$/;
+  const filled = (r) => r.some((c) => c.trim() !== '' && !PLACEHOLDER.test(c.trim()));
   const el = (tag, text) => { const n = document.createElement(tag); if (text != null) n.textContent = text; return n; };
 
-  function table(headers, rows) {
+  function table(headers, rows, hide) {
+    const keep = headers
+      .map((h, i) => i)
+      .filter((i) => !hide.includes(headers[i].trim().toLowerCase()));
+    headers = keep.map((i) => headers[i]);
+    rows = rows.map((r) => keep.map((i) => r[i] ?? ''));
     const t = el('table');
     const thead = el('thead'), htr = el('tr');
     headers.forEach((h) => htr.appendChild(el('th', h)));
@@ -85,7 +93,7 @@ const { csvBase, boards = [], sheetUrl } = Astro.props;
   }
 
   // A section is a lone title in column A, then a header row, then rows until a blank line.
-  function renderSections(rows, into) {
+  function renderSections(rows, into, hide) {
     let i = 0;
     while (i < rows.length) {
       if (!filled(rows[i])) { i++; continue; }
@@ -97,25 +105,29 @@ const { csvBase, boards = [], sheetUrl } = Astro.props;
       const body = [];
       while (i < rows.length && filled(rows[i])) { body.push(rows[i]); i++; }
       if (title) into.appendChild(el('h4', title));
-      into.appendChild(table(headers, body));
+      into.appendChild(table(headers, body, hide));
     }
   }
 
   // Course boards put the counting leaderboard in the leftmost columns and a full score
   // history to its right, separated by one empty column. Only the counting board is public.
-  function renderTable(rows, into) {
+  function renderTable(rows, into, hide) {
     const headerRow = rows.findIndex((r) => r.filter((c) => c.trim() !== '').length > 2);
     if (headerRow < 0) return;
     const raw = rows[headerRow];
     let width = raw.findIndex((h) => h.trim() === '');
     if (width < 1) width = raw.length;
     const headers = raw.slice(0, width);
-    const body = rows.slice(headerRow + 1).filter(filled).map((r) => r.slice(0, width));
-    into.appendChild(table(headers, body));
+    const body = rows
+      .slice(headerRow + 1)
+      .map((r) => r.slice(0, width))
+      .filter(filled);
+    into.appendChild(table(headers, body, hide));
   }
 
   document.querySelectorAll('[data-standings]').forEach((root) => {
     const base = root.dataset.csvBase;
+    const hide = (root.dataset.hide || '').split('|').filter(Boolean).map((s) => s.toLowerCase());
     root.querySelectorAll('.board').forEach((board) => {
       let loaded = false;
       const load = async () => {
@@ -127,7 +139,7 @@ const { csvBase, boards = [], sheetUrl } = Astro.props;
           if (!res.ok) throw new Error(res.status);
           const rows = parseCsv(await res.text());
           body.textContent = '';
-          (board.dataset.mode === 'table' ? renderTable : renderSections)(rows, body);
+          (board.dataset.mode === 'table' ? renderTable : renderSections)(rows, body, hide);
         } catch {
           loaded = false;
           body.innerHTML =
