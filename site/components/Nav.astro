@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+
+const competitions = (await getCollection('competitions')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+<nav>
+  <a href="/">Start Here</a>
+  <div class="nav-item">
+    <span class="nav-top">Competitions ▾</span>
+    <div class="dropdown">
+      {competitions.map((c) => (
+        <a href={`/competitions/${c.data.slug}`}>{c.data.title}</a>
+      ))}
+    </div>
+  </div>
+  <a href="/about">About</a>
+  <div class="nav-item">
+    <span class="nav-top">Standings ▾</span>
+    <div class="dropdown">
+      {competitions.map((c) => (
+        <a href={c.data.standingsUrl ?? '#'}>{c.data.title}</a>
+      ))}
+    </div>
+  </div>
+</nav>

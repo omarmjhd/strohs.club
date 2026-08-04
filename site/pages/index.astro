@@ -1,0 +1,102 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Gallery from '../components/Gallery.astro';
+
+const discordUrl = 'https://discord.gg/frNSUn5ZmC';
+
+const competitions = (await getCollection('competitions')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const principles = [
+  ['Keep the Main Thing the Main Thing', 'The hang, new friends, and charity matter as much as the golf.'],
+  ['All Are Welcome', 'Come out and play. Seriously. Bring your friends, too.'],
+  ["Don't Be a Jerk", 'Assume good intent in all interactions.'],
+  ['Competition Matters (This Is 4th on Purpose)', 'We know the rules. We win and lose with grace.'],
+];
+---
+<Base>
+  <section class="home-hero">
+    <div class="home-hero-copy">
+      <img class="badge" src="/brand/lion.png" alt="STROH's crest" />
+      <h1>Welcome to STROH's</h1>
+      <p class="tagline">The South Texas Roost of Hospitality — a friendly, easily-accessible way for No Laying Up Refuge members (and their friends) to get out, meet people, and play golf across Austin, Houston, and San Antonio.</p>
+      <div class="hero-actions">
+        <a class="btn" href={discordUrl}>Join the Discord</a>
+        <a class="btn secondary" href="/competitions/muni-tour">Explore our Competitions</a>
+      </div>
+    </div>
+    <div class="home-hero-gallery">
+      <Gallery />
+    </div>
+  </section>
+
+  <h2>What We're About</h2>
+  <div class="principles">
+    {principles.map(([t, d]) => (
+      <div class="principle"><b>{t}</b>{d}</div>
+    ))}
+  </div>
+
+  <h2>The Competitions</h2>
+  <p>Four qualifiers feed our Roost Regional team (and the NIT) — plus the Texas Cup for bragging rights. Here's the lineup:</p>
+  <div class="cards">
+    {competitions.map(({ data }) => (
+      <a class="card" href={`/competitions/${data.slug}`} style={`--accent:${data.accent};`}>
+        <img class="comp-logo" src={data.logo} alt={data.title} />
+        <h3>{data.title}</h3>
+        <p>{data.blurb}</p>
+        <span class="view">View →</span>
+      </a>
+    ))}
+  </div>
+
+  <h2>New Here? Start in Three Steps</h2>
+  <p>New here? <a href="/downloads/strohs-overview-slides.html">▶ Watch the 5-minute intro slideshow.</a></p>
+  <ol>
+    <li><b>Join the Discord</b> — <a href={discordUrl}>hop in our Discord</a>. It can look busy at first, but head straight to <code>#find-a-game</code>.</li>
+    <li><b>Post that you're looking to play</b> — introduce yourself and grab an open spot.</li>
+    <li><b>Come play golf.</b> That's it. The competitions will make sense once you're out there.</li>
+  </ol>
+</Base>
+
+<style>
+  .home-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .home-hero-copy {
+    text-align: center;
+  }
+  .home-hero-copy .badge {
+    height: 168px;
+    width: auto;
+    display: block;
+    margin: 0 auto 16px;
+  }
+  .home-hero-gallery {
+    padding-top: 12px;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+  .comp-logo {
+    height: 64px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto 10px;
+    display: block;
+  }
+  @media (max-width: 820px) {
+    .home-hero {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,13 @@
+:root{--navy:#2B3350;--crimson:#C00840;--cream:#F8E8B8;}
+section{font-family:"Helvetica Neue",Arial,sans-serif;color:#1A1A2E;font-size:28px;padding:64px 72px;}
+h1{color:var(--navy);font-size:64px;}
+h2{color:var(--navy);border-bottom:4px solid var(--crimson);padding-bottom:8px;}
+h3{color:var(--crimson);}
+strong{color:var(--navy);}
+a{color:var(--crimson);}
+ul{line-height:1.5;}
+.motto{color:var(--crimson);font-weight:700;font-size:34px;margin-top:28px;}
+section.title{background:var(--navy);color:#fff;justify-content:center;text-align:center;}
+section.title h1{color:#fff;font-size:112px;margin:8px 0;}
+section.title .kicker{color:var(--cream);font-size:34px;letter-spacing:.06em;text-transform:uppercase;}
+section.title p{color:var(--cream);font-size:34px;}

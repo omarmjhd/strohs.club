@@ -1,0 +1,53 @@
+---
+import Base from './Base.astro';
+const { frontmatter } = Astro.props;
+const {
+  title,
+  slug = 'muni-tour',
+  tagline,
+  summary,
+  hero,
+  accent = '#002060',
+  keyFacts = [],
+} = frontmatter;
+const downloads = `/downloads/${slug}`;
+---
+<Base title={`${title} — STROH's`} description={tagline}>
+  <article class="competition" style={`--accent:${accent}`}>
+    <header class="comp-hero">
+      {hero && <img class="comp-hero-art" src={hero} alt={title} />}
+      <h1>{title}</h1>
+      {tagline && <p class="tagline">{tagline}</p>}
+    </header>
+
+    <div class="two-col">
+      <div class="prose">
+        <slot />
+      </div>
+
+      <aside class="aside">
+        {keyFacts.length > 0 && (
+          <div class="panel">
+            <h4>Key Facts</h4>
+            <div class="facts-stack">
+              {keyFacts.map((f) => (
+                <div class="fact">
+                  <span class="fact-label">{f.label}</span>
+                  <span class="fact-value">{f.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div class="panel">
+          <h4>Documents</h4>
+          <nav class="doc-links" aria-label="Downloads">
+            <a href={`${downloads}.pdf`}>One-pager (PDF)</a>
+            <a href={`${downloads}.png`}>Share image (PNG)</a>
+          </nav>
+        </div>
+      </aside>
+    </div>
+  </article>
+</Base>

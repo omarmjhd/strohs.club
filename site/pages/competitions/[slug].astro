@@ -1,0 +1,15 @@
+---
+import { getCollection, render } from 'astro:content';
+import Competition from '../../layouts/Competition.astro';
+
+export async function getStaticPaths() {
+  const competitions = await getCollection('competitions');
+  return competitions.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<Competition frontmatter={entry.data}>
+  <Content />
+</Competition>
