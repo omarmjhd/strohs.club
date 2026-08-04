@@ -3,37 +3,87 @@
 Places where the 2026 Almanac (`docs/2026-strohs-almanac.pdf`) and the site content in
 `content/` disagree, plus content on the site that has no Almanac source at all.
 
-**Nothing here has been decided.** Agents working on this repo flag into this register rather
-than resolving conflicts on their own — a wrong guess about a scoring rule or the season's
-charity is worse than an open question. Omar and Josh rule on each item; the ruling then flows
-back into whichever side was wrong.
+Agents working on this repo flag into this register rather than resolving conflicts on their own
+— a wrong guess about a scoring rule or the season's charity is worse than an open question.
+Omar and Josh rule on each item; the ruling then flows back into whichever side was wrong.
 
-IDs are stable. Cite them (`R-02`, `D-05`) in commits and in content comments.
+IDs are stable. Cite them (`R-02`, `D-05`) in commits and in content comments. The detail behind
+each item is kept below even after it is ruled, because the register is the audit trail for why
+the site says what it says.
 
 ---
 
-## How to use this
+## Rulings — 2026-08-04
 
-Every item below is written so it can be ruled on without reading the Almanac: both sides are
-quoted, the page number is given, and the cost of each ruling is stated.
+Omar ruled on every open item. **The site won nearly every Almanac conflict**, so the corrections
+below mostly belong in the Almanac, not in `content/`.
 
-- **Nothing here blocks anything.** The site builds, deploys, and reads correctly as it stands.
-  Each open item is a place where the site has taken a position that nobody has confirmed, or
-  where it has deliberately declined to take one.
-- **Rule on `R-01` first.** It is the only item that is both publicly visible and factually
-  reversed: the Almanac names *Kids Eat, Inc* as the 2026 charity, the old site named *Wonders
-  and Worries*. `content/about/charity.md` currently names neither as current — it lists both
-  prior recipients as **past** only — so the site is not wrong today, it is silent. One sentence
-  under "This season" closes it.
-- **After that, the scoring rules** (`R-02`, `R-03`) and **the dates** (`R-04`, `R-05`,
-  `R-08`, `R-09`). Those four dates are also what keeps the newcomer-facing table in
-  `getting-started.md` from having a "When" column (see `C-04`).
-- **To rule on an item**, edit the losing side and cite the ID in the commit message. Move the
-  row to a "Resolved" note at the bottom of its section rather than deleting it — the register
-  is the audit trail for why the site says what it says.
-- **Draft items (`D-nn`) are ratification, not conflict.** The material is on the website but
-  held out of every PDF, PNG, slide deck, and the Almanac by `<!-- draft:D-0n -->` markers. Rule
-  by deleting the markers (ratified) or deleting the prose (rejected).
+### Almanac vs. site
+
+| ID | Ruling | Change |
+|---|---|---|
+| **R-01** | **Wonders and Worries** is the current charity | `about/charity.md` gained a "This season" section. The Almanac's *Kids Eat, Inc* is wrong |
+| **R-02** | **150** — the site is right | none |
+| **R-03** | **7 / 5 / 2** — the arithmetic wins over the printed table | none. Almanac p6's 7/5/3 is wrong |
+| **R-04** | **Sunday, April 11 2027** — the site is right | none |
+| **R-05** | **Sundays: May 2, May 16, Jun 13, Jun 27** — the site is right | none |
+| **R-06** | **Must be a STROH** — the site's stricter wording is intended | none |
+| **R-07** | **South** Texas Roost of Hospitality | none. The Almanac's "Southern" is wrong |
+| **R-08** | Revert to **"January or February"** — the month is not settled | `two-step.md` × 3 (prose, `keyFacts.When`, `summary`) |
+| **R-09** | **Late October / early November 2026**, as a target | `all-strohs-open.md` × 2 |
+| **R-10** | **Golf Club** — the site is right | none |
+| **R-11** | Almanac bug; the site's "four" is right | none |
+
+### Draft ratification
+
+| ID | Ruling | Held back as draft |
+|---|---|---|
+| **D-01** | Rules ratified — Day-2 pick-up, USGA 9-6-3-1 tie-break, Winner's Belt | Landa Park · $250 entry · 40-player cap · Google Form |
+| **D-02** | Quota formula, Winner's Jacket, tie-breakers and Side Games all ratified | $125 entry fee only |
+| **D-03** | Fully ratified | — |
+| **D-04** | **Deleted** — "monthly recaps and the odd surprise prize" removed outright | — |
+| **D-05** | **Texas Cup is real** — fully ratified, artifacts restored | — |
+
+Winner's Belt was not explicitly ruled; it was ratified by analogy with the Jacket in `D-02`.
+
+### Build-out questions
+
+| ID | Ruling |
+|---|---|
+| **C-01** | Instagram handle confirmed as ours. No change |
+| **C-03** | Home page renders only an excerpt of `getting-started`; the competitions table now appears on `/getting-started` only |
+| **C-04** | Unblocked by the date rulings — the at-a-glance table gained a **When** column |
+| **C-05** | Texas Cup added to `getting-started.md` and `path-to-nationals.md` as an explicitly non-qualifying team event |
+| **C-06** | **#getinvolved**. `competition-notes.md` corrected |
+| **C-07** | No action — informational, so nobody "fixes" the 2022 blockquote |
+| **C-08** | Still deferred with standings |
+| **C-09** | **Nest Invitational Tournament**. The Almanac's "NLU Invitational" is wrong; `path-to-nationals.md` and `two-step.md` corrected |
+| **K-05** | Keep the compressed weather rule |
+
+### Consequences for the Almanac
+
+The Almanac PDF is now the out-of-date document. It needs correcting on **R-01** (charity),
+**R-02** (walk-off 100 → 150), **R-03** (Alt-Shot 7/5/3 → 7/5/2), **R-07** (Southern → South),
+**R-09** (ASO timing), **R-11** (says five qualifiers, lists four), and **C-09** (NIT expansion),
+and it needs a Texas Cup section written for **D-05**.
+
+### Still open
+
+- **R-12** — canonical hostname. Dissolves with the pending base-path change to
+  `omarmjhd.github.io/strohs.club` for pre-DNS preview.
+- **R-16** — schema drift. Partly addressed: frontmatter draft markers are now stripped on the
+  Astro side too (see `R-15`), but `status`, `draftIds` and page-level `outputs` are still
+  invisible to layouts.
+- **K-04** — `competition-notes` has no hero art.
+- The **season label** on the Muni Tour leaderboard workbook: titled "2026-2027" but the rounds
+  run 9/2025 – 5/2026.
+
+### Closed by implementation
+
+**R-15** — draft facts in frontmatter. `keyFacts` values in `two-step.md` and
+`all-strohs-open.md` now carry inline markers, and `site/content.config.mjs` strips markers from
+frontmatter strings so the site shows the prose while the artifact pipeline drops it. Without
+that transform the markers rendered as visible escaped text in the Key Facts panel.
 
 ---
 

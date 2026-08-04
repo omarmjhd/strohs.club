@@ -22,17 +22,22 @@ New here? [▶ Watch the 5-minute intro slideshow.](/downloads/strohs-overview-s
 Nobody expects you to read the rules first. It's a rare weekend where someone doesn't have an
 open spot somewhere nearby, and anyone is free to jump in.
 
+<!-- home-excerpt-end -->
+
 ## The Competitions at a Glance
 
 Four events run through the season. Every one of them is net, so a high handicap is not a reason
 to sit one out.
 
-| Competition | What it is | What it earns you |
-|---|---|---|
-| **[Texas Two-Step](/competitions/two-step)** | Two-day net "ringer" — your best net score per hole across the two days | A Regional team seat, plus our NIT spot |
-| **[All-STROHs Open](/competitions/all-strohs-open)** | One-day net quota event, no weekend of travel required | A Regional team seat |
-| **[Muni Tour](/competitions/muni-tour)** | Season-long net points race across Texas munis, played at your own pace | A playoff berth, then a Regional team seat |
-| **[Opn Szn](/competitions/opnszn)** | Season-long match play — pick your own opponents, collect points | A bracket spot, then a Regional team seat |
+| Competition | When | What it is | What it earns you |
+|---|---|---|---|
+| **[Texas Two-Step](/competitions/two-step)** | A Friday–Saturday, Jan or Feb 2027 | Two-day net "ringer" — your best net score per hole across the two days | A Regional team seat, plus our NIT spot |
+| **[All-STROHs Open](/competitions/all-strohs-open)** | Late Oct / early Nov 2026 | One-day net quota event, no weekend of travel required | A Regional team seat |
+| **[Muni Tour](/competitions/muni-tour)** | September – May | Season-long net points race across Texas munis, played at your own pace | A playoff berth, then a Regional team seat |
+| **[Opn Szn](/competitions/opnszn)** | Sept 2026 – Apr 2027 | Season-long match play — pick your own opponents, collect points | A bracket spot, then a Regional team seat |
+
+The **[Texas Cup](/competitions/texas-cup)** runs alongside these — a three-day Ryder Cup against
+Big Plex. It's the biggest weekend on the calendar, but no Regional seat rides on it.
 
 Play one, play all four, or play none and just come out for the hang. All of it counts as
 showing up.

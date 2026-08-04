@@ -59,9 +59,12 @@ Four events feed our Roost Regional team, one seat each:
 4. **[Opn Szn](/competitions/opnszn)** — a season-long match-play tournament, decided by a
    playoff bracket.
 
+The **[Texas Cup](/competitions/texas-cup)** sits outside this list. It's our marquee team event
+against Big Plex, but it isn't a Roost Regional qualifier — no seat rides on it.
+
 ## The NIT
 
-Separately — but all sort of related — NLU hosts the **NLU Invitational (NIT)** every
+Separately — but all sort of related — NLU hosts the **Nest Invitational Tournament (NIT)** every
 **November**. Each Roost designates one of its events as its **"Major,"** and the winner of that
 event is the Roost's NIT qualifier.
 

@@ -14,7 +14,7 @@ outputs: [page, pdf]
 
 ## Why We Run Events This Way
 
-Any of us can pull up a city golf tournament schedule and find a one-day or two-day stroke-play event. STROH's is more about **#gettinginvolved** and enjoying the game, and less about grinding on two-footers for double bogey. So we **prioritize fun courses, fun formats, and fun side games over pure stroke-play competition**.
+Any of us can pull up a city golf tournament schedule and find a one-day or two-day stroke-play event. STROH's is more about **#getinvolved** and enjoying the game, and less about grinding on two-footers for double bogey. So we **prioritize fun courses, fun formats, and fun side games over pure stroke-play competition**.
 
 ## Teeboxes
 

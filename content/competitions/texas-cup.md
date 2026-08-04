@@ -29,12 +29,9 @@ social:
     - "Two 16-player teams — STROH's vs. Big Plex (DFW)"
     - "Late March 2027 · The Hideout, Brownwood, TX"
     - "Sixth year of the STROH's–Big Plex rivalry"
-outputs: [page]
-status: draft
-draftIds: [D-05]
+outputs: [page, pdf, png]
 ---
 
-<!-- draft:D-05 -->
 ## Overview
 
 Now in its **sixth year**, the Texas Cup is our marquee team event — a three-round, Ryder Cup–style throwdown for Texas bragging rights. This year pits a **16-player STROH's team against a 16-player Big Plex (DFW) team** across a full weekend of match play.
@@ -69,4 +66,3 @@ Two **16-player** squads go to war: **STROH's vs. Big Plex.** Rosters and captai
 You just need a **tie to one of the three Texas metros** — Austin/San Antonio, Houston, or Dallas. You do **not** have to be a STROH's or Big Plex member to play.
 
 Sign-ups run through the **STROH's / Big Plex Discord** — DM **@jdonelson** (STROH's) or **@Insulin_And_Bogeys** (Big Plex) for an invite and registration details.
-<!-- /draft:D-05 -->

@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntry, render } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Gallery from '../components/Gallery.astro';
 
@@ -9,7 +9,11 @@ const competitions = (await getCollection('competitions'))
   .filter((entry) => entry.data.kind === 'competition')
   .sort((a, b) => a.data.order - b.data.order);
 
-const { Content } = await render(await getEntry('pages', 'getting-started'));
+// The home page shows only the opening of getting-started. Everything past the sentinel is the
+// competitions table, which would sit directly above the card grid saying the same thing.
+// Split the rendered HTML rather than the source so this uses Astro's own markdown pipeline.
+const gettingStarted = await getEntry('pages', 'getting-started');
+const homeExcerpt = gettingStarted.rendered.html.split('<!-- home-excerpt-end -->')[0];
 ---
 <Base>
   <section class="home-hero">
@@ -27,9 +31,7 @@ const { Content } = await render(await getEntry('pages', 'getting-started'));
     </div>
   </section>
 
-  <div class="prose">
-    <Content />
-  </div>
+  <div class="prose" set:html={homeExcerpt} />
 
   <h2>The Competitions</h2>
   <p>Four qualifiers feed our Roost Regional team (and the NIT) — plus the Texas Cup for bragging rights. Here's the lineup:</p>

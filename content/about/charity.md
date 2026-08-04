@@ -20,6 +20,11 @@ Tie it to something you'd be doing anyway — muni rounds, match-play wins, a Tw
 — and the total takes care of itself. We're always open to creative ideas, and we'd rather have
 ten people running small, silly challenges than one large cheque.
 
+## This season
+
+Our charity is **Wonders and Worries**, which provides free professional support to children
+and teenagers during a parent's serious illness.
+
 ## Who we've supported
 
 Past seasons have gone to:
@@ -30,5 +35,3 @@ Past seasons have gone to:
 Our charity doesn't change every year — carrying the same cause across seasons is normal and
 deliberate — but we're open to new suggestions at any time. If there's an organization that
 matters to you, bring it to the Discord.
-
-The charity designated for the current season is announced to the Roost when the season opens.

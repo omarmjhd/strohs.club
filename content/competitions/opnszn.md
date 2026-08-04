@@ -90,10 +90,6 @@ Play it **Ryder-Cup style** — before the match, decide who tees off on the **o
 
 **Regular Season:** September 1, 2026 → Sunday, April 11, 2027.
 
-<!-- draft:D-04 -->
-Expect **monthly recaps and the odd surprise prize** as the race unfolds.
-<!-- /draft:D-04 -->
-
 Once the regular season ends, the top 12 head to the Playoff Bracket. The bracket runs on the guideline deadlines below, with exact dates and pairings announced in Discord:
 
 - **First-round matches:** by Sun, May 2, 2027
