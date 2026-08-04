@@ -11,7 +11,10 @@ const { title = "STROH's — South Texas Roost of Hospitality", description = "A
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" href={withBase("/brand/lion.png")} />
+    {/* Generated from brand/lion.png with its transparent margin trimmed — the full-size
+        crest is 1000x1000 with ~20% padding, which leaves almost nothing legible at 16px. */}
+    <link rel="icon" type="image/png" sizes="32x32" href={withBase("/favicon-32.png")} />
+    <link rel="apple-touch-icon" sizes="180x180" href={withBase("/apple-touch-icon.png")} />
   </head>
   <body>
     <header class="site-header">

@@ -15,7 +15,7 @@ principles:
 
 ## New Here? Start in Three Steps
 
-New here? [▶ Watch the 5-minute intro slideshow.](/downloads/strohs-overview-slides.html)
+[Check out our Introduction to STROH's](/downloads/strohs-overview-slides.html)
 
 1. **Join the Discord** — [hop in our Discord](https://discord.gg/frNSUn5ZmC). It can look busy at first, but head straight to `#new-people-start-here`.
 2. **Post that you're looking to play** — introduce yourself and grab an open spot.
