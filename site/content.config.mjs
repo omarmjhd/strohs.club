@@ -55,6 +55,10 @@ const competitions = defineCollection({
     // Free-form per-template blocks consumed by templates/social.mjs.
     social: z.record(z.any()).optional(),
     outputs: z.array(z.enum(['page', 'pdf', 'png', 'slides'])).default(['page']),
+    // Honoured by scripts/lib/content.mjs. Declared here too because z.object strips
+    // unknown keys, which previously left layouts unable to see draft state at all.
+    status: z.enum(['confirmed', 'draft']).default('confirmed'),
+    draftIds: z.array(z.string()).default([]),
   }),
 });
 
@@ -70,6 +74,9 @@ const pages = defineCollection({
     heroImage: z.string().optional(),
     quickFacts: z.array(keyFact).default([]),
     principles: z.array(z.object({ title: prose(), body: prose() })).default([]),
+    outputs: z.array(z.enum(['page', 'pdf', 'png', 'slides'])).default(['page']),
+    status: z.enum(['confirmed', 'draft']).default('confirmed'),
+    draftIds: z.array(z.string()).default([]),
     // No `slug` field on purpose: the glob loader returns `data.slug` as the entry
     // id when present, so adding one here would silently move the page's URL.
   }),

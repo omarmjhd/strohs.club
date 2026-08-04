@@ -2,6 +2,9 @@
 title: General Competition Notes
 slug: competition-notes
 navGroup: Competitions
+accent: "#002060"
+hero: /brand/strohs-badge.png
+logo: /brand/strohs-badge.png
 order: 99
 kind: notes
 tagline: The rules every STROH's competition shares — tees, handicaps, and which rulebook wins.

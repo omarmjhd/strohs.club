@@ -3,9 +3,27 @@ export const CRIMSON = '#C00840';
 export const CREAM = '#F8E8B8';
 export const INK = '#1A1A2E';
 
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+// Fonts are embedded rather than linked. The PDF/PNG scripts render with `networkidle0`, so a
+// slow or blocked fonts.googleapis.com would not fail the build — it would silently emit
+// artifacts in a fallback face.
+const FONT_DIR = path.resolve(fileURLToPath(import.meta.url), '../../public/fonts');
+const face = (family, weight, file) =>
+  `@font-face{font-family:'${family}';font-style:normal;font-weight:${weight};font-display:block;` +
+  `src:url(data:font/woff2;base64,${fs.readFileSync(path.join(FONT_DIR, file)).toString('base64')}) format('woff2');}`;
+
 export const FONTS =
-  '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
-  '<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">';
+  '<style>' +
+  face('Fraunces', 500, 'fraunces-500.woff2') +
+  face('Fraunces', 600, 'fraunces-600.woff2') +
+  face('Source Sans 3', 400, 'source-sans-3-400.woff2') +
+  face('Source Sans 3', 600, 'source-sans-3-600.woff2') +
+  face('Source Sans 3', 700, 'source-sans-3-700.woff2') +
+  face('Source Sans 3', 900, 'source-sans-3-900.woff2')
+  '</style>';
 
 export const rootVars = (accent = NAVY) =>
   `:root{--navy:${NAVY};--crimson:${CRIMSON};--cream:${CREAM};--ink:${INK};--accent:${accent};}`;
