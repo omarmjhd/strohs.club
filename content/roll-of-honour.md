@@ -1,42 +1,83 @@
 ---
 title: Roll of Honour
-subtitle: Who has won what, going back to the first season. The results archive in one page.
+subtitle: Every STROH's champion since 2021 — current competitions and the ones we no longer run.
 order: 2
 quickFacts:
-  - { label: "Seasons recorded", value: "2022 – present" }
-  - { label: "Current champions", value: "See below" }
-  - { label: "Missing a result?", value: "Tell us in the Discord", link: "https://discord.gg/frNSUn5ZmC" }
+  - { label: "Seasons recorded", value: "2021 – present" }
+  - { label: "Muni Tour", value: "Three straight to Stefan Icenogle" }
+  - { label: "Something missing?", value: "Tell us in the Discord", link: "https://discord.gg/frNSUn5ZmC" }
 ---
 
 Full leaderboards live in the sheets each competition is scored in — see
-**[Standings](/standings)** for the boards that are live now. This page is the short version:
-who won.
+**[Standings](/standings)** for the boards that are live now. This page is the record of who won.
 
-## Champions
+## 2025–26
 
-| Season | Competition | Champion | Result |
-|---|---|---|---|
-| 2026 | [All-STROHs Open](/competitions/all-strohs-open) | **Zach Sewill** | +7, won on the 2nd playoff hole over Josh Donelson |
-| 2026 | [Texas Two-Step](/competitions/two-step) | **Jason Sandoval** | +3 — played as a one-day "Half Step" on 23 January |
-| 2023 | Muni Tour Championship | **Austin Alaniz** | 41 quota points |
-
-## Still to be filled in
-
-The old site lists these events but never published a result for them, so they can't be
-recovered from it. If you know the winner, add it here or say so in the Discord.
-
-| Season | Competition |
+| Competition | Champion |
 |---|---|
-| 2026 | Muni Tour · Opn Szn Match Play |
-| 2025 | Muni Tour · Opn Szn Match Play |
-| 2024 | Muni Tour · Open Season Match Play · Sixers on Ice |
-| 2023 | Muni Tour (season standings) · Sixers on Ice · Texas Match Play Massacre |
-| 2022 | Muni Tour · Texas Match Play Massacre |
+| [Texas Two-Step](/competitions/two-step) | **Jason Sandoval** — +3, played as a one-day "Half Step" on 23 January |
+| [All-STROHs Open](/competitions/all-strohs-open) | **Zach Sewill** — +7, on the 2nd playoff hole over Josh Donelson |
+| [Muni Tour](/competitions/muni-tour) | **Jonny Perkins** — won the first post-season playoff |
+| [Opn Szn Match Play](/competitions/opnszn) | **John T Carney** |
+| [Texas Cup](/competitions/texas-cup) | **Team AUS/SA** — last running of the three-team format |
 
-## Events we no longer run
+## 2024–25
 
-Kept here so the record makes sense to anyone reading back:
+| Competition | Champion |
+|---|---|
+| [Texas Two-Step](/competitions/two-step) | **Jonathan Greer** |
+| [All-STROHs Open](/competitions/all-strohs-open) | **Robert McCall** |
+| [Muni Tour](/competitions/muni-tour) — season | **Stefan Icenogle** |
+| [Opn Szn Match Play](/competitions/opnszn) | **Jack Peters** |
+| [Texas Cup](/competitions/texas-cup) | **Team HOU** |
 
-- **Sixers on Ice** — a winter six-hole competition, run in 2023 and 2024.
-- **Texas Match Play Massacre** — the match-play event that became
-  [Opn Szn](/competitions/opnszn).
+## 2023–24
+
+| Competition | Champion |
+|---|---|
+| [Muni Tour](/competitions/muni-tour) — season | **Stefan Icenogle** |
+| Muni Tour Championship *(the All-STROHs Open under its old name)* | **Omar Mujahid-Pair** |
+| Open Season Match Play | **Omar Mujahid-Pair** |
+| Sixers on Ice | **Austin Baccus** |
+| [Texas Cup](/competitions/texas-cup) | **Team AUS/SA** |
+
+## 2022–23
+
+| Competition | Champion |
+|---|---|
+| [Muni Tour](/competitions/muni-tour) — season | **Stefan Icenogle** |
+| Muni Tour Championship *(the All-STROHs Open under its old name)* | **Austin Alaniz** — 41 quota points |
+| Sixers on Ice | **Tim Brooks** |
+| Texas Match Play Massacre | **Josh Donelson** |
+| [Texas Cup](/competitions/texas-cup) | **Team AUS/SA** |
+
+## 2022
+
+| Competition | Champion |
+|---|---|
+| [Muni Tour](/competitions/muni-tour) | **Omar Mujahid-Pair** |
+| All-STROHs Open | **Heath Gardenhire** |
+| Texas Match Play Massacre | **Stefan Icenogle** |
+| [Texas Cup](/competitions/texas-cup) | **Team AUS/SA** |
+
+## 2021
+
+| Competition | Champion |
+|---|---|
+| [Texas Cup](/competitions/texas-cup) | **Team AUS/SA** |
+
+## How the competitions have changed
+
+The line-up hasn't always looked like it does now.
+
+- **The All-STROHs Open was called the Muni Tour Championship** for 2022–23 and 2023–24, before
+  returning to its own name. Despite the name it was a standalone event, not a Muni Tour
+  play-off — worth knowing when reading those two seasons back.
+- **The Muni Tour gained a real post-season play-off in 2025–26.** Before that the season-long
+  points race decided it outright; now the top 4 from each city meet in a 12-player final.
+- **The Texas Match Play Massacre** became **[Opn Szn Match Play](/competitions/opnszn)**.
+- **The Texas Cup ran with three teams** — AUS/SA, HOU and DAL — for its first six years. After
+  the 2026 event it moved to two teams: STROH's against
+  **[Big Plex](/competitions/texas-cup)** (DFW).
+- **Sixers on Ice**, a winter short-course competition, ran in 2022–23 and 2023–24.
+- Seasons ran on a single calendar year until 2022, and September-to-May from 2022–23 onward.

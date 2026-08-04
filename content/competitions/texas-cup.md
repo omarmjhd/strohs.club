@@ -34,7 +34,9 @@ outputs: [page, pdf, png]
 
 ## Overview
 
-Now in its **sixth year**, the Texas Cup is our marquee team event — a three-round, Ryder Cup–style throwdown for Texas bragging rights. This year pits a **16-player STROH's team against a 16-player Big Plex (DFW) team** across a full weekend of match play.
+The Texas Cup is our marquee team event — a three-round, Ryder Cup–style throwdown for Texas bragging rights, and a **new format this year**: a **16-player STROH's team against a 16-player Big Plex (DFW) team** across a full weekend of match play.
+
+For its first six years the Cup was a **three-team** affair — Austin/San Antonio, Houston and Dallas. After the 2026 event we moved to two teams, with the Dallas contingent now playing as Big Plex. Past winners are on the **[Roll of Honour](/roll-of-honour)**.
 
 The event enters its **second year at [The Hideout](https://www.thehideouttexas.com/) in Brownwood, TX**, after four years at Pine Dunes.
 
