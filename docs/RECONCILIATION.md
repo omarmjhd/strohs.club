@@ -69,21 +69,53 @@ and it needs a Texas Cup section written for **D-05**.
 
 ### Still open
 
-- **R-12** — canonical hostname. Dissolves with the pending base-path change to
-  `omarmjhd.github.io/strohs.club` for pre-DNS preview.
+**Awaiting confirmation, not a conflict**
+
+- **D-01 remainder** — Landa Park as the venue, the $250 entry, the 40-player field cap and the
+  Google Form sign-up are still marked draft, so they render on the site but stay out of every
+  PDF, PNG, deck and the Almanac. The Two-Step rules themselves were ratified.
+- **D-02 remainder** — the $125 ASO entry fee, same treatment. Everything else on that page
+  (quota formula, Winner's Jacket, tie-breakers, Side Games) was ratified.
+
+**Repo-internal**
+
 - **R-16** — schema drift. Partly addressed: frontmatter draft markers are now stripped on the
   Astro side too (see `R-15`), but `status`, `draftIds` and page-level `outputs` are still
-  invisible to layouts.
-- **K-04** — `competition-notes` has no hero art.
-- The **season label** on the Muni Tour leaderboard workbook: titled "2026-2027" but the rounds
-  run 9/2025 – 5/2026.
+  absent from `site/content.config.mjs`, so a layout physically cannot see draft state. This is
+  why `R-14` had to be fixed in content rather than in the layout.
+- **K-04** — `competition-notes` has no `hero`, `logo` or `accent`, so its page header renders as
+  a bare heading and it is the only competition-collection entry without a badge.
+- **C-02** — the Discord posture question is unruled: the Almanac describes invites as
+  requested from a person, the site publishes a standing invite URL. Both paths are currently
+  offered on `community.md` and `getting-started.md`.
+
+**Data problems in the source sheets**
+
+- **Opn Szn header** — cell **A1 changed from `Rank` to `1`** during the 2026-08-04 session and
+  has stayed that way, so the first column header renders as "1" on the site. Fix it in the
+  sheet; nothing in the repo needs to change. Row filtering was switched to column indices
+  (`requireColumns: [0, 1]`) so this class of edit can no longer silently break the board.
+- **Opn Szn seeding ties** — Blake Glauben and Alex Kaplan are both rank 11 on 27 points. The
+  projected bracket has to seed them 11 and 12 and takes whatever order the sheet lists, which
+  decides who draws the 5-seed and who draws the 6-seed. The tie-break rules cover a cut line
+  but not seeding within a tie.
+- **Muni Tour season label** — the workbook is titled "2026-2027" but its rounds run
+  9/2025 – 5/2026, which is the 2025-26 season under a September–May calendar.
+
+**Known risk, not yet hit**
+
+- **Google Fonts at render time** — `templates/brand.mjs` pulls Fraunces and Source Sans 3 from
+  `fonts.googleapis.com` while the PDF and PNG scripts wait on `networkidle0`. If that is slow
+  or blocked on a CI runner the build does not fail; it silently emits artifacts in Helvetica.
+  Self-hosting the two faces under `public/brand/` would remove the flake.
 
 ### Closed by implementation
 
-**R-15** — draft facts in frontmatter. `keyFacts` values in `two-step.md` and
-`all-strohs-open.md` now carry inline markers, and `site/content.config.mjs` strips markers from
-frontmatter strings so the site shows the prose while the artifact pipeline drops it. Without
-that transform the markers rendered as visible escaped text in the Key Facts panel.
+| ID | Resolution |
+|---|---|
+| **R-12** | Canonical hostname. Resolved by neither original option: `public/CNAME` is gone and the site is served from `omarmujahidpair.com/strohs.club/` until DNS moves, with `site` and `base` set to match. The www-vs-apex decision returns at cutover |
+| **R-15** | Draft facts in frontmatter. `keyFacts` in `two-step.md` and `all-strohs-open.md` carry inline markers, and `site/content.config.mjs` strips markers from frontmatter strings — the site shows the prose, the pipeline drops it. Without that transform the markers rendered as visible escaped text in the Key Facts panel |
+| **C-08** | Standings publication. `content/standings.md` exists and boards render live from published sheets. Muni Tour (qualifiers, city standings, nine course boards) and Opn Szn (season points plus a projected bracket) are live; the Two-Step, ASO and Texas Cup appear automatically once each has a sheet |
 
 ---
 
