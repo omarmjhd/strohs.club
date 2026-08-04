@@ -199,6 +199,14 @@ commit and start a pull request** on the commit screen rather than committing st
 
 ---
 
+## Not going to use GitHub at all?
+
+A page can be kept in a Google Doc instead, and the site will read it once an hour. Setting
+that up is a one-line change someone else makes once; after it, you only ever open Google
+Drive. See [AUTHORING-GOOGLE-DRIVE.md](AUTHORING-GOOGLE-DRIVE.md).
+
+---
+
 ## Who to ask
 
 Post in the Discord, or tag `@jdonelson` or `@omarmjhdpr`. Nothing you can do in a `.md`

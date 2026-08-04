@@ -1,0 +1,4 @@
+{
+  "readme": "Components authored in Google Drive. See docs/AUTHORING-GOOGLE-DRIVE.md. Each source needs a `file` (where it lands under content/) and a `from` (the Doc or Sheet link). Add one and `npm run sync` — or the hourly Sync content workflow — keeps that file up to date.",
+  "sources": []
+}

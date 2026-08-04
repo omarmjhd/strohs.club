@@ -35,12 +35,15 @@ scripts/                     # doc pipeline (reads the same content/ as the site
   build-pdf.mjs  build-png.mjs  build-slides.mjs  build-almanac.mjs  build-all.mjs
   check-content.mjs          # `npm run check` — the same rules, reported to an author
   verify-build.mjs           # `npm run verify` — asserts the built dist/, not that files exist
-  lib/content.mjs  lib/paths.mjs  lib/link-drift.mjs
+  sync-gdocs.mjs             # `npm run sync` — Google Doc/Sheet → content/*.md
+  lib/content.mjs  lib/paths.mjs  lib/link-drift.mjs  lib/gdoc.mjs
+content-sources.json         # which components are authored in Google Drive (none by default)
 public/brand/                # logos + hero art (exported, web-ready)
 public/downloads/            # generated docs (PDF / PNG / slides / Almanac)
 Logos-Art/                   # source art — the originals public/brand/ is exported from
 docs/                        # source material, not shipped
   AUTHORING.md               # the contributor's guide — start here if you only edit content
+  AUTHORING-GOOGLE-DRIVE.md  # the same job for an admin who only opens Google Drive
   templates/                 # copy-me starting points: new-page.md, new-competition.md
   BRAND.md                   # palette, typography, logo inventory
   RECONCILIATION.md          # open questions where the Almanac and the site disagree
@@ -67,6 +70,7 @@ npm run docs:pdf   # just the PDFs
 npm run docs:png   # just the social images
 npm run docs:slides
 npm run docs:almanac
+npm run sync       # pull the components authored in Google Drive (see below)
 ```
 
 **Ordering matters:** `astro build` copies `public/` into `dist/`, so `docs` must run *before*
@@ -84,6 +88,17 @@ npm run docs:almanac
 No browser is downloaded — it reuses the installed Chrome. `.github/workflows/deploy.yml` runs
 `npm run ci` on every push to `main` and every pull request, and publishes `dist/` to GitHub
 Pages on `main` only.
+
+### Components authored in Google Drive
+A component can instead live in a Google Doc or Sheet, for an administrator who will not use
+GitHub. `content-sources.json` maps a shared Google file to a path under `content/`;
+`npm run sync` fetches it (`export?format=md` for a Doc, a CSV export for a Sheet), converts a
+two-column settings table into frontmatter and the rest into the body, and writes the file only
+if it changed. `.github/workflows/sync-content.yml` does that hourly, runs `npm run check`
+before committing anything, and then calls `deploy.yml` — a push made with `GITHUB_TOKEN` does
+not fire the `push` trigger, hence the `workflow_call`. The registry ships empty, so all of this
+is inert until a source is added. Author-facing instructions:
+[docs/AUTHORING-GOOGLE-DRIVE.md](docs/AUTHORING-GOOGLE-DRIVE.md).
 
 The PNGs and the Marp deck are committed; the PDFs are gitignored because PDF output embeds a
 creation timestamp and would churn on every run.
