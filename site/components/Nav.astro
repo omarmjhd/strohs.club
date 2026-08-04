@@ -43,6 +43,7 @@ const groups = NAV.map((group) => ({
     <span class="nav-top">Standings ▾</span>
     <div class="dropdown">
       <a href={withBase("/standings")}>All Standings</a>
+      <a href={withBase("/roll-of-honour")}>Roll of Honour</a>
       {withStandings.map((c) => (
         <a href={withBase(`/competitions/${c.data.slug}#standings`)}>{c.data.title}</a>
       ))}
