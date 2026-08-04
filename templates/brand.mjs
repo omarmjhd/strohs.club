@@ -22,7 +22,7 @@ export const FONTS =
   face('Source Sans 3', 400, 'source-sans-3-400.woff2') +
   face('Source Sans 3', 600, 'source-sans-3-600.woff2') +
   face('Source Sans 3', 700, 'source-sans-3-700.woff2') +
-  face('Source Sans 3', 900, 'source-sans-3-900.woff2')
+  face('Source Sans 3', 900, 'source-sans-3-900.woff2') +
   '</style>';
 
 export const rootVars = (accent = NAVY) =>
