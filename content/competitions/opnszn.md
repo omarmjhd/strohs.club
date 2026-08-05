@@ -43,6 +43,7 @@ social:
     - "Fourball — 2 win / 1 draw / 0 loss, each player (low player in the group)"
     - "Alt-Shot — 5 / 3 / 0 plus a 2-pt bonus for every player → 7 / 5 / 2"
     - "Top 12 points scorers make the playoff • Top 4 earn a Quarterfinal bye"
+    - "Seeding ties: head-to-head → fewer matches → most recent"
   formats:
     - { name: "Singles", detail: "Head-to-head match play" }
     - { name: "Fourball", detail: "2 vs 2, best ball" }
@@ -103,6 +104,13 @@ Play it **Ryder-Cup style** — before the match, decide who tees off on the **o
 ## Season & Playoffs
 
 **Regular Season:** September 1, 2026 → Sunday, April 11, 2027.
+
+**Level on points?** Seeding ties — including the ones that decide the 12th bracket spot and the 4th bye — break in this order:
+
+1. **Head-to-head** between the tied players, if they played each other.
+2. **Fewer matches played** — the same points from fewer matches seeds higher.
+3. **Most recent match.**
+4. **Committee ruling**, if somehow still level.
 
 Once the regular season ends, the top 12 head to the Playoff Bracket. The bracket runs on the guideline deadlines below, with exact dates and pairings announced in Discord:
 

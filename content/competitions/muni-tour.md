@@ -31,7 +31,7 @@ keyFacts:
   - label: Format
     value: Season-long net points race — 9 munis, 3 cities
   - label: Season
-    value: September – May
+    value: Sept 1, 2026 – May 31, 2027
   - label: How to qualify
     value: Top 4 per city → 12-player single-day playoff
   - label: The prize
@@ -53,10 +53,14 @@ outputs: [page, pdf, png, slides]
 
 - **Net score** = gross − your course handicap. Everyone competes on a level field.
 - Each course has its own leaderboard ranked by net. The **top 10 net scores earn points**: 10 for 1st, 9 for 2nd, … down to 1 for 10th. Outside the top 10 earns 0.
-- **Ties split the points** between the tied positions (a T2 pair each get 8.5).
+- **Ties split the points** between the tied positions (a T2 pair each get 8.5). A tie that runs past 10th splits across the zero-point places too — three players tied for 9th share 2 + 1 + 0 and take **1 point each**.
 - **One counting score per course** — your most recent *declared* round there.
 
 Your **City Score** is the sum of your points at that city's three courses. Play more courses and you have more chances to score — playing more can only help.
+
+**You score in every city you play in.** Post a round in Houston and you rank on the Houston board, even if you live in Austin — that is exactly how a player ends up top-4 in two cities. There is no home-city restriction.
+
+The season runs **September 1, 2026 through May 31, 2027**. Rounds played outside that window do not count, and the playoff is a single day in June 2027.
 
 ## The Courses
 
@@ -94,8 +98,16 @@ Declare in the **Discord thread**, naming who you're playing with and everyone's
 
 ## Mulligan Rounds
 
-You can replay any course as many times as you like — but it's a commitment: the moment you declare a round, it **replaces** your previous score there, better or worse. Walk off under your own power and it posts as a **150**. Weather or a genuine emergency voids the round and your prior score stands.
+You can replay any course as many times as you like — but it's a commitment: the moment you declare a round, it **replaces** your previous score there, better or worse. Walk off under your own power and it posts as a **net 150** — the same penalty for everyone, with no handicap applied. Weather or a genuine emergency voids the round and your prior score stands.
+
+**Declare a round and then never submit it** and the competition committee decides: they either void it, putting your prior score back, or post the walk-off 150. Declarations still open after the 24-hour submission window are flagged for review, so a round you would rather forget is not a round you can quietly abandon.
 
 ## Tie-Breakers
 
-For a cut line (e.g. two players tied for a city's 4th seat): **head-to-head** on shared courses → **countback** (best single net round, then next) → **most recent** counting round.
+For a cut line (e.g. two players tied for a city's 4th seat), in order:
+
+1. **Head-to-head** — compare the two players' counting scores at each of *that city's* three courses. Whoever wins more of those courses takes the seat. Only the city being decided is considered; a Houston round has no bearing on an Austin seat.
+2. **Countback** — best single net round in that city, then the next best, and so on.
+3. **Most recent** — the player whose latest counting round in that city was **played** more recently takes the seat. It is the date you played, not the date you submitted, so sitting on a card gains you nothing.
+
+Still level after all three? The seat is **held for the competition committee to rule on** rather than being settled by an accident of alphabetical order. Ties everywhere else on the board are ordered by the same ladder.

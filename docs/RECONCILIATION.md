@@ -110,7 +110,7 @@ and it needs a Texas Cup section written for **D-05**.
 |---|---|---|---|---|
 | **R-01** | 2026 charity | p10: "In 2026, we've designated **Kids Eat, Inc**"; lists Wonders and Worries as a *past* charity | `about.md`: "the charity **returns to Wonders and Worries**"; also a front-page quick fact | **High** — directly reversed, and publicly visible |
 | **R-02** | Muni Tour walk-off score | p9: leaving early under your own power posts as **100** | `muni-tour.md`: posts as **150** | **High** — scoring rule |
-| **R-03** | Alt-Shot loss points | p6: **7 / 5 / 3** | `opnszn.md`: **7 / 5 / 2** | **High** — scoring rule. Note the Almanac is internally inconsistent: 7/5/3 cannot come from a uniform +2 bonus on 5/3/0. Someone reverse-engineered 7/5/2. Needs an authoritative ruling, not a pick |
+| **R-03** | Alt-Shot loss points | p6: **7 / 5 / 3** | `opnszn.md`: **7 / 5 / 2** | **RULED 2026-08-04 — 7 / 5 / 2 stands.** The Almanac is internally inconsistent: 7/5/3 cannot come from a uniform +2 bonus on 5/3/0. The uniform bonus is the stated rule, so the printed 3 is the error |
 | **R-04** | OpnSzn regular season ends | p5: **April 12, 2027** | `opnszn.md`: **Sunday, April 11, 2027** | Medium — Apr 11 *is* the Sunday; looks like a deliberate but undocumented fix |
 | **R-05** | OpnSzn playoff deadlines | p5: 05/03, 05/17, 06/14, 06/28 | `opnszn.md`: Sun May 2, Sun May 16, Sun Jun 13, Sun Jun 27 | Medium — all four shifted a day to land on Sundays |
 | **R-06** | Muni Tour playing partners | p8: play with another **Refugee** — STROHs member *preferred but not required* | `muni-tour.md`: "at least one other **STROH**" | Medium — the site is stricter than the rule |
@@ -139,10 +139,11 @@ so the file names in the table above are historical. Current locations and exact
 | **R-10** | `content/season/path-to-nationals.md` — "Sweetens Cove Golf **Club**" in prose, bare "Sweetens Cove" in quick facts | One word, if it matters |
 | **R-11** | `path-to-nationals.md` and `getting-started.md` both say **four**, reproducing the Almanac's own list of four | Fix the Almanac, not the site |
 
-**Before ruling `R-03`:** Almanac p6 states the bonus as "we will award all four players who play
-an alt-shot match **2 points, regardless of the result**", then lists 7 / 5 / 3. The arithmetic
-holds for two of the three — 5 + 2 = 7 and 3 + 2 = 5 — but 0 + 2 = 2, not 3. The site picked the
-arithmetic. This needs a decision about intent, not a transcription check.
+**`R-03` — RULED 2026-08-04: an Alt-Shot loss pays 2.** Almanac p6 states the bonus as "we will
+award all four players who play an alt-shot match **2 points, regardless of the result**", then
+lists 7 / 5 / 3. The arithmetic holds for two of the three — 5 + 2 = 7 and 3 + 2 = 5 — but
+0 + 2 = 2, not 3. The stated bonus rule is uniform, so the printed 3 is the transcription error
+and `opnszn.md`'s 7 / 5 / 2 stands. No page changes; this closes the item.
 
 **Before ruling `R-06`:** the site's stricter wording also gates the Muni Tour / OpnSzn crossover.
 A crossover match played against a non-STROHs Refugee satisfies the Almanac but not the page.
