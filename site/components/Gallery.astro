@@ -2,7 +2,13 @@
 import { withBase } from '../lib/base.mjs';
 
 // Self-contained rotating image gallery.
-// TODO: swap these STROH's art placeholders for real Instagram photos.
+//
+// These are STROH's art, not photos from @strohs_roost. Pulling those in is not the small job
+// it looks like: Instagram's unauthenticated endpoints are gone — the profile page ships only
+// its own JS bundles, and ?__a=1 returns empty — so the routes are (1) curate by hand into
+// public/photos, (2) a feed service that holds the OAuth for you, or (3) the Graph API, which
+// needs a Business account and a 60-day token to keep refreshed. Parked 2026-08-04; (1) is the
+// intended path, and the carousel takes a `photos` prop so it needs no change when they land.
 const defaultPhotos = [
   { src: '/photos/photo-1.jpg', alt: "STROH's on the course" },
   { src: '/photos/photo-2.jpg', alt: "STROH's on the course" },
