@@ -89,7 +89,6 @@ Two-player teams, each player playing their own ball with the better score count
 
 A Fourball can be played **alongside** Singles matches in the same round — teammates just can't play a Singles match against each other. For example, if A and B take on C and D in a Fourball, A can also play a Singles match against C and against D that round, but not against teammate B. That gives four Singles from a foursome, not six.
 
-**Alt-Shot is the exception**: it is one ball per team, so nobody is playing their own ball and there are no Singles to be had alongside it.
 
 ### Alt-Shot
 
@@ -102,6 +101,8 @@ Alt-Shot is a blast, so it comes with an **Incentive Bonus**: on top of the base
 - **Loss:** 2 points (0 base + 2 bonus)
 
 Play it **Ryder-Cup style** — before the match, decide who tees off on the **odd** holes and who takes the **even** holes, then keep that order fixed for the round.
+
+Unlike a Fourball, an Alt-Shot **cannot** be played alongside Singles in the same round: with one ball per team, nobody is playing their own ball, so there is no Singles to be had.
 
 ## Season & Playoffs
 
