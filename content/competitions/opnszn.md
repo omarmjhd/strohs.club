@@ -135,3 +135,7 @@ That's it — no sign-up gate. If you're a registered STROH, you're in.
 ## Muni Tour Crossover
 
 Playing a match-play round? It can **double as a Muni Tour score** — one round, two competitions. Just remember the Muni Tour rules are stricter: **there are no gimmes on the Muni Tour**, so putt everything out and keep an accurate count if you want the round to count on both boards.
+
+Two things follow from that. **An Alt-Shot round can never be a crossover** — with one ball per team nobody played their own ball, so there is no individual gross to post. And if only some of the group holed everything out, only those players post a Muni score; the rest still played the match.
+
+Nobody checks whether you took a gimme. It is on you.
