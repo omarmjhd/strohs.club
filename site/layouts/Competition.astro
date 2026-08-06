@@ -2,6 +2,7 @@
 import Base from './Base.astro';
 import Standings from '../components/Standings.astro';
 import { withBase } from '../lib/base.mjs';
+import { SCORING_APP } from '../lib/links.mjs';
 const { frontmatter } = Astro.props;
 const {
   title,
@@ -37,7 +38,7 @@ const hasSlides = outputs.includes('slides');
             <h2 id="standings">Standings</h2>
             <Standings csvBase={standings.csvBase} boards={standings.boards}
               hideColumns={standings.hideColumns} sheetUrl={standingsUrl}
-              sheetLabel={`${title} leaderboard sheet`} />
+              sheetLabel={`${title} leaderboard`} />
           </>
         )}
       </div>
@@ -56,6 +57,18 @@ const hasSlides = outputs.includes('slides');
             </div>
           </div>
         )}
+
+        <div class="panel scoring">
+          <h4>Post a Score</h4>
+          <p class="small">
+            Sign in with Discord and post your rounds. The standings on this page come straight
+            from it.
+          </p>
+          <nav class="doc-links" aria-label="Scoring app">
+            <a href={`${SCORING_APP}/submit`}>Submit a score</a>
+            <a href={standingsUrl ?? SCORING_APP}>Live leaderboard</a>
+          </nav>
+        </div>
 
         {(hasPdf || hasPng || hasSlides) && (
           <div class="panel">

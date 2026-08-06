@@ -7,9 +7,9 @@ accent2: "#E97724"
 hero: /brand/comp-muni-tour.png
 logo: /brand/comp-muni-tour.png
 tagline: A season-long net points race across Texas's best municipal courses.
-standingsUrl: https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7fnVF3ufmwmYG8oq0GsKlneX95qKnco1ITNWYmfwGHvEQRq8fETd2XU7ASG6pIwkqDPF6m3RxE086/pubhtml
+standingsUrl: https://strohs-scoring.strohs-scoring.workers.dev/leaderboard/muni
 standings:
-  csvBase: https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7fnVF3ufmwmYG8oq0GsKlneX95qKnco1ITNWYmfwGHvEQRq8fETd2XU7ASG6pIwkqDPF6m3RxE086/pub
+  csvBase: https://strohs-scoring.strohs-scoring.workers.dev/api/export/muni-tour.csv
   hideColumns: [numAtRank, Course]
   boards:
     - { title: "Playoff Qualifiers & City Standings", gid: "913497145" }

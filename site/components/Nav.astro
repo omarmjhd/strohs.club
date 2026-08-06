@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import { NAV, matchesGroup } from '../lib/nav.mjs';
 import { withBase } from '../lib/base.mjs';
+import { SCORING_APP } from '../lib/links.mjs';
 
 const byCollection = {
   pages: await getCollection('pages'),
@@ -37,4 +38,5 @@ const groups = NAV.map((group) => ({
       </div>
     )
   ))}
+  <a class="nav-scoring" href={`${SCORING_APP}/submit`}>Post a Score</a>
 </nav>

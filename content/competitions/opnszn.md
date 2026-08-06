@@ -7,9 +7,9 @@ accent2: "#F0A800"
 hero: /brand/comp-match-play.jpg
 logo: /brand/comp-match-play.jpg
 tagline: A season-long match-play points race — play anyone, anywhere, and climb the board.
-standingsUrl: https://docs.google.com/spreadsheets/d/e/2PACX-1vRrmKc1mma7xj9BE-Mg1XG_wQgzbG45BI-E2szSwSBDXUdzrT3Fp5dopDaNzNPe9suLaHq9WnI-8SMl/pubhtml?gid=124507112&single=true
+standingsUrl: https://strohs-scoring.strohs-scoring.workers.dev/leaderboard/opnszn
 standings:
-  csvBase: https://docs.google.com/spreadsheets/d/e/2PACX-1vRrmKc1mma7xj9BE-Mg1XG_wQgzbG45BI-E2szSwSBDXUdzrT3Fp5dopDaNzNPe9suLaHq9WnI-8SMl/pub
+  csvBase: https://strohs-scoring.strohs-scoring.workers.dev/api/export/opnszn.csv
   # Match-by-match W/T/L detail stays in the sheet; the board shows the points that
   # decide the race, so Total Points is visible without scrolling.
   hideColumns:

@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import { withBase } from '../lib/base.mjs';
-import { DISCORD_INVITE, INSTAGRAM } from '../lib/links.mjs';
+import { DISCORD_INVITE, INSTAGRAM, SCORING_APP } from '../lib/links.mjs';
 const {
   title = "STROH's — South Texas Roost of Hospitality",
   description = "A friendly, easily-accessible way to get involved in the No Laying Up Refuge across South Texas.",
@@ -55,6 +55,7 @@ const {
         <span>South Texas Roost of Hospitality</span>
         <a href={DISCORD_INVITE}>Discord</a>
         <a href={INSTAGRAM}>Instagram</a>
+        <a href={SCORING_APP}>Scoring</a>
         <span style="margin-left:auto; color:#8a97b0;">Count shots, hit cups.</span>
       </div>
     </footer>

@@ -56,6 +56,16 @@ code { background: #f2f2f5; padding: 1px 6px; border-radius: 5px; font-size: .9e
 .site-header nav a:hover { color: #fff; text-decoration: none; }
 
 /* ---- Nav dropdowns ---- */
+/* The scoring app is an action, not a document, so it reads as a button rather than a nav link.
+   It also leaves the site: everything else in this nav is a page here. */
+.site-header nav a.nav-scoring {
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: .92rem;
+}
+.site-header nav a.nav-scoring:hover { background: rgba(255, 255, 255, .12); border-color: #fff; }
+
 .site-header .nav-item { position: relative; }
 .site-header .nav-top { color: var(--cream); font-weight: 600; font-size: .98rem; cursor: pointer; user-select: none; }
 .site-header .nav-item:hover .nav-top { color: #fff; }
