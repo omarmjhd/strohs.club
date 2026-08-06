@@ -87,7 +87,9 @@ Two-player teams, each player playing their own ball with the better score count
 - **Draw:** 1 point (each player)
 - **Loss:** 0 points (each player)
 
-A Fourball can be played **alongside** Singles matches in the same round — teammates just can't play a Singles match against each other. For example, if A and B take on C and D in a Fourball, A can also play a Singles match against C and against D that round, but not against teammate B.
+A Fourball can be played **alongside** Singles matches in the same round — teammates just can't play a Singles match against each other. For example, if A and B take on C and D in a Fourball, A can also play a Singles match against C and against D that round, but not against teammate B. That gives four Singles from a foursome, not six.
+
+**Alt-Shot is the exception**: it is one ball per team, so nobody is playing their own ball and there are no Singles to be had alongside it.
 
 ### Alt-Shot
 
