@@ -98,9 +98,11 @@ Declare in the **Discord thread**, naming who you're playing with and everyone's
 
 ## Mulligan Rounds
 
-You can replay any course as many times as you like — but it's a commitment: the moment you declare a round, it **replaces** your previous score there, better or worse. Walk off under your own power and it posts as a **net 150** — the same penalty for everyone, with no handicap applied. Weather or a genuine emergency voids the round and your prior score stands.
+You can replay any course as many times as you like — but it's a commitment: the moment you declare a round, it **replaces** your previous score there, better or worse. Weather or a genuine emergency voids the round and your prior score stands.
 
-**Declare a round and then never submit it** and the competition committee decides: they either void it, putting your prior score back, or post the walk-off 150. Declarations still open after the 24-hour submission window are flagged for review, so a round you would rather forget is not a round you can quietly abandon.
+Walk off under your own power and it posts as a **net 150** — the same penalty for everyone, with no handicap applied. That penalty only bites if you were holding a score at that course: **walk off somewhere you have never posted and nothing is recorded at all.** The 150 exists to stop you abandoning a bad round to protect a good one, so with nothing to protect there is nothing to punish.
+
+**Declare a round and then never submit it** and the competition committee decides: they either let your prior score stand or post the walk-off 150. Declarations live in the Discord thread, so an unsubmitted one is visible there — a round you would rather forget is not a round you can quietly abandon.
 
 ## Tie-Breakers
 
