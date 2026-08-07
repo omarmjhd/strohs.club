@@ -8,8 +8,8 @@ logo: /brand/comp-texas-cup.png
 tagline: Three days, two teams, Ryder Cup rules — STROH's vs. Big Plex for Texas supremacy.
 blurb: Our marquee team event — STROH's vs. Big Plex in a 3-day Ryder Cup.
 summary: >-
-  Our marquee team event: a three-round, Ryder Cup–style battle between a 16-player STROH's squad
-  and a 16-player Big Plex (DFW) squad — Best Ball, Scotch Foursomes, and Singles across a full
+  Our marquee team event: a three-round, Ryder Cup–style battle between an 18-player STROH's squad
+  and an 18-player Big Plex (DFW) squad — Best Ball, Scotch Foursomes, and Singles across a full
   weekend. Now in its sixth year, heading to The Hideout in Brownwood, TX in late March 2027.
 keyFacts:
   - label: Format
@@ -19,13 +19,16 @@ keyFacts:
   - label: Where
     value: The Hideout — Brownwood, TX (year two)
   - label: Teams
-    value: Two 16-player teams — STROH's vs. Big Plex
+    value: Two 18-player teams — STROH's vs. Big Plex
+  - label: Handicaps
+    value: Best Ball 90% · Foursomes 60/40 of the pair · Singles 100%
   - label: Cost
     value: TBD
 social:
   scoring:
     - "3-day Ryder Cup: Best Ball, Scotch Foursomes & Singles"
-    - "Two 16-player teams — STROH's vs. Big Plex (DFW)"
+    - "Two 18-player teams — STROH's vs. Big Plex (DFW)"
+    - "Handicaps: Best Ball 90% · Foursomes 60% low + 40% high · Singles 100%"
     - "Late March 2027 · The Hideout, Brownwood, TX"
     - "Sixth year of the STROH's–Big Plex rivalry"
 outputs: [page, pdf, png]
@@ -33,7 +36,7 @@ outputs: [page, pdf, png]
 
 ## Overview
 
-The Texas Cup is our marquee team event — a three-round, Ryder Cup–style throwdown for Texas bragging rights, and a **new format this year**: a **16-player STROH's team against a 16-player Big Plex (DFW) team** across a full weekend of match play.
+The Texas Cup is our marquee team event — a three-round, Ryder Cup–style throwdown for Texas bragging rights, and a **new format this year**: an **18-player STROH's team against an 18-player Big Plex (DFW) team** across a full weekend of match play.
 
 For its first six years the Cup was a **three-team** affair — Austin/San Antonio, Houston and Dallas. After the 2026 event we moved to two teams, with the Dallas contingent now playing as Big Plex. Past winners are on the **[Roll of Honour](/roll-of-honour)**.
 
@@ -49,9 +52,27 @@ Three days, Ryder Cup style — every match is worth points, and the team with t
 
 *(Exact session lineup and points are finalized closer to the event.)*
 
+## Handicap Allowances
+
+Each format plays off a different allowance. **Know your number before you tee off** — these decide who gets shots and where.
+
+| Format | Allowance | How the shots fall |
+| --- | --- | --- |
+| **Best Ball** | **90%** of course handicap | Shots come off the **lowest handicap player in the group**. The low player gets **0 shots**; everyone else gets the difference between their handicap and his. |
+| **Scotch Foursomes** | **40% of the higher** partner's handicap **plus 60% of the lower**, added together | That single number is the pair's handicap, per **USGA guidelines**. Shots then come off the lower pair. |
+| **Singles** | **100%** — full handicaps | Standard 1:1 match play: the difference between the two players. |
+
+**Worked examples.**
+
+- **Best Ball** — a group of 10, 20, 14 and scratch play off 9, 18, 13 and 0. The scratch player gives nothing away and receives nothing; the 20 receives **18** shots.
+- **Scotch Foursomes** — a 10 and a 20 play off **14** (60% of 10 is 6, plus 40% of 20 is 8). A 3 and an 11 play off **6**.
+- **Singles** — an 18 against a 4 receives **14** shots.
+
+Shots fall on the stroke index of the tees each player is on, so **split tees are fine** — the count is still the plain difference in course handicaps.
+
 ## The Teams
 
-Two **16-player** squads go to war: **STROH's vs. Big Plex.** Rosters and captains come together in the run-up to the weekend.
+Two **18-player** squads go to war: **STROH's vs. Big Plex.** Rosters and captains come together in the run-up to the weekend.
 
 ## When & Where
 
